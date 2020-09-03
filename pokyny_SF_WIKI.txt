@@ -1,0 +1,26 @@
+
+- tasky Wiki pro Kenedyho
+
+  - 0) zalohovat si repository na WIKI
+  - 1) udělat plug iny dva 
+  - 2) s Ladou Suchanem domluvit se na nové repository
+  - HOTOVO - s Mášou odsouhlasit kam mám psát hodiny
+
+Call s vysvětlením - zadání
+https://web.microsoftstream.com/video/a25beea4-a2b0-44e4-adc8-2d0098693d20
+
+Web:
+http://vm-syfy/dokuwiki/doku.php?id=:cs:start
+http://vm-syfy/dokuwiki/doku.php?id=en:data
+
+LOGIN 
+web: http://vm-syfy/dokuwiki/doku.php?id=cs:start&do=login&sectok=
+user: admin
+pass: 6P7tcMTMVax
+
+Inslall:
+https://www.dokuwiki.org/install
+
+Vzdálená plocha:
+- zadat: vm-syfy
+- běžný log-in můj
