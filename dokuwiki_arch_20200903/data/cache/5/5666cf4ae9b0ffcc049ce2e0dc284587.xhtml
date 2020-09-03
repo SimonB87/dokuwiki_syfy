@@ -1,0 +1,271 @@
+
+<h1 class="sectionedit1" id="form">Form</h1>
+<div class="level1">
+
+<p>
+Form is basic building block of UI. It is possible to add it in Project window into some package. Form will be opened either if it is an startup form of the application or if navigation is called from the action. Startup form may be set in properties of the project (window <em>Project</em>, choose root item and in <em>Properties</em> set property <em>Startup form</em>). It is as well possible to set other properties here.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Form&quot;,&quot;hid&quot;:&quot;form&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-432&quot;} -->
+<h2 class="sectionedit2" id="master_page">Master page</h2>
+<div class="level2">
+
+<p>
+One of the forms may be “master page”, that is container for other forms. It is used for example to always show some header or footer on all “pages”. Master page is form as others but it contains component <em>FormPlaceholder</em>. To use master page form, set it as Startup form of the project and then set the default form on <em>FormPlaceholder</em> component.
+</p>
+
+<p>
+NOTE: At the moment we support only one master page and one placeholder.
+</p>
+
+<p>
+For list of components see <a href="/dokuwiki/doku.php?id=en:standard-components" class="wikilink1" title="en:standard-components">List of standard components</a>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Master page&quot;,&quot;hid&quot;:&quot;master_page&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;433-967&quot;} -->
+<h2 class="sectionedit3" id="containers">Containers</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <strong>Panel</strong> – basic layouting component</div>
+</li>
+<li class="level1"><div class="li"> <strong>DataTable</strong>, <strong>Repeater</strong> – these containers are bound to DataCollection and for each item rendering either row (in case of DataTable) or repeating defined component (or multiple if you wrap them in some container)</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Containers&quot;,&quot;hid&quot;:&quot;containers&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;968-1259&quot;} -->
+<h2 class="sectionedit4" id="editors">Editors</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <strong>TextBox</strong>, <strong>DatePicker</strong>, <strong>CheckBox</strong> – editors for attributes of basic data types</div>
+</li>
+<li class="level1"><div class="li"> <strong>EnumRadioGroup</strong>, <strong>EnumCombo</strong> – allows editing of enum attributes</div>
+</li>
+<li class="level1"><div class="li"> <strong>ReferenceCombo</strong> – editor for data reference</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Editors&quot;,&quot;hid&quot;:&quot;editors&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;1260-1503&quot;} -->
+<h2 class="sectionedit5" id="other_components">Other components</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <strong>Button</strong>, <strong>HyperLink</strong>, <strong>Image</strong>, <strong>Label</strong> – traditional components with click event</div>
+</li>
+<li class="level1"><div class="li"> <strong>ErrorPanel</strong> – simple component for showing all validation errors on the form</div>
+</li>
+<li class="level1"><div class="li"> <strong>CustomHtml</strong> – special component that allows you to enter <abbr title="HyperText Markup Language">HTML</abbr> and use simple knockout binding for it. This component should be used only in rare scenarios because IDE does not analyze the script inside. If some renaming happens, it may break this component. It is as well important to be very careful not to introduce any security vulnerability this way. In most cases, this component serves only as temporary workaround.</div>
+</li>
+</ul>
+
+<p>
+Size and alignment is not a feature of the components themselves, but rather combination of them and the components they are contained in. It is set in the component properties.
+</p>
+
+<p>
+If the component is in the Panel, it gets width and height properties. Based on panel Orientation, Vertical alignment property may be available as well.
+</p>
+<div class="table sectionedit6"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0">Value / Property</th><th class="col1 leftalign">Width                                                                   </th><th class="col2 leftalign">Height                             </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign">px, %              </td><td class="col1">Sets width and adds Horizontal alignment property (left,center,right)</td><td class="col2 leftalign">Sets height                      </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">Auto fit           </td><td class="col1 leftalign">*Width is set based on its content                                          </td><td class="col2 leftalign">Height is set based on its content      </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">Fill               </td><td class="col1 leftalign">Fills all available width                                     </td><td class="col2">*fills all available height</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:6,&quot;range&quot;:&quot;2481-2987&quot;} -->
+<p>
+* properties marked with the star are can be set only in text form, they cannot be chosen from the menu and they are not available in all situations. They generate validation warning F9999.
+</p>
+
+<p>
+Other components are available in <a href="/dokuwiki/doku.php?id=en:sffw" class="wikilink2" title="en:sffw" rel="nofollow">sffw</a> project that is not part of standard IDE.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Other components&quot;,&quot;hid&quot;:&quot;other_components&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;1504-3264&quot;} -->
+<h2 class="sectionedit7" id="custom_components">Custom components</h2>
+<div class="level2">
+
+<p>
+Developers with knowledge of javascript may extend the application of new components. These components are contained in packages so for other developers it just mean to add certain package to be able to use it in their project.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Custom components&quot;,&quot;hid&quot;:&quot;custom_components&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;3265-3524&quot;} -->
+<h2 class="sectionedit8" id="component_styling_cssclass">Component styling – CssClass</h2>
+<div class="level2">
+
+<p>
+Most components have “Css Class” property. This can be used to add css class (with the help of <a href="/dokuwiki/lib/exe/detail.php?id=en%3Aforms&amp;media=en:image19.png" class="media" title="en:image19.png"><img src="/dokuwiki/lib/exe/fetch.php?w=11&amp;h=13&amp;tok=e478ca&amp;media=en:image19.png" class="media" alt="" width="11" height="13" /></a> button). There may be more than one class and they may be individually turned on and off and even bound dynamically. That way it is for example possible to change colours based on data.
+</p>
+
+<p>
+By default every component gets automatically class <em>{theme name}-{component name</em>, ie. <em>m8-button</em>. Name of the theme may be set in menu <em>Project/Project options/Theme name</em>. It is possible to turn this “theme” class off and that way to have only the basic minimum of styles for given component and to customise it.
+</p>
+
+<p>
+Custom css classes may be created by adding new resource of type css class (window <em>Project - Add Resource</em> and choosing name and css extension). File is standard css stylesheet, class has to start with the dot. If needed, it is possible to use comments to specify dialog behaviour for choosing the css class on the component
+</p>
+
+<p>
+Css file example
+</p>
+<pre class="code css"><span class="coMULTI">/* ide-component: button, hyperlink */</span>
+<span class="re1">.myGreatButton</span> <span class="br0">&#123;</span>
+    <span class="kw1">background-color</span><span class="sy0">:</span> <span class="kw4">green</span><span class="sy0">;</span>
+    <span class="kw1">font-size</span><span class="sy0">:</span> <span class="re3">200%</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Component styling \u2013 CssClass&quot;,&quot;hid&quot;:&quot;component_styling_cssclass&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;3525-4671&quot;} -->
+<h3 class="sectionedit9" id="comments_syntax">Comments syntax</h3>
+<div class="level3">
+<pre class="code">/* class will display only for given components */
+/* ide-component: komponenta1[,komponenta2 …] */
+
+/* class will not display in the dialog at all */
+/* ide-ignore */
+
+/* class will display in given groups (for visual separation) */
+/* ide-group: group[,group2…] */
+
+
+/* all classes are added to the group which name will be put in the group which name is taken from the name before dash (either from right or left), ie. class size-bigbutton will be added to group size. */
+/* ide-autogroup: true|right */</pre>
+<ul>
+<li class="level1"><div class="li"> Commands may have parameters after colon, parameters may be separated by comma</div>
+</li>
+<li class="level1"><div class="li"> Multiple commands may be separated by semicolon</div>
+</li>
+<li class="level1"><div class="li"> Commands are tied to the nearest class (unless specified otherwise)</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Comments syntax&quot;,&quot;hid&quot;:&quot;comments_syntax&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:9,&quot;range&quot;:&quot;4672-5433&quot;} -->
+<h2 class="sectionedit10" id="button_icons">Button icons</h2>
+<div class="level2">
+
+<p>
+Common way how to add icons on the web is with the help of icon fonts. One such font is integrated in ScreenFactory and may be added through following way. Another option is to use FontAwesome from <a href="/dokuwiki/doku.php?id=en:sffw" class="wikilink2" title="en:sffw" rel="nofollow">sffw</a> or anything else through custom resources.
+</p>
+
+<p>
+The way that is built in SF is implemented through css classes. First, you add the font as a resource in <em>Project – Add – New Item… - Icons</em>. After this, you will have new css classes available on buttons and by adding such class you get the icon on the button (either from right or left and possibly together with your caption).
+</p>
+
+<p>
+You may notice that web fonts are added in multiple formats, that is because various browsers use different ones.
+</p>
+
+<p>
+At the moment these classes are implemented only for buttons but as you can see from the css file it should be possible to adapt it to other components as well.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Button icons&quot;,&quot;hid&quot;:&quot;button_icons&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:10,&quot;range&quot;:&quot;5434-6327&quot;} -->
+<h2 class="sectionedit11" id="component_events">Component events</h2>
+<div class="level2">
+
+<p>
+Components may have events in their property window, ie. OnClick. You may react to these events by attaching action or handler to them. There are two main differences here between actions and handlers. Actions have a name and may be used from multiple places. But for the same reason, they cannot get event specific data (as different events have different parameters but action always have the same parameters no matter where it is called from). Handlers on the other hand cannot be used elsewhere but they do get all the parameters given event is providing. It is of course possible to get the benefits of both by combinding them, that is by attaching handlers to events and in them calling some action while normalizing its input parameters.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Component events&quot;,&quot;hid&quot;:&quot;component_events&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:11,&quot;range&quot;:&quot;6328-7102&quot;} -->
+<h3 class="sectionedit12" id="events_and_their_parameters">Events and their parameters</h3>
+<div class="level3">
+<div class="table sectionedit13"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">Event         </th><th class="col1 leftalign">Component                             </th><th class="col2 leftalign">Parameters                                             </th><th class="col3 leftalign">Comment                                                                                                        </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign">OnActivate    </td><td class="col1 leftalign">Form                                  </td><td class="col2 leftalign">Params.data : BindingContext, i.e. Form variables      </td><td class="col3">Occurs when form is activated, i.e. when creating new form, navigating back, or overlayed modal form is closed.</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">OnClick       </td><td class="col1">Panel, Image, Label, HyperLink, Button</td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs when user clicks this component                                                                         </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">OnCreate      </td><td class="col1 leftalign">Form                                  </td><td class="col2 leftalign">Params.data : BindingContext, i.e. Form variables      </td><td class="col3 leftalign">Occurs when form is created, i.e. only when creating new form. See also OnCreate on DataContext.               </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">OnEnterPressed</td><td class="col1 leftalign">TextBox                               </td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs when user pressed Enter.                                                                                </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">OnInit        </td><td class="col1 leftalign">CustomHtml                            </td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs only once per form, when this component is initialized.                                                 </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 leftalign">OnKeyDown     </td><td class="col1 leftalign">DatePicker, TextBox                   </td><td class="col2">Params.data : BindingContext<br/>
+Params.keyCode : Integer</td><td class="col3 leftalign">Occurs when user presses some key on keyboard. Underlaying data attribute is not updated till focus is lost    </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">OnRowActivate </td><td class="col1 leftalign">DataTable                             </td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs when user clicks to any data row                                                                        </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:13,&quot;range&quot;:&quot;7142-8933&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Events and their parameters&quot;,&quot;hid&quot;:&quot;events_and_their_parameters&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:12,&quot;range&quot;:&quot;7103-8934&quot;} -->
+<h2 class="sectionedit14" id="binding">Binding</h2>
+<div class="level2">
+
+<p>
+Some component properties allow Binding. It is a connection between a property and some data element. It is a basic principle of MVVM pattern. While in other approaches the data is sent to the components and in reaction to some event (change of text, button click) the data are read back and perhaps new data and properties are set to components, in MVVM all these changes are done in the data layer (which is more of a model of view and thus “ViewModel”) and these changes are automatically and declaratively propagated to the properties of the components (View). In runtime it is not possible to change the properties of the components directly, only through changing the viewmodel.
+</p>
+
+<p>
+Important feature is that part of data may be automatically computed. Computed attribute is not a “storage” for some literal value as standard attributes but instead it has an expression that is recalculated every time inputs change and result of this computation is the value of the attribute. (see <a href="/dokuwiki/doku.php?id=en:expressions" class="wikilink1" title="en:expressions">Expressions</a>, Computed attribute). In case the computed attributes are not sufficient it is possible to use standard attribute a do the calculation in an action.
+</p>
+
+<p>
+Some properties may have binding mandatory (ie. data for <em>Repeater</em>). While typical binding is “two-way”, that is bidirectional, some binding may be “one-way”, ie. <em>IsEnabled</em>.
+</p>
+
+<p>
+If the user sets a binding on a component for its main property (ie. Text for TextBox), IDE will automatically set the binding for some other properties as well (ie. Caption and IsRequiredMarkVisible). That way these properties are shared between all editors for given attribute and it is pulled from metadata. Such properties may be changed manually though (ie. attribute Name for generic subject may be changed to “Name and surname” if we know the editor is used only to edit data about people).
+</p>
+
+<p>
+Binding is set in text format (after clicking the binding icon), potentially with the help of autocomplete. It is possible to use names of data elements (ie. <em>address.name</em>), its special properties (ie. <em>address.name.isValid()</em>) and it is possible to change context. At the beginning of the expression it is possible to use negation with keyword <em>not</em> (ie. <em>not IsDirty</em>). Binding is using small subset of language that is available in <a href="/dokuwiki/doku.php?id=en:expressions" class="wikilink1" title="en:expressions">expressions</a>. Detail explanation can be found there.
+</p>
+
+<p>
+Special properties and methods
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>data.caption()</em> – caption of the attribute</div>
+</li>
+<li class="level1"><div class="li"> <em>attribute.isRequired()</em> – whether the attribute is mandatory; available only for attributes</div>
+</li>
+<li class="level1"><div class="li"> <em>data.hasValue()</em> – indicator whether attribute or structure has a value or it is empty</div>
+</li>
+<li class="level1"><div class="li"> <em>data.isValid()</em> – indicator whether all validation rules on the attribute or met or not</div>
+</li>
+<li class="level1"><div class="li"> <em>parentContext()</em> – transition to previous context, in repeater it will be the data that holds the collection; this is not the same as owner()</div>
+</li>
+<li class="level1"><div class="li"> <em>form</em> – switch to root form data; it allows you to for example use form.isEditable from anywhere in the component hierarchy no matter how deeply nested</div>
+</li>
+</ul>
+
+<p>
+Binding is by default two-way and it is doing data conversion as needed (ie. attribute of type <em>date</em> may be bound to <em>TextBox</em> text and it will show the value as a text and even allow the change that will be converted back to <em>date</em> type if possible).
+</p>
+
+<p>
+At the moment, it is not possible to use even basic expressions in binding (with exception of negation). If that is needed, it is possible to use computed attribute for that.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Binding&quot;,&quot;hid&quot;:&quot;binding&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:14,&quot;range&quot;:&quot;8935-&quot;} -->

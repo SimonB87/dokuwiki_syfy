@@ -1,0 +1,7 @@
+==== Accessibility  ====
+
+While components are usually implemented with accessibility in mind, sometimes it may be necessary to define special attributes like aria. In menu //Tools /// //More// following commands are available:
+
+  * //Add accessibility// – adds new properties "Aria label" and "Role" to selected component(s) in property group "Accessibility"
+  * //Remove accessibilit//y – removes properties added by previous command
+  * //Accessibility report// – shows report of all components that have these properties

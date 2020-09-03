@@ -1,0 +1,69 @@
+====== Hlavní okno a záložky ======
+
+===== Form designer =====
+
+Vzhled formulář se skládá z komponent. Komponenty mohou mít v sobě další komponenty. Strukturu formuláře si tedy lze představit jako strom. Na komponenty lze nahlížet ve dvou různých zobrazeních. Jedním z nich je právě tento logický strom komponent. Druhým zobrazením je vizuální náhled na formulář (designer). Mezi těmito zobrazeními lze přepínat.
+
+Designer je WYSIWYG editorem formuláře. Formulář je editován ve své podobě tak, jak bude prezentován uživateli ve výsledné aplikaci, jen s několika málo rozdíly – kolem komponent lze zapnout umělý okraj pro lepší orientaci, lze zapnout zviditelnění komponent (IsVisible=false), komponenty dostávají jako vstup testovací data (viz [[#Test data designer|Test data designer]]). Měřítko zobrazení lze měnit pomocí nástrojů v horní příkazové liště.
+
+Komponenty lze přetahovat myší (zobrazí se indikátor, kde bude komponenta umístěna), nové komponenty se vytváří přetáhnutím myší z toolboxu. Další příkazy jsou dostupné z kontextového menu (pravé tlačítko myši).
+
+Dostupné příkazy (ne vždy jsou dostupné všechny)
+
+  * //Copy, Paste, Delete// – kopírování, mazání
+  * //Go to parent// – výběr přejde na nejbližšího „rodiče“
+  * //Clear all bindings// – v komponentě a všech podkomponentách se smaže veškerý binding (slouží hlavně při kopírování)
+  * //Localize UI component// – provede lokalizaci komponenty – textové property jsou nahrazeny bindingem na lokalizační řetězce
+  * //Add to children// /// Set content// – do vybrané komponenty přidá novou komponentu vybranou z podmenu
+  * //Replace parent// – nejbližšího rodiče nahradí vybranou komponentou
+  * //Group into// – na místo vybraných komponent je vložen vybraný kontejner a původní komponenty jsou vloženy jako jeho podkomponenty
+  * //Transform to// – komponenta je nahrazena jinou a všechny vlastnosti, které se stejně jmenují jsou zkopírovány.
+
+Některé komponenty mohou obsahovat pouze jednu další – pak je možné sem umístit jiný kontejner (např. Panel) a do něj již lze vkládat další komponenty. V defaults.ini (viz [[Resources]]) lze nastavit výchozí vlastnosti komponent při jejich vytváření.
+
+Zobrazení designéru lze přepnout do stromového zobrazení hierarchie komponent, zde lze poté v kontextovém menu vytvářet i nové komponenty.
+
+Při vývoji formuláře jsou typicky používána i okna Variables, Properties, Actions and API objects (viz [[tool-windows|Pomocná okna]]).
+
+{{image13.jpg}}
+
+==== Data-to-form ====
+
+Při přetažení datové struktury z podokna Variables na formulář je vyvoláno generování formuláře z dat (Data-to-Form). Po přetažení vyskočí dialog, ve kterém lze nastavit, jaké komponenty se z jakých datových typů vytvoří, případně další vlastnosti. Toto nastavení je možné změnit pouze pro tento okamžik, nebo uložit do projektového nastavení.
+
+Zobrazování dialogu lze potlačit stiskem tlačítka SHIFT při tažení myší, nebo odškrtnout volbu „//Do not show this dialog next time//“. Pokud je naopak potřeba dialog zobrazit, stačí podržet tlačítko ALT.
+
+===== Data designer – návrh datových struktur =====
+
+Stromový návrh znovu použitelných datových struktur (viz [[data#Data Entity|Data entity]]). Do entity lze vkládat další struktury pomocí kontextového menu nebo z toolboxu, data lze přeskládat tažením myši ve stromu.
+
+U jednotlivých položek struktur (atributy, kolekce apod.) lze nastavovat události – událost se poté spouští ve všech případech použití těchto struktur. Např. OnCreate lze s výhodou použít na prvotní naplnění daty, OnChanged na vypočítávání hodnot při změně apod.
+
+Pokud schránka obsahuje text, nebo formátovaný text s odsazenými názvy hodnot, lze do stromu vložit takovou strukturu (CTRL+V) a ta bude převedena na atributy a komplexní typy.
+
+Pokud vložíte text
+
+  Subjekt
+    IČ
+    Název
+    Adresa
+      Ulice
+      PSČ
+      Město
+designer vygeneruje
+
+{{image14.png?387x182}}
+
+==== Action designer – zadávání prováděcích příkazů ====
+
+Poznámka: tato funkcionalita byla dříve vizuální, nyní pouze textová.
+
+Vytváření a úprava akcí pomocí textového jazyka ActionLang nebo javascript. V záložce tests lze definovat „unit testy“ pro danou akci. Více viz [[actions|Akce]].
+
+===== Test data designer =====
+
+Pro [[#Form designer|form designer]] je důležité, aby existovala testovací data. Jednak si díky nim si vývojář lépe představí, jak bude formulář vypadat, ale hlavně, bez nich by komponenty, které jsou navázány na kolekce záznamů jako jsou Repeater či DataTable, vypadaly prázdné a bylo by obtížné vytvářet jejich obsah.
+
+Testovací data se sama vytváří na základě definice Variables na každém formuláři. Data jsou generována pseudonáhodně tak, aby vyhověla definici dat. Pokud je potřeba testovací data přizpůsobit, provede na podokně Variables (ikona {{image15.png?0x10}}). Data jsou editovatelná v textové podobě ve formátu JSON. Umístěním kurzoru do příslušného místa se zobrazuje definice datových struktur. Pokud jsou data smazána, nebo nejsou validním JSON dokumentem, jsou vygenerována data nová.
+
+Pravým tlačítkem //Regenerate test data// lze data přegenerovat. Pro generované texty se uplatňuje omezení maximální délky nastavitelné ve [[project-structure#Project options|vlastnostech projektu]], defaultní hodnota je 60 znaků.

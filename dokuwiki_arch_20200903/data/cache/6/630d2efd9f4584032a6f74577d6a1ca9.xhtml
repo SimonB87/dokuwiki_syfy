@@ -1,0 +1,311 @@
+
+<h1 class="sectionedit1" id="data">Data</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data&quot;,&quot;hid&quot;:&quot;data&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-20&quot;} -->
+<h2 class="sectionedit2" id="data_entity">Data Entity</h2>
+<div class="level2">
+
+<p>
+Data entity is a structure you can define and use it on multiple places. It may as well help you in splitting the data model and UI. Entity is composed of attributes, collections and other structures. Entity itself is only definition (similar to UML class), instance of such definition is created when you used this entity on the form <em>Form variables</em>, in action <em>Local variables</em> or globally in package <em>Global variables</em>).
+</p>
+
+<p>
+Note: Import from Metasystém. ScreenFactory has a tool for importing structures of messages from Metasystém. This import may be done repeatedly. It is possible to change the imported structures later in ScreenFactory (ie. to add more attributes or validators) and import will keep those changes. During import, you define which domain you want to import from and target package. We recommend to import only those messages, that are going to be used in the client, and to model them in Metasystem in such way the client needs them to be. Metasystem has better tools for data transformations and manipulations than ScreenFactory, and at the moment, we have no plans to implement similar things to ScreenFactory as well.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data Entity&quot;,&quot;hid&quot;:&quot;data_entity&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;21-1198&quot;} -->
+<h2 class="sectionedit3" id="data_attribute">Data Attribute</h2>
+<div class="level2">
+
+<p>
+Data attributes may hold a value or defined type or they may be empty. This value may change during runtime. This value may be accessed from actions and it may be bound to component properties. Attributes have defined type, they may be required or not and they have other metadata (ie. Caption).
+</p>
+
+<p>
+Supported data types:
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>String</strong> – one or more alphanumeric characters. Validators for minimum and maximum length are supported out of the box.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Bool</strong> – logical boolean value - true/false</div>
+</li>
+<li class="level1"><div class="li"> <strong>Date</strong> – date without time part. Out of the box we support whether it may be in the future and whether it may be in the past</div>
+</li>
+<li class="level1"><div class="li"> <strong>DateTime</strong> – date with time part. It has same built-in validators plus setting for its precision (minutes, seconds, miliseconds)</div>
+</li>
+<li class="level1"><div class="li"> <strong>Integer</strong> – integer number in range -9007199254740992 až 9007199254740992 (see javascript <a href="/dokuwiki/doku.php?id=en:number.max_safe_integer" class="wikilink2" title="en:number.max_safe_integer" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER</a>); built-in validators for minimum and maximum</div>
+</li>
+<li class="level1"><div class="li"> <strong>Decimal</strong> – decimal number with arbitrary precision. Built-in validators for minimum, maximum and for precision</div>
+</li>
+<li class="level1"><div class="li"> <strong>metatyp</strong> – special type that allows you to share type and validation setting between multiple attributes and which as well allows you to use enum type</div>
+</li>
+</ul>
+
+<p>
+Date and DateTime do not contain timezone information.
+</p>
+
+<p>
+Whether attribute is required or not, minimums, maximums, precision etc. mentioned earlier are only a shortcut for validations. As other validations it does not mean that the attribute may not hold values that breach this limitation. But if it does, validation error is indicated. There are few cases though, where component may take this information and already limit the user during data entry, ie. DatePicker component may not show the time part if it is bound to Date in comparison to DateTime and it may limit the precision of time entry based on precision setting of DateTime attribute.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data Attribute&quot;,&quot;hid&quot;:&quot;data_attribute&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;1199-3205&quot;} -->
+<h2 class="sectionedit4" id="metatype">Metatype</h2>
+<div class="level2">
+
+<p>
+It may be used to define properties for multiple attributes and as such, work as a tool for reuse of this definition. It may as well enable you to define <em>enum</em>, that is type that holds one of defined set of values that have their value and caption.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Metatype&quot;,&quot;hid&quot;:&quot;metatype&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;3206-3480&quot;} -->
+<h3 class="sectionedit5" id="enum">Enum</h3>
+<div class="level3">
+
+<p>
+This type can be only defined through Metatype. Base type of this metatype has to be set to <em>Enum</em> and then it has to have set of <em>Enum values</em> defined. Each of them can have
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>Name</em>, it will be used in expressions</div>
+</li>
+<li class="level1"><div class="li"> <em>Caption</em>, text that will represent the value if it is displayed to the user</div>
+</li>
+<li class="level1"><div class="li"> <em>Value</em>, value that will be kept in the attribute itself</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Enum&quot;,&quot;hid&quot;:&quot;enum&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;3481-3868&quot;} -->
+<h2 class="sectionedit6" id="computed_attribute">Computed Attribute</h2>
+<div class="level2">
+
+<p>
+Computed attributes do not hold a value (in comparison to data attributes) and thus cannot be set to any value either. Instead they are defined by an expression and automatically recalculated anytime its expression dependencies change. It may be handy in transforming some values before they are displayed to the user, in changing UI state based on value of some data attributes etc.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Computed Attribute&quot;,&quot;hid&quot;:&quot;computed_attribute&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;3869-4285&quot;} -->
+<h2 class="sectionedit7" id="complex_attribute">Complex Attribute</h2>
+<div class="level2">
+
+<p>
+Complex attribute is simply a container for other attributes (including other complex attributes, collections or references). Its purpose is to structure the data in the tree instead of having them as a flat set only.
+</p>
+
+<p>
+It does have a Required property and unlike normal data attributes, it has a special use as well. Not only does it check whether the complex attribute has value (that is any inner attribute has value) or not, but it as well affect the working of the validators on inner attributes. As long as complex attribute is not required and it is empty, validators on inner attributes are not checked. Once it has value, they start to work as usual.
+</p>
+
+<p>
+This may be used for a scenario where you have some part of data not mandatory and ignore any validation errors there as long as user does not start to fill it. For example you may have an address that is not required but if it is set at all, its city has to be set. In such case you want to set the complex attribute Required=false but City.Required=true.  Once it is not empty - user started to fill data in the address - all validators on inner attributes will start to work.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Complex Attribute&quot;,&quot;hid&quot;:&quot;complex_attribute&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;4286-5456&quot;} -->
+<h2 class="sectionedit8" id="reference">Reference</h2>
+<div class="level2">
+
+<p>
+Reference is structure very similar to complex attribute. Its purpose is to reference data that came from other place. It is not part of the definition where the data are coming from (although you may easily get that by using suitable naming convention) only how its structure look like. Reference does not attempt to check data integrity. If the data are coming from server we recommend the server to send the references with whole content (not only code but also description for example).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Reference&quot;,&quot;hid&quot;:&quot;reference&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;5457-5971&quot;} -->
+<h2 class="sectionedit9" id="collection">Collection</h2>
+<div class="level2">
+
+<p>
+Collection allows repetition of data structure. It is a list of attributes and structures that may be defined directly within a collection. Collection size is dynamic, it is possible to add and remove items, and maximum number of items is limited only by browser resources (memory etc.). Collection can be binded to <em>Repeater</em>, <em>DataTable</em> and similar components.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Collection&quot;,&quot;hid&quot;:&quot;collection&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:9,&quot;range&quot;:&quot;5972-6364&quot;} -->
+<h2 class="sectionedit10" id="include">Include</h2>
+<div class="level2">
+
+<p>
+Include is mechanics how to use Data entity. It works as a type of composition with includes and data entity being transparent. The content of included data entity is placed directly on the place of include. That means the attributes of the target are mixed with DataEntity content. If that is not what you want and you intend to have the included attributes structured inside its own “branch”, you may first use Complex and put the include inside. The combined content of included attributes and original attributes siting side-by-side in the same structure still has to respect the rule that attribute names have to be unique in given structure.
+</p>
+
+<p>
+Included content may contain validators, events and other metadata, but it may as well be slightly extended with more validators and events (see <span class="curid"><a href="/dokuwiki/doku.php?id=en:data#variable_modifiers" class="wikilink1" title="en:data">variable modifiers</a></span>).
+</p>
+
+<p>
+Example – object Transporter
+</p>
+<div class="table sectionedit11"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">Data entity s include          </th><th class="col1">Result structure (Variables – Final)</th><th class="col2 leftalign">Notes                                                                                                                                                                                                                                                     </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"><a href="/dokuwiki/lib/exe/detail.php?id=en%3Adata&amp;media=en:image20.png" class="media" title="en:image20.png"><img src="/dokuwiki/lib/exe/fetch.php?w=254&amp;h=370&amp;tok=cc64b5&amp;media=en:image20.png" class="media" alt="" width="254" height="370" /></a></td><td class="col1 leftalign"><a href="/dokuwiki/lib/exe/detail.php?id=en%3Adata&amp;media=en:image21.png" class="media" title="en:image21.png"><img src="/dokuwiki/lib/exe/fetch.php?w=180&amp;h=375&amp;tok=68bd7e&amp;media=en:image21.png" class="media" alt="" width="180" height="375" /></a>       </td><td class="col2">Transporter entity with standard attributes of the subject<br/>
+<br/>
+Direct Include of Adress entity<br/>
+<br/>
+Address contains Reference with Country entity include<br/>
+<br/>
+Reuse of entity ContactInfo<br/>
+<br/>
+Collection contacts contains only included ContactPerson, and that one includes ContactInfo</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:11,&quot;range&quot;:&quot;7262-7929&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Include&quot;,&quot;hid&quot;:&quot;include&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:10,&quot;range&quot;:&quot;6365-7930&quot;} -->
+<h2 class="sectionedit12" id="validators">Validators</h2>
+<div class="level2">
+
+<p>
+Individual data elements (attributes, collections etc.) have the ability to have validators. It is a list of conditions defined by <a href="/dokuwiki/doku.php?id=en:expressions" class="wikilink1" title="en:expressions">expressions</a> in property <em>IsValid</em> and error messages in property <em>Error message</em>. The expression should return true if the data is valid. If it returns something elese (<em>false</em> or <em>null</em>), data element is considered invalid, validation error is potentially shown in UI, and if queried from the action or in another expression with IsValid() it returns false. It is possible to use context <em>attr</em> when defining the expression and it will represent given data element. It is good practice to give validators meaningful name.
+</p>
+
+<p>
+Example:
+</p>
+
+<p>
+<em>IsValid</em>: <strong>SubString</strong>(<strong>attr</strong>,1,1)=<strong>ToUpper</strong>(<strong>SubString</strong>(<strong>attr</strong>,1,1))
+</p>
+
+<p>
+<em>ErrorMessage</em>: “First letter(“ + <strong>SubString</strong>(<strong>attr</strong>,1,1) + ”) has to be upper case”
+</p>
+
+<p>
+Validators may be used on the complex and reference attribute, collection or collection item. If the structure is not empty, validation is done recursivelly for inner elements as well.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Validators&quot;,&quot;hid&quot;:&quot;validators&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:12,&quot;range&quot;:&quot;7931-8998&quot;} -->
+<h3 class="sectionedit13" id="touched">Touched</h3>
+<div class="level3">
+
+<p>
+While validations are happening separatelly from the UI (everything is validated, no matter whether user already set or modified it) it is common that you do not want to show validation errors until user either set or change the data or tries to submit the form. For this we have another flag “touched” that is automatically monitoring this. Validation error on most editors is shown only if touched is true. It is possible to change this state from the action using method <em>isTouched</em>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Touched&quot;,&quot;hid&quot;:&quot;touched&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:13,&quot;range&quot;:&quot;8999-9507&quot;} -->
+<h2 class="sectionedit14" id="variables_action_form_global">Variables (Action, Form, Global)</h2>
+<div class="level2">
+
+<p>
+ViewModel is split between local data of a form (<em>Form variables</em>), global data context (<em>Global variables</em>) and action data contexts (<em>Action variables</em>). These contexts can be modelled in Variables window and you may either create them directly there or include some Data entity you defined earlier (or got as a result of import from MTS).
+</p>
+
+<p>
+<em>Variables</em> have event <em>OnCreate</em> that can be used to prefill them with some data for example.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Variables (Action, Form, Global)&quot;,&quot;hid&quot;:&quot;variables_action_form_global&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:14,&quot;range&quot;:&quot;9508-10002&quot;} -->
+<h3 class="sectionedit15" id="action_variables">Action variables</h3>
+<div class="level3">
+
+<p>
+Action variables structure is created before the action is executed an it is disposed of once the execution ends.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Action variables&quot;,&quot;hid&quot;:&quot;action_variables&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:15,&quot;range&quot;:&quot;10003-10145&quot;} -->
+<h3 class="sectionedit16" id="form_variables">Form variables</h3>
+<div class="level3">
+
+<p>
+Form variables are created in reaction to navigation to given form, right before the form is showin in UI. Once you navigate from this form away with navigation type <em>Go</em>, form variables are disposed of.
+</p>
+
+<p>
+If you navigate away only temporarily with navigaty of type <em>Go&amp;back</em>, data is kept in the memory and used later when you return back to the form by calling <em>Close</em>.
+</p>
+
+<p>
+Variables of basic type on the root level of Form variables may be marked as <em>Is input</em> and <em>Is input required</em>. This makes them similar to input parameters of an action. Navigation on this form will require values for such attributes that are marked with both <em>Is input</em> and <em>Is input required</em> while those that are only <em>Is input</em> may be optionally set in the navigation by “with&lt;Something&gt;” method.
+</p>
+
+<p>
+Test data is automatically created for form variables, they are used in visual designer and they may be changed.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Form variables&quot;,&quot;hid&quot;:&quot;form_variables&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:16,&quot;range&quot;:&quot;10146-11076&quot;} -->
+<h3 class="sectionedit17" id="globalni_variables">Globální variables</h3>
+<div class="level3">
+
+<p>
+Global variables are created at the moment of application start and they stay in memory until the user leaves the application.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Glob\u00e1ln\u00ed variables&quot;,&quot;hid&quot;:&quot;globalni_variables&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:17,&quot;range&quot;:&quot;11077-11236&quot;} -->
+<h2 class="sectionedit18" id="variable_modifiers">Variable modifiers</h2>
+<div class="level2">
+
+<p>
+Instead of designing the data directly, you may as well use includes of Data entities. But if you do so, you may encounter the need to tune it slightly for each form. You may need to add specific attributes inside some included complex or collection, add computed attributes, react to some events. To achieve that, there is an item <em>Local change - Add</em> in context menu of included content and <em>Add events and validators</em>. Such events and validators have access to whole variables context, not only the entity. These changes are only applied in given place, not everywhere where the entity is used.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Variable modifiers&quot;,&quot;hid&quot;:&quot;variable_modifiers&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:18,&quot;range&quot;:&quot;11237-11871&quot;} -->
+<h2 class="sectionedit19" id="data_events">Data events</h2>
+<div class="level2">
+
+<p>
+Data objects have events that allow you to define their behaviour on data entity level. Similar events are as well available in variable contexts.
+</p>
+<div class="table sectionedit20"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">Event                 </th><th class="col1 leftalign">Where                                               </th><th class="col2 leftalign">Parameters                                                                                                </th><th class="col3 leftalign">Comment                                                                                                                                                                                                   </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">OnCollectionItemChange</td><td class="col1 leftalign">DataCollection                                      </td><td class="col2 leftalign"><strong>data</strong> : collection item<br/>
+<strong>triggeredByUser</strong> : bool                                                   </td><td class="col3">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired). Parameter triggeredByUser contains true, if this event is fired from ui interaction</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">OnCreate              </td><td class="col1">Action context,<br/>
+Form variables,<br/>
+Global variables</td><td class="col2 leftalign">                                                                                                          </td><td class="col3 leftalign">Occurs when this structure is created. Can be used for initializing default values.                                                                                                                       </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">OnChange              </td><td class="col1 leftalign">DataAttribute                                       </td><td class="col2"><strong>data</strong> : owner structure (complex, reference, collection item, data entity)<br/>
+<strong>triggeredByUser</strong> : bool</td><td class="col3 leftalign">Occurs when value of this attribute is changed. Parameter triggeredByUser contains true, if this event is fired from ui interaction                                                                       </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 leftalign">                      </td><td class="col1 leftalign">DataEntity                                          </td><td class="col2 leftalign"><strong>data</strong> : DataEntity itself<br/>
+<strong>triggeredByUser</strong> : bool                                                 </td><td class="col3 leftalign">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired).                                                                                    </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">                      </td><td class="col1 leftalign">DataComplexAttribute                                </td><td class="col2 leftalign"><strong>data</strong> : complex structure<br/>
+<strong>triggeredByUser</strong> : bool                                                 </td><td class="col3 leftalign">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired).                                                                                    </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 leftalign">                      </td><td class="col1 leftalign">DataReferenceAttribute                              </td><td class="col2 leftalign"><strong>data</strong> : owner structure<br/>
+<strong>triggeredByUser</strong> : bool                                                   </td><td class="col3 leftalign">Occurs when value of this reference attribute changed, but doesn&#039;t fire when any data of referenced values changed.                                                                                       </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0 leftalign">                      </td><td class="col1">Action context,<br/>
+Form variables,<br/>
+Global variables</td><td class="col2 leftalign">                                                                                                          </td><td class="col3 leftalign">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired).                                                                                    </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0 leftalign">OnUserChange          </td><td class="col1 leftalign">Same as OnChange                                    </td><td class="col2 leftalign">data same as OnChange                                                                                     </td><td class="col3 leftalign">Occurs when data are changed by user                                                                                                                                                                      </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0 leftalign">OnItemAdded           </td><td class="col1 leftalign">DataCollection                                      </td><td class="col2 leftalign">data : added item                                                                                         </td><td class="col3 leftalign">Occurs when item is added to this collection.                                                                                                                                                             </td>
+	</tr>
+	<tr class="row10">
+		<td class="col0 leftalign">OnItemRemoved         </td><td class="col1 leftalign">DataCollection                                      </td><td class="col2 leftalign">data : collection                                                                                         </td><td class="col3 leftalign">Occurs when item is removed from this collection.                                                                                                                                                         </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:20,&quot;range&quot;:&quot;12045-16312&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data events&quot;,&quot;hid&quot;:&quot;data_events&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:19,&quot;range&quot;:&quot;11872-&quot;} -->

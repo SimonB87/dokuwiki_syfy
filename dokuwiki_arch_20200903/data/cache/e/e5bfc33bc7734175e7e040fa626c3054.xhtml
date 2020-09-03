@@ -1,0 +1,272 @@
+
+<h1 class="sectionedit1" id="form_formular">Form – formulář</h1>
+<div class="level1">
+
+<p>
+Formulář je základním stavebním kamenem. Přidat lze v podokně <em>Project - Add new form</em>. Aplikace formulář otevře, pokud dojde k navigaci (viz Akce), nebo pokud je formulář výchozí. Výchozí formulář lze nastavit ve vlastnostech projektu (podokno <em>Project</em> vybrat kořenový projekt, v podokně <em>Properties</em> změnit vlastnost <em>Startup form</em>). Zde lze také nastavit další vlastnosti související s vlastnostmi celé aplikace (týkající se výsledného elementu &lt;body&gt;).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Form \u2013 formul\u00e1\u0159&quot;,&quot;hid&quot;:&quot;form_formular&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-539&quot;} -->
+<h2 class="sectionedit2" id="master_page_predpis_vzhledu_vsech_stranek">Master page – předpis vzhledu všech stránek</h2>
+<div class="level2">
+
+<p>
+Jeden z formulářů může být tzv. master page, tedy kontejner pro ostatní formuláře. Používá se k definici menu, patičky apod. Master page je formulář jako každý jiný, jen se do něj umístí komponenta <em>FormPlaceholder</em> a na ní se nastaví výchozí formulář. Vlastní masterPage se pak nastaví jako <em>Startup form</em>.
+</p>
+
+<p>
+Pozn: V současnosti je povolena pouze jedna master page, a jeden placeholder, počítáme s možností rozšíření.
+</p>
+
+<p>
+Přehled komponent naleznete v <a href="/dokuwiki/doku.php?id=cs:standard-components" class="wikilink1" title="cs:standard-components">Seznam standardních komponent</a>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Master page \u2013 p\u0159edpis vzhledu v\u0161ech str\u00e1nek&quot;,&quot;hid&quot;:&quot;master_page_predpis_vzhledu_vsech_stranek&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;540-1158&quot;} -->
+<h2 class="sectionedit3" id="kontejnery">Kontejnery</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <strong>Panel</strong> – základní layoutovací komponenta</div>
+</li>
+<li class="level1"><div class="li"> <strong>DataTable</strong>, <strong>Repeater</strong> – opakuje v HTML tabulce (resp. po řádcích) položky z nabindované kolekce</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Kontejnery&quot;,&quot;hid&quot;:&quot;kontejnery&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;1159-1351&quot;} -->
+<h2 class="sectionedit4" id="editory">Editory</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <strong>EnumRadioGroup</strong>, <strong>EnumCombo</strong> – editace výčtových (enum) atributů</div>
+</li>
+<li class="level1"><div class="li"> <strong>TextBox</strong>, <strong>DatePicker</strong>, <strong>CheckBox</strong> – klasické editory</div>
+</li>
+<li class="level1"><div class="li"> <strong>ReferenceCombo</strong> – výběr reference ze seznamu</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Editory&quot;,&quot;hid&quot;:&quot;editory&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;1352-1577&quot;} -->
+<h2 class="sectionedit5" id="ostatni_komponenty">Ostatní komponenty</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <strong>Button</strong>, <strong>HyperLink</strong>, <strong>Image</strong>, <strong>Label</strong> – klasické komponenty s možností kliknutí</div>
+</li>
+<li class="level1"><div class="li"> <strong>ErrorPanel</strong> – zobrazí všechny validace formuláře</div>
+</li>
+<li class="level1"><div class="li"> <strong>CustomHtml</strong> – komponenta s ručně zadaným <abbr title="HyperText Markup Language">HTML</abbr>. Lze použít knockout binding (viz dokumentace na webu). Tato komponenta vznikne, pokud na formuláři provedete vložení ze schránky, která obsahuje <abbr title="HyperText Markup Language">HTML</abbr> (z prohlížeče, nebo MS Office).</div>
+</li>
+</ul>
+
+<p>
+Velikost a zarovnání není vlastností komponent samotných, ale kombinace komponenta-kontejner, nastavuje se nicméně jako vlastnost komponenty. Panel umožňuje nastavit šířku a výšku dle následující tabulky. Dle nastavení Orientation Panelu je k dispozici ještě vlastnost Vertical alignment.
+</p>
+<div class="table sectionedit6"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0">Hodnota / Vlastnost</th><th class="col1 leftalign">Width                                                                   </th><th class="col2 leftalign">Height                             </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign">px, %              </td><td class="col1">Nastaví šířku a přidá vlastnost Horizontal alignment (left,center,right)</td><td class="col2 leftalign">Nastaví výšku                      </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">Auto fit           </td><td class="col1 leftalign">*šířka je určena šířkou obsahu                                          </td><td class="col2 leftalign">Výška je určena výškou obsahu      </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">Fill               </td><td class="col1 leftalign">Vyplní šířkou celý dostupný prostor                                     </td><td class="col2">*výška vyplní celý dostupný prostor</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:6,&quot;range&quot;:&quot;2339-2894&quot;} -->
+<p>
+* hvězdičkou označené vlastnosti lze zadat pouze textově (nejdou vybrat z menu) a nejsou funkční za všech okolností. Generují validační hlášku F9999.
+</p>
+
+<p>
+Další komponenty jsou k dispozici v projektu „sffw“, který není standardní součástí IDE.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Ostatn\u00ed komponenty&quot;,&quot;hid&quot;:&quot;ostatni_komponenty&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;1578-3165&quot;} -->
+<h2 class="sectionedit7" id="vlastni_komponenty">Vlastní komponenty</h2>
+<div class="level2">
+
+<p>
+Programátoři se zkušenostmi s javascriptem mohou aplikaci rozšířit o nové komponenty. Ty se pro ostatní vývojáře tváří jako normální komponenty a mohou je po přidání příslušné komponentové knihovny (<em>Package</em>) vyžívat ve svých projektech.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Vlastn\u00ed komponenty&quot;,&quot;hid&quot;:&quot;vlastni_komponenty&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;3166-3468&quot;} -->
+<h2 class="sectionedit8" id="stylovani_komponent_cssclass">Stylování komponent – CssClass</h2>
+<div class="level2">
+
+<p>
+Většina komponent obsahuje kolekci „Css Class“, která slouží pro přidávání css tříd (pomocí tlačítka <a href="/dokuwiki/lib/exe/detail.php?id=cs%3Aforms&amp;media=cs:image19.png" class="media" title="cs:image19.png"><img src="/dokuwiki/lib/exe/fetch.php?w=11&amp;h=13&amp;tok=ea26f7&amp;media=cs:image19.png" class="media" alt="" width="11" height="13" /></a>) do <abbr title="HyperText Markup Language">HTML</abbr> atributu class. Tříd může být více a lze je individuálně vypínat/zapínat dle potřeby a to i dynamicky (pomocí bindingu), tím lze dosáhnout např. změny barvy na základě dat.
+</p>
+
+<p>
+Standardně se každé komponentě přidá třída <em>{název tématu}-{název komponenty}</em>, např. <em>m8-button</em>. Název aktuálního tématu se nastavuje v menu <em>Project/Project options/Theme name</em>. Zakázáním „tématové“ třídy bude na komponentu aplikováno pouze nezbytné minumum stylů související s její funkcionalitou a lze si jí tedy jakkoliv přizpůsobit.
+</p>
+
+<p>
+Vlastní css třídy lze vytvořit tak, že se do projektu přidá nový resource typu css class (podokno <em>Project – Add Resource</em> – zvolit název a příponu css). Soubor je standardní css stylesheet, třída musí začínat tečkou. Je-li potřeba, lze pomocí komentářů specifikovat chování dialogu pro výběr css tříd.
+</p>
+
+<p>
+Příklad css souboru:
+</p>
+<pre class="code css"><span class="coMULTI">/* ide-component: button, hyperlink */</span>
+<span class="re1">.myGreatButton</span> <span class="br0">&#123;</span>
+    <span class="kw1">background-color</span><span class="sy0">:</span> <span class="kw4">green</span><span class="sy0">;</span>
+    <span class="kw1">font-size</span><span class="sy0">:</span> <span class="re3">200%</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Stylov\u00e1n\u00ed komponent \u2013 CssClass&quot;,&quot;hid&quot;:&quot;stylovani_komponent_cssclass&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;3469-4735&quot;} -->
+<h3 class="sectionedit9" id="moznosti_css_komentaru">Možnosti css komentářů</h3>
+<div class="level3">
+<pre class="code">/* třída se bude zobrazovat pouze pro zadané komponenty */
+/* ide-component: komponenta1[,komponenta2 …] */
+
+/* třída se nebude v dialogu zobrazovat */
+/* ide-ignore */
+
+/* třída se bude zobrazovat v zadaných skupinách (slouží pro vizuální oddělení) */
+/* ide-group: group[,group2…] */
+
+/* všechny třídy budou přidány do skupiny, která se vezme z názvu třídy oddělením pomlček
+   (a to buď zleva nebo zprava), např. třída size-bigbutton bude přidána do skupiny size. */
+/* ide-autogroup: true|right */</pre>
+<ul>
+<li class="level1"><div class="li"> Příkaz může mít parametry za dvojtečkou, parametry lze oddělit čárkou (,)</div>
+</li>
+<li class="level1"><div class="li"> Více příkazů lze oddělit středníkem (;)</div>
+</li>
+<li class="level1"><div class="li"> Příkazy se týkají nejbližší další třídy (není-li specifikováno jinak)</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Mo\u017enosti css koment\u00e1\u0159\u016f&quot;,&quot;hid&quot;:&quot;moznosti_css_komentaru&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:9,&quot;range&quot;:&quot;4736-5554&quot;} -->
+<h2 class="sectionedit10" id="ikony_na_tlacitkach">Ikony na tlačítkách</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Ikony na tla\u010d\u00edtk\u00e1ch&quot;,&quot;hid&quot;:&quot;ikony_na_tlacitkach&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:10,&quot;range&quot;:&quot;5555-5591&quot;} -->
+<h2 class="sectionedit11" id="component_styling_-_icons">Component styling - icons</h2>
+<div class="level2">
+
+<p>
+The way that is built in SF is implemented through css classes. First, you add the font as a resource in <em>Project – Add – New Item… - Icons</em>. After this, you will have new css classes available on buttons and by adding such class you get the icon on the button (either from right or left and possibly together with your caption).
+</p>
+
+<p>
+Ikony jsou na webu často implementovány pomocí fontů. Jeden takový font je přímo zabudován ve ScreenFactory a může být přidán do projektu následujícím postupem. Dalšími možnostmi je buď použití FontAwesome z <a href="/dokuwiki/doku.php?id=cs:sffw" class="wikilink2" title="cs:sffw" rel="nofollow">sffw</a> projektu nebo jiných pomocí vlastních resources.
+</p>
+
+<p>
+Font, který je zabudován přímo do ScreenFactory lze přidat pomocí dialogu <em>Project – Add – New Item… - Icons</em>. Poté budou na tlačítkách k dispozici nové css třídy a přidáním takové třídy se na tlačítku objeví ikona (zleva či zprava a případně i s caption textem).
+</p>
+
+<p>
+Pozn.: Webové fonty jsou komplikovaná technologie, která je v různých prohlížečích implementována různě, proto je nutné je do výsledné aplikace dávat ve více formátech (WOFF, TTF, <abbr title="End of text">EOT</abbr>, SVG).
+</p>
+
+<p>
+Pozn.: Momentálně jsou ikony implementovány pouze pro tlačítka. Nahlédnutím do css je lze přizpůsobit i pro jiné komponenty.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Component styling - icons&quot;,&quot;hid&quot;:&quot;component_styling_-_icons&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:11,&quot;range&quot;:&quot;5592-6908&quot;} -->
+<h2 class="sectionedit12" id="udalosti_na_komponentach">Události na komponentách</h2>
+<div class="level2">
+
+<p>
+Komponenty mohou mít v property window i události, např. OnClick. Na tyto události je možné reagovat napojením akce či handleru. Mezi akcí a handlerem jsou dva důležité rozdíly. Akce je pojmenovaná a může být volána z více míst zatímco handler na. Na druhou stranu ze stejného důvodu nemůže dostávat akce specifické informace z dané události zatímco handler ano. Různé události by totiž mohly poslat akci různé vstupy různých typů a akce přitom musí mít vstupy pevně dané.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Ud\u00e1losti na komponent\u00e1ch&quot;,&quot;hid&quot;:&quot;udalosti_na_komponentach&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:12,&quot;range&quot;:&quot;6909-7466&quot;} -->
+<h3 class="sectionedit13" id="udalosti_a_jejich_parametry">Události a jejich parametry</h3>
+<div class="level3">
+<div class="table sectionedit14"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">Event         </th><th class="col1 leftalign">Component                             </th><th class="col2 leftalign">Parameters                                             </th><th class="col3 leftalign">Comment                                                                                                        </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign">OnActivate    </td><td class="col1 leftalign">Form                                  </td><td class="col2 leftalign">Params.data : BindingContext, i.e. Form variables      </td><td class="col3">Occurs when form is activated, i.e. when creating new form, navigating back, or overlayed modal form is closed.</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">OnClick       </td><td class="col1">Panel, Image, Label, HyperLink, Button</td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs when user clicks this component                                                                         </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">OnCreate      </td><td class="col1 leftalign">Form                                  </td><td class="col2 leftalign">Params.data : BindingContext, i.e. Form variables      </td><td class="col3 leftalign">Occurs when form is created, i.e. only when creating new form. See also OnCreate on DataContext.               </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">OnEnterPressed</td><td class="col1 leftalign">TextBox                               </td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs when user pressed Enter.                                                                                </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">OnInit        </td><td class="col1 leftalign">CustomHtml                            </td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs only once per form, when this component is initialized.                                                 </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 leftalign">OnKeyDown     </td><td class="col1 leftalign">DatePicker, TextBox                   </td><td class="col2">Params.data : BindingContext<br/>
+Params.keyCode : Integer</td><td class="col3 leftalign">Occurs when user presses some key on keyboard. Underlaying data attribute is not updated till focus is lost    </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">OnRowActivate </td><td class="col1 leftalign">DataTable                             </td><td class="col2 leftalign">Params.data : BindingContext                           </td><td class="col3 leftalign">Occurs when user clicks to any data row                                                                        </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:14,&quot;range&quot;:&quot;7507-9298&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Ud\u00e1losti a jejich parametry&quot;,&quot;hid&quot;:&quot;udalosti_a_jejich_parametry&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:13,&quot;range&quot;:&quot;7467-9299&quot;} -->
+<h2 class="sectionedit15" id="binding">Binding</h2>
+<div class="level2">
+
+<p>
+Některé vlastnosti komponent umožňuji tzv. Binding, tedy propojení vlastnosti komponenty s nějakým datovým prvkem. Jde o základní princip vývoje aplikace (vzor MVVM) a jeho pochopení je důležité. Zatímco u jiných přístupů se data nastaví do komponent a na nějakou událost (změna textu, stisk tlačítka) se data zpátky přečtou z komponent (a případně komponentám nastaví další vlastnosti), u MVVM se veškeré změny provádí v datech (která jsou spíše modelem View, proto ViewModel) a tyto změny jsou automaticky a deklarativně promítány zpět do vlastností komponent (View). S komponentami tedy nelze pracovat přímo, ale pouze prostřednictvím vlastností nabindovaných na data. Významnou vlastností je, že data mohou být i počítaný atribut, tedy atribut, jehož hodnota se automaticky mění na základě jiných hodnot a příslušného výpočtu (viz Expression, Computed Attribute). V případě, že počítané atributy nestačí, lze použít standardní atribut a akci, která jej dopočítá na základě změny jiných vlastností.
+</p>
+
+<p>
+Některé vlastnosti mají binding povinný (např. data pro <em>Repeater</em>), některé jednostranný (např. <em>IsEnabled</em>).
+</p>
+
+<p>
+Pokud uživatel nastaví binding na komponentě na její hlavní vlastnosti (např. Text u TextBoxu), nastaví se automaticky také binding na některé další vlastnosti (např. Caption a IsRequiredMarkVisible). Tím se dosahuje toho, že název a povinnost atributu se sdílí mezi všemi editory daného atributu (a bere se z metadat). Takové vlastnosti lze však ručním zásahem změnit (např. atribut Jméno na obecném subjektu může v případě fyzické osoby mít popis „Jméno a příjmení“).
+</p>
+
+<p>
+Binding se zadává do vlastnosti komponenty (po stisku ikony) textově, s našeptáváním. Lze použít názvy datových elementů (např. <em>address.name</em>), jejich speciální vlastnosti (např. <em>address.name.isValid()</em>) a přechody mezi kontextem. Na začátku výrazu lze zapsat negaci, pomocí klíčového slova <em>not</em>, např. <em>not IsDirty</em>. Binding je malá podmnožina jazyka, který se používá ve výrazech, detailní vysvětlení lze nalézt v <a href="/dokuwiki/doku.php?id=cs:expressions" class="wikilink1" title="cs:expressions">Expressions</a>.
+</p>
+
+<p>
+Speciální vlastnosti a metody
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>data.caption()</em> – popisek (Caption) z metadat</div>
+</li>
+<li class="level1"><div class="li"> <em>attribute.isRequired()</em> – povinnost z metadat, lze použít pouze u atributů</div>
+</li>
+<li class="level1"><div class="li"> <em>data.hasValue()</em> – příznak, zda atribut nebo struktura nejsou prázdné</div>
+</li>
+<li class="level1"><div class="li"> <em>data.isValid()</em> – příznak, zda všechny validace atributu nebo struktury jsou validní</div>
+</li>
+<li class="level1"><div class="li"> <em>parentContext()</em> – přechod na předchozí kontext, v repeateru to znamená data, která vlastní kolekci. Pozor není to stejné jako owner().</div>
+</li>
+<li class="level1"><div class="li"> <em>form</em> – přechod na kořenová data formuláře, s výhodou lze použít např. form.isEditable odkudkoliv v celé hierarchii komponent</div>
+</li>
+</ul>
+
+<p>
+Pozn.: Binding automaticky provádí obousměrné datové konverze dle typu cílové vlastnosti na komponentě (např. atribut typu <em>date</em> lze nabindovat na <em>TextBox</em>, ten jej zobrazí textově, umožní změnu a nová hodnota je zpětně přeložena na typ <em>date</em>).
+</p>
+
+<p>
+Pozn.: Nyní lze bindovat pouze na existující atribut (nebo strukturu). Pokud je potřeba s hodnotou provést nějakou, byť triviální operaci, je vždy nutné vytvořit nový počítaný atribut. Zvažujeme možnost obohatit jednosměrné bindování o triviální transformace.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Binding&quot;,&quot;hid&quot;:&quot;binding&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:15,&quot;range&quot;:&quot;9300-&quot;} -->

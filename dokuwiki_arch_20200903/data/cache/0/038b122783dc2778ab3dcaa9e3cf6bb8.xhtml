@@ -1,0 +1,213 @@
+
+<h2 class="sectionedit1" id="pomocna_okna">Pomocná okna</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Pomocn\u00e1 okna&quot;,&quot;hid&quot;:&quot;pomocna_okna&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-27&quot;} -->
+<h3 class="sectionedit2" id="project_prace_se_strukturou_projektu">Project – práce se strukturou projektu</h3>
+<div class="level3">
+
+<p>
+Zobrazuje strukturu projektu, tedy jeho kořenový uzel, moduly (Package) a další artefakty, které mohou být organizované do složek (Folder). Na kořenovém uzlu lze přidat existující package, nebo vytvořit nový. Uvnitř package lze pak přidávat další artefakty v podmenu „<em>Add</em>“. Zvolením <em>Add – New Item…</em> lze přidávat i složitější objekty vytvořené z šablon<sup><a href="#fn__1" id="fnt__1" class="fn_top">1)</a></sup>. Jednotlivé artefakty lze přesouvat myší. Package s komponentami se automaticky dávají do adresáře components a řadí se podle abecedy.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Project \u2013 pr\u00e1ce se strukturou projektu&quot;,&quot;hid&quot;:&quot;project_prace_se_strukturou_projektu&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;28-694&quot;} -->
+<h3 class="sectionedit3" id="najit_a_nahradit">Najít a nahradit</h3>
+<div class="level3">
+
+<p>
+Umožňuje najít objekty dle zadaných kritérií, nebo nahradit vlastnosti nalezených objektů.
+</p>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=cs%3Atool-windows&amp;media=cs:image6.png" class="media" title="cs:image6.png"><img src="/dokuwiki/lib/exe/fetch.php?w=247&amp;h=128&amp;tok=22a6bb&amp;media=cs:image6.png" class="media" alt="" width="247" height="128" /></a>
+</p>
+
+<p>
+Funkci lze vyvolat z menu <em>Edit</em> <em>– Find, Find</em> <em>all text, Find references, Search and replace</em>, nebo přímo z okna Properties pravým tlačítkem nad názvem vlastnosti.
+</p>
+
+<p>
+Nahrazování lze použít také pro hromadné nastavení hodnoty nějaké vlastnosti nezávisle na její původní hodnotě.
+</p>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=cs%3Atool-windows&amp;media=cs:image7.png" class="media" title="cs:image7.png"><img src="/dokuwiki/lib/exe/fetch.php?w=276&amp;h=415&amp;tok=9dc6c2&amp;media=cs:image7.png" class="media" alt="" width="276" height="415" /></a>
+</p>
+
+<p>
+<strong>Find text / Find references / Find links / Replace</strong> – přepíná mezi možnostmi dialogu
+</p>
+<ul>
+<li class="level1"><div class="li"> Find text, Replace – vyhledá či nahradí text nebo jinou hodnotu, viz dále</div>
+</li>
+<li class="level1"><div class="li"> Find references – vyhledá odkazy na právě vybraný objekt (musí být nějaký vybraný)</div>
+</li>
+<li class="level1"><div class="li"> Find links – vyhledá odkazy z vybraného objektu pryč (NENÍ IMPLEMENTOVÁNO)</div>
+</li>
+</ul>
+
+<p>
+<strong>Find what</strong> – co se bude hledat
+</p>
+<ul>
+<li class="level1"><div class="li"> lze zadat text, v něm použít * jako zástupný znak za cokoliv, nebo zaškrtnout „Use regex“ a pak lze použít regulární výrazy</div>
+</li>
+<li class="level1"><div class="li"> standardně je hledání case-insensitive, lze změnit pomocí „Match case“</div>
+</li>
+<li class="level1"><div class="li"> pokud chcete hledat řetězec na přesnou shodu, zaškrtněte „Use regex“ a zapište jako ^retezec$ (^ znamená začátek, $ konec)</div>
+</li>
+<li class="level1"><div class="li"> pokud není vyplněno (a je zadána jiná podmínka), umí vyhledat např. všechny objekty nebo objekty se zadanou property</div>
+</li>
+</ul>
+
+<p>
+<strong>Replace with</strong> – čím nahradit
+</p>
+<ul>
+<li class="level1"><div class="li"> v případě „Replace“ řetězec, kterým se má nahradit nalezený text - např. lze nahradit „helo“ za „hello“ a to i uprostřed textu</div>
+</li>
+<li class="level1"><div class="li"> zaškrtnutím „Use regex substitution“ zapnete možnost použití tzv. substitucí v regulárních výrazech - např. $+ je nalezený řetězec.</div>
+</li>
+<li class="level1"><div class="li"> Lze pak např. hledat \d+ (několik číslic za sebou) a nahradit je za „číslo:$+“, tedy např. aaa123bbb bude nahrazeno za aaačíslo:123bbb</div>
+</li>
+<li class="level1"><div class="li"> v případě použití prázdného řetězce pro vyhledání lze toto použít jako hromadné nastavení hodnot</div>
+</li>
+<li class="level1"><div class="li"> u property jiného typu, než string je hodnotu třeba uvést ve správném formátu – nejjednodušší je vyplnit jí v okně Properties a pak kliknout pravým tlačítkem a zvolit „Replace property value“ - to sem vyplní správný text</div>
+</li>
+<li class="level1 node"><div class="li"> lze také použít speciální hodnoty</div>
+<ul>
+<li class="level2"><div class="li"> CLEAR – smaže property</div>
+</li>
+<li class="level2"><div class="li"> EMPTY – nastaví prázdnou hodnotu</div>
+</li>
+<li class="level2"><div class="li"> DEFAULT – nastaví výchozí hodnotu</div>
+</li>
+<li class="level2"><div class="li"> BINDING:xxx – nastaví binding na xxx</div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+<strong>Look in</strong> – kde se bude vyhledávat
+</p>
+<ul>
+<li class="level1"><div class="li"> Curent form / Current package / All packages – aktuální formulář, aktuální package / všechny package</div>
+</li>
+<li class="level1"><div class="li"> Skip component packages – nevyhledává v packages, které jsou označeny jako komponenty</div>
+</li>
+</ul>
+
+<p>
+<strong>Objects to search</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> omezení, které objekty (resp. jejich třídy) mají být ve výsledku zahrnuty</div>
+</li>
+<li class="level1"><div class="li"> jednotlivé třídy se oddělují čárkou a vyhledává se i v jejich potomcích (např. DataEntity, VisualControl, TextBox)</div>
+</li>
+<li class="level1 node"><div class="li"> Pokud není zadáno nic, lze zaškrtnout</div>
+<ul>
+<li class="level2"><div class="li"> Include test data – vyhledává i v testovacích datech formulářů</div>
+</li>
+<li class="level2"><div class="li"> Include resources – vyhledává i v obsahu resources (NENÍ IMPLEMENTOVÁNO)</div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+<strong>Properties to search</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> omezení na property, ve kterých se text bude hledat, jednotlivé názvy jsou odděleny čárkou, název může obsahovat hvězdičku jako zástupný znak</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Naj\u00edt a nahradit&quot;,&quot;hid&quot;:&quot;najit_a_nahradit&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;695-3998&quot;} -->
+<h3 class="sectionedit4" id="properties_nastaveni_vlastnosti_vybranych_objektu">Properties – nastavení vlastností vybraných objektů</h3>
+<div class="level3">
+
+<p>
+Po výběru objektu (např. komponenty, datového prvku, apod.) lze v podokně Properties nastavovat jeho vlastnosti. Ve vlastnostech lze vyhledávat, v některých případech lze nastavovat vlastnosti více vybraným objektům. Některé typy mají speciální editory, které umožňují další možnosti, např. pomocí menu. Je-li v hodnotě nějaký problém, zobrazí se vedle názvu červený vykřičník. Červenou tečkou jsou označeny vlastnosti, jejichž hodnota se liší od výchozí hodnoty.
+</p>
+
+<p>
+Některé vlastnosti komponent umožňuji propojování s daty (viz Binding) a jsou označeny ikonou <a href="/dokuwiki/lib/exe/detail.php?id=cs%3Atool-windows&amp;media=cs:image9.png" class="media" title="cs:image9.png"><img src="/dokuwiki/lib/exe/fetch.php?w=16&amp;h=14&amp;tok=77dd4a&amp;media=cs:image9.png" class="media" alt="" width="16" height="14" /></a>. Napojená („nabindovaná“) vlastnost se zobrazuje s oranžovou ikonou řetězu <a href="/dokuwiki/lib/exe/detail.php?id=cs%3Atool-windows&amp;media=cs:image10.png" class="media" title="cs:image10.png"><img src="/dokuwiki/lib/exe/fetch.php?w=16&amp;h=12&amp;tok=7abecc&amp;media=cs:image10.png" class="media" alt="" width="16" height="12" /></a>. Kliknutím do ikony se přepíná nabindování vlastnosti či zadání hodnoty ručně (pokud je to umožňeno).
+</p>
+
+<p>
+Událostem (ikona <a href="/dokuwiki/lib/exe/detail.php?id=cs%3Atool-windows&amp;media=cs:image12.png" class="media" title="cs:image12.png"><img src="/dokuwiki/lib/exe/fetch.php?h=10&amp;tok=263b5b&amp;media=cs:image12.png" class="media" alt="" height="10" /></a>) se z menu přiřadí již hotové akce, nebo vytvoří nové.
+</p>
+
+<p>
+Najetím myši na název vlastnosti se zobrazí nápověda k této vlastnosti. Kliknutím do názvu komponenty hned pod ikonou s ozubeným kolem zkopírujete text do schránky. Kliknutím na pravé tlačítko myši nad názvem vlastnosti vyvoláte hledání nebo nahrazení (viz Hledání a Nahrazení).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Properties \u2013 nastaven\u00ed vlastnost\u00ed vybran\u00fdch objekt\u016f&quot;,&quot;hid&quot;:&quot;properties_nastaveni_vlastnosti_vybranych_objektu&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;3999-5338&quot;} -->
+<h3 class="sectionedit5" id="toolbox_vytvareni_komponent_a_dalsich_objektu">Toolbox – vytváření komponent a dalších objektů</h3>
+<div class="level3">
+
+<p>
+Toolbox obsahuje zásobník připravených objektů, které se přetahují na aktuálně vytvářený artefakt (např. nové komponenty na formulář, nové datové prvky na entitu). Při delší práci je vhodné si toolbox „zaparkovat“, aby nebylo nutné čekat na jeho „vyjetí“.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Toolbox \u2013 vytv\u00e1\u0159en\u00ed komponent a dal\u0161\u00edch objekt\u016f&quot;,&quot;hid&quot;:&quot;toolbox_vytvareni_komponent_a_dalsich_objektu&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;5339-5697&quot;} -->
+<h3 class="sectionedit6" id="actions_akce_a_udalosti">Actions – akce a události</h3>
+<div class="level3">
+
+<p>
+Seznam existujících akcí na formuláři (nebo globálních). Dvojklikem na akci se otevře její editor v záložce. Kontextové menu přidává novou akci, nebo javascriptovou akci. Pravým tlačítkem na prázdném místě lze zapnout zobrazení událostí (<em>Show events</em>). Pomocí vlastnosti Category lze nastavit kategorii, při přepnutí Project options – Enable new actions tree se poté akce zobrazují seskupené podle kategorií. Ve vlastnostech lze také nastavit vlastnost Is disabled, čímž se vypne vykonávání akce (zavolání takové akce způsobí chybu při kompilaci).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Actions \u2013 akce a ud\u00e1losti&quot;,&quot;hid&quot;:&quot;actions_akce_a_udalosti&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;5698-6338&quot;} -->
+<h3 class="sectionedit7" id="api_objects_seznam_api_objektu">Api objects – seznam api objektů</h3>
+<div class="level3">
+
+<p>
+Seznam existujících api objektů na formuláři (nebo globálních). Kliknutím lze v „Properties“ nastavovat jejich vlastnosti.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Api objects \u2013 seznam api objekt\u016f&quot;,&quot;hid&quot;:&quot;api_objects_seznam_api_objektu&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;6339-6521&quot;} -->
+<h3 class="sectionedit8" id="variables_aktualni_datova_struktura">Variables – aktuální datová struktura</h3>
+<div class="level3">
+
+<p>
+V tomto podokně se definuje datová struktura akce, formuláře, nebo globální. Okno zároveň slouží pro jejich zobrazování po provedení <em>Include</em> (přepnutím přepínače <em>FinalEdit</em>). Přepnutím přepínače (přepínač <em>#ON/#OFF)</em> lze dosáhnout zobrazení systémových dat. V režimu edit je možné datovou strukturu modifikovat, dokonce i (virtuálně) přidávat nová data do již existujících struktur (viz Variables).
+</p>
+
+<p>
+Přetažením z variables na formulář lze docílit automatického vygenerování formuláře (viz <a href="/dokuwiki/doku.php?id=cs:main-window#data-to-form" class="wikilink1" title="cs:main-window">Data-to-Form</a>). V kontextové menu lze do variables přidávat nové hodnoty, validátory a události (a to v různé hloubce stromu). Pomocí „Copy as binding path“ lze do schránky vložit cestu použitelnou v bindingu.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Variables \u2013 aktu\u00e1ln\u00ed datov\u00e1 struktura&quot;,&quot;hid&quot;:&quot;variables_aktualni_datova_struktura&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;6522-7385&quot;} -->
+<h3 class="sectionedit9" id="error_list_seznam_validacnich_chyb_a_varovani">Error list – seznam validačních chyb a varování</h3>
+<div class="level3">
+
+<p>
+Seznam obsahuje seznam validačních chyb a kontrol. Pokud nemáte zapnuto jinak (viz Preferences), nelze projekt spustit, pokud obsahuje validační chyby. Kontroly lze filtrovat na různá kritéria, případně spustit překontrolování (<em>Validate</em>). Standardně se kontroly provádí po načtení projektu a při generování výstupu aplikace (viz User options). Dvojklikem lze zobrazit místo, kde byla validační chyba objevena.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Error list \u2013 seznam valida\u010dn\u00edch chyb a varov\u00e1n\u00ed&quot;,&quot;hid&quot;:&quot;error_list_seznam_validacnich_chyb_a_varovani&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:9,&quot;range&quot;:&quot;7386-7891&quot;} -->
+<h3 class="sectionedit10" id="outputs_vystupy_z_generatoru_logovani">Outputs – výstupy z generátoru, logování</h3>
+<div class="level3">
+
+<p>
+Okna s ladícími výpisy a výstupy generátoru. Slouží pro vývojářské účely.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Outputs \u2013 v\u00fdstupy z\u00a0gener\u00e1toru, logov\u00e1n\u00ed&quot;,&quot;hid&quot;:&quot;outputs_vystupy_z_generatoru_logovani&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:10,&quot;range&quot;:&quot;7892-&quot;} --><div class="footnotes">
+<div class="fn"><sup><a href="#fnt__1" id="fn__1" class="fn_bot">1)</a></sup> 
+<div class="content">Rozšiřování šablon uživatelem není zatím podporováno.
+</div></div>
+</div>

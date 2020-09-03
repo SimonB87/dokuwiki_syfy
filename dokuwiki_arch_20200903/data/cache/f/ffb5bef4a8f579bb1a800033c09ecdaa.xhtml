@@ -1,0 +1,21 @@
+
+<h3 class="sectionedit1" id="action_tests">Action tests</h3>
+<div class="level3">
+
+<p>
+Each action and handler may have a set of tests. Tests are created on tab test. We recommend to split them into three sections, Arrange, Act, Assert.
+</p>
+
+<p>
+Tests themselves are very similar to actions. They are written in ActionLang. In comparison to actions and handlers they have two more methods available, <em>Assert.isTrue(condition)</em> and <em>Assert.isEqual(value1, value2)</em>. IsTrue method changes, whether condition is true. IsEqual method checks whether both parts are equal. If condition or equality is not true, result of the test will be marked as ERROR.
+</p>
+
+<p>
+It is possible to run either all the tests for given action or all tests in the project (from the menu).
+</p>
+
+<p>
+When tests are running, <abbr title="Application Programming Interface">API</abbr> objects do not exist. If it is needed to test action, that has <abbr title="Application Programming Interface">API</abbr> objects, it is necessary to mock them.
+</p>
+
+</div>

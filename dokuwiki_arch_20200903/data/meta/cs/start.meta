@@ -1,0 +1,29 @@
+a:2:{s:7:"current";a:9:{s:4:"date";a:2:{s:7:"created";i:1584100437;s:8:"modified";i:1598858688;}s:4:"user";s:0:"";s:7:"creator";s:0:"";s:11:"last_change";b:0;s:11:"contributor";a:1:{s:5:"admin";s:10:"Wiki Admin";}s:5:"title";s:25:"Dokumentace ScreenFactory";s:11:"description";a:2:{s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:25:"dokumentace_screenfactory";s:5:"title";s:25:"Dokumentace ScreenFactory";s:4:"type";s:2:"ul";s:5:"level";i:1;}}s:8:"abstract";s:532:"Dokumentace ScreenFactory
+
+	*  Principy
+	*  IDE
+		*  Hlavní okno a záložky
+		*  Pomocná okna
+
+	*  Artefakty
+		*  Projekt a package
+		*  Resources
+		*  Globální akce, proměnné a API objekty
+		*  Formuláře
+		*  Data
+		*  Expressions
+		*  API objekty
+		*  Akce
+
+	*  Další principy a funkce
+		*  Lokalizace
+		*  Testování akcí
+		*  Přístupnost (accessibility)
+		*  Hledání nepoužitých objektů
+
+	*  Aplikační model
+	*  FAQ
+	*  Seznam standardních komponent
+	*  Seznam standardních funkcí
+
+Pozn.: Některé f…";}s:8:"relation";a:2:{s:10:"references";a:22:{s:13:"cs:principles";b:1;s:6:"cs:ide";b:1;s:14:"cs:main-window";b:1;s:15:"cs:tool-windows";b:1;s:20:"cs:project-structure";b:1;s:12:"cs:resources";b:1;s:10:"cs:globals";b:1;s:8:"cs:forms";b:1;s:7:"cs:data";b:1;s:14:"cs:expressions";b:1;s:13:"cs:api-object";b:1;s:10:"cs:actions";b:1;s:15:"cs:localization";b:1;s:15:"cs:action-tests";b:1;s:16:"cs:accessibility";b:1;s:17:"cs:unused-objects";b:1;s:20:"cs:application-model";b:1;s:6:"cs:faq";b:1;s:22:"cs:standard-components";b:1;s:21:"cs:standard-functions";b:1;s:7:"cs:sffw";b:0;s:11:"cs:wikitodo";b:0;}s:10:"firstimage";s:0:"";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:5:{s:4:"date";a:2:{s:7:"created";i:1584100437;s:8:"modified";i:1598858688;}s:4:"user";s:0:"";s:7:"creator";s:0:"";s:11:"last_change";b:0;s:11:"contributor";a:1:{s:5:"admin";s:10:"Wiki Admin";}}}

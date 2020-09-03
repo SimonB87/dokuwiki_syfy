@@ -1,0 +1,7 @@
+==== Přístupnost / accessibility  ====
+
+Komponenty jsou generovány v souladu na přístupnost, přesto může být v některých případech potřeba definovat speciální atributy. V menu //Tools /// //More// jsou přístupné příkazy:
+
+  * //Add accessibility// – na vybrané komponenty přidá nové vlastnosti „Aria label“ a „Role“ ve skupině „Accessibility“.
+  * //Remove accessibilit//y – odstraní vlastnosti přidané v předchozím bodě
+  * //Accessibility report// – zobrazí seznam všech komponent, které mají tyto vlastnosti nastavení

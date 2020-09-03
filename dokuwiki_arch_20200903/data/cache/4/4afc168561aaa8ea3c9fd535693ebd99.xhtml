@@ -1,0 +1,80 @@
+
+<h1 class="sectionedit1" id="aplikacni_model">Aplikační model</h1>
+<div class="level1">
+
+<p>
+Modelování aplikace ve Screen Factory (SF) je založeno na návrhovém vzoru <a href="https://en.wikipedia.org/wiki/Model–view–viewmodel" class="urlextern" title="https://en.wikipedia.org/wiki/Model–view–viewmodel" rel="nofollow">MVVM</a> – Model – View – ViewModel. Modelem se rozumí Business model problematiky, někdy též doménový model, jeho získávání z databáze či jiných zdrojů a o něm SF primárně není. View je nějaké zobrazení, typicky formulář sloužící pro interakci uživatele. ViewModel je adaptér mezi modelem a View. Nedílnou součástí principu je podpora vazby mezi ViewModelem a View, tzv. Binding. Ten umožňuje provazovat data a jejich změny mezi View a ViewModelem, tedy např. změna nějakého atributu na ViewModelu je okamžitě propagována do View (uživatel vidí změnu) a obráceně, pokud uživatel provede nějakou změnu ve View (napíše text do textboxu), je změna propagována<sup><a href="#fn__1" id="fnt__1" class="fn_top">1)</a></sup> do ViewModelu.
+</p>
+
+<p>
+Aby toto vše mohlo fungovat, je nutné to obalit nějakým Controllerem – tj. kódem, který řídí tok programu, např. přepíná aktuální view, načítá a ukládá data, apod.
+</p>
+
+<p>
+Tento návrhový vzor je v SF realizován:
+</p>
+
+<p>
+<strong>ViewModel:</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>DataEntity</em> – prvek reuse, kořenový kontejner</div>
+</li>
+<li class="level1"><div class="li"> <em>DataCollection</em> – opakovač, kolekce</div>
+</li>
+<li class="level1"><div class="li"> <em>DataAttribute</em> – nosič hodnoty</div>
+</li>
+<li class="level1"><div class="li"> <em>ComplexAttribute</em> – nosič strukturované hodnoty</div>
+</li>
+<li class="level1"><div class="li"> <em>ComputedAttribute</em> – vypočtená hodnota</div>
+</li>
+<li class="level1"><div class="li"> <em>MetaTyp</em> – reuse DataAttributu</div>
+</li>
+<li class="level1"><div class="li"> V runtime je viewmodel reprezentován observable objekty (knihovna knockout)</div>
+</li>
+<li class="level1"><div class="li"> Na formuláři je ViewModel přístupný jako „Form variables“, případně lze stejným způsobem použít „Global variables“.</div>
+</li>
+<li class="level1"><div class="li"> Ve ViewModelu na formuláři je typicky pomocí include obsažena nějaký reálný business objekt (<em>DataEntity</em>) a přidány pomocné vlastnosti (např. IsSelected, IsAdressVisible, IsInSpecialGroup, apod.)</div>
+</li>
+</ul>
+
+<p>
+<strong>View:</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>Form</em> – formulář, obsahuje jednotlivé komponenty, jejichž vlastnosti lze bindovat – tj. propojovat na ViewModel</div>
+</li>
+<li class="level1"><div class="li"> <em>Panel</em> – layouting, rozmístění prvků na formuláří</div>
+</li>
+<li class="level1"><div class="li"> Editory a další komponenty – zobrazení a editace prvků</div>
+</li>
+<li class="level1"><div class="li"> V runtime je View reprezentováno HTML5, <abbr title="Cascading Style Sheets">CSS</abbr> a javascriptovým kódem jednotlivých komponent</div>
+</li>
+</ul>
+
+<p>
+<strong>Model:</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> Není v SF zastoupen ničím – <em>DataEntity</em> je kompromisem mezi Modelem a ViewModelem, tedy jak potřeb komunikace se serverem, tak potřeb UI. V případě potřeby je nutné mapovat ViewModel na (serverový) Model až při komunikaci.</div>
+</li>
+</ul>
+
+<p>
+<strong>Controller:</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>Action</em> – obsluha události Formuláře nebo komponenty</div>
+</li>
+<li class="level1"><div class="li"> <em><abbr title="Application Programming Interface">API</abbr> object</em> – služební objekt, poskytování <abbr title="Application Programming Interface">API</abbr> pro volání z akcí, poskytování <abbr title="Application Programming Interface">API</abbr> pro propojení s komponentami</div>
+</li>
+<li class="level1"><div class="li"> V runtime je Controller reprezentován generovanými js metodami a referencovanými skripty</div>
+</li>
+</ul>
+
+</div>
+<div class="footnotes">
+<div class="fn"><sup><a href="#fnt__1" id="fn__1" class="fn_bot">1)</a></sup> 
+<div class="content">Okamžik propagace změny UI do ViewModelu může být pro různé komponenty různý. Např. slider reaguje na posun myši okamžitě, data z textboxu se však přenesou do ViewModelu až po opuštění pole (nebo stisku Enter)
+</div></div>
+</div>

@@ -1,0 +1,33 @@
+
+<h1 class="sectionedit1" id="api_object">API object</h1>
+<div class="level1">
+
+<p>
+<abbr title="Application Programming Interface">API</abbr> objects provide access to additional functionality for actions and components. Typical example communication with REST server through JSON format, saving data to local storage, access to GPS location etc. Most <abbr title="Application Programming Interface">API</abbr> objects may be put either on the form or they may be global and they may have some properties. Some may be limited to only local or only global use while some special ones cannot be used this way at all are are used internally, ie. for navigation. Properties are saved in apiConfig.js file and unlike most of other javascripts during deployment, this file is not bundled and minified, so it allows easy change (ie. to have different url to server on each environment).
+</p>
+
+<p>
+<abbr title="Application Programming Interface">API</abbr> objects provide functionality in two different ways
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Contract</strong> – <abbr title="Application Programming Interface">API</abbr> object declares that it implements certain contract, ie. “IDataSource”. Such <abbr title="Application Programming Interface">API</abbr> object may later be used for setting property of other component that requires the same contract. How does such contract look like should be documented as either part of the <abbr title="Application Programming Interface">API</abbr> object or the component itself. Usually it means some public javascript methods. ScreenFactory developer usually does not need to know that, for him the important thing is that this component and this <abbr title="Application Programming Interface">API</abbr> object are ready to work together.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Methods</strong> – <abbr title="Application Programming Interface">API</abbr> provides new methods that may be called from actions and handlers by describing the interface of these methods in its manifest and providing javascript implementation.</div>
+</li>
+</ul>
+
+<p>
+Most <abbr title="Application Programming Interface">API</abbr> objects are external and contained in project <a href="/dokuwiki/doku.php?id=en:sffw" class="wikilink2" title="en:sffw" rel="nofollow">sffw</a>. But is worth mentioning internal <abbr title="Application Programming Interface">API</abbr> object ConfigValue.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;API object&quot;,&quot;hid&quot;:&quot;api_object&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-1611&quot;} -->
+<h2 class="sectionedit2" id="configvalue">ConfigValue</h2>
+<div class="level2">
+
+<p>
+This <abbr title="Application Programming Interface">API</abbr> object holds a value and provides access to it for the actions. Because of the way the properties are stored in apiConfig.js file, it is suitable to hold some data that should be configurable after build, ie. during deployment to various environments.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;ConfigValue&quot;,&quot;hid&quot;:&quot;configvalue&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;1612-&quot;} -->

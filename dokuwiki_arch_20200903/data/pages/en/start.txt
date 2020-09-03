@@ -1,0 +1,26 @@
+====== ScreenFactory documentation ======
+
+  * [[principles|Principles]]
+  * [[IDE|IDE]]
+    * [[main-window|Main window and tabs]]
+    * [[tool-windows|Tool windows]]
+  * Artefacts
+    * [[project-structure|Project structure]]
+    * [[resources|Resources]]
+    * [[globals|Global actions, attributes and API objects]]
+    * [[forms|Forms]]
+    * [[data|Data]]
+    * [[expressions|Expressions]]
+    * [[api-object|API objects]]
+    * [[actions|Actions]]
+  * Other principles and functions
+    * [[localization|Localization]]
+    * [[action-tests|Testing actions]]
+    * [[accessibility|Accessibility]]
+    * [[unused-objects|Searching for unused objects]]
+  * [[application-model|Application model]]
+  * [[faq|FAQ]]
+  * [[standard-components|List of standard components]]
+  * [[standard-functions|List of standard functions]]
+
+//Note: Some functions and components are developed as separate part in [[sffw|sffw]] project.//

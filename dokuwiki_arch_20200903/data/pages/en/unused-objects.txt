@@ -1,0 +1,3 @@
+==== Searching for unused objects ====
+
+Command //Find unused objects// is available in menu //Tools / More//. It lists objects that are not used and it is possible to remove them.

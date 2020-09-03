@@ -1,0 +1,266 @@
+
+<h1 class="sectionedit1" id="actions">Actions</h1>
+<div class="level1">
+
+<p>
+Actions can be used to react to certain events, usually triggered by user on some component. They may be on a form (<em>Form actions</em>) or they may be globa (<em>Global actions</em>).
+</p>
+
+<p>
+Actions are used for handling the events or to be called from other actions. To attach the action to and event, first choose a component on the form and then find suitable event in properties window (ie. On click). With the help of menu under arrow create new action or use existing. Once the action is attached to an event, Description or short generated description is displayed. Click on green lightning button gets you dirrectly to given action.
+</p>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=en%3Aactions&amp;media=en:image22.png" class="media" title="en:image22.png"><img src="/dokuwiki/lib/exe/fetch.php?w=265&amp;h=98&amp;tok=94387e&amp;media=en:image22.png" class="media" alt="" width="265" height="98" /></a>
+</p>
+
+<p>
+Actions window enables to create purely javascript actions and call them directly from other actions and events. In normal situations it is not recommended doing so as such actions cannot be checked during design time, there is not support for changing them if some data element changes name etc. They require deep knowledge of the runtime and may get broken if runtime implementation changes. Javascript actions are therefore supported only as temporary workaround.
+</p>
+
+<p>
+Due to asynchronous nature of javascript implementation, it is possible that some actions will take very long time to finish. If such action is triggered by user, you may need to prevent him to start multiple instances in parallel. You may for example temporarily disable the button at the start of the action and enable it again at the end of it.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Actions&quot;,&quot;hid&quot;:&quot;actions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-1493&quot;} -->
+<h1 class="sectionedit2" id="actions_in_actionlang">Actions in ActionLang</h1>
+<div class="level1">
+
+<p>
+Actions are text scripts in ActionLang language using statements and language constructs mentioned later.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Actions in ActionLang&quot;,&quot;hid&quot;:&quot;actions_in_actionlang&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;1494-1637&quot;} -->
+<h2 class="sectionedit3" id="expressions_useable_in_actions">Expressions useable in actions</h2>
+<div class="level2">
+
+<p>
+Expressions in actions have all the features as Expressions used in computed attributes. On top of it, they can do few more things:
+</p>
+<ul>
+<li class="level1"><div class="li"> they may address local variables of actions and control variables of cycles</div>
+</li>
+<li class="level1"><div class="li"> they may call <strong>synchronous</strong> methods of api objects, ie. \\form.<strong>apiobjects</strong>.configValue1.<strong>get</strong>()</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Expressions useable in actions&quot;,&quot;hid&quot;:&quot;expressions_useable_in_actions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;1638-2002&quot;} -->
+<h2 class="sectionedit4" id="comments">Comments</h2>
+<div class="level2">
+
+<p>
+Comments may be used in actions as <em>// comment</em> or <em>/* multiline comment *</em>/ and they have on effect on their functionality. They are generated as javascript comment in debug mode.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Comments&quot;,&quot;hid&quot;:&quot;comments&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;2003-2214&quot;} -->
+<h2 class="sectionedit5" id="branching_of_the_program_flow">Branching of the program flow</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Branching of the program flow&quot;,&quot;hid&quot;:&quot;branching_of_the_program_flow&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;2215-2257&quot;} -->
+<h3 class="sectionedit6" id="if">If</h3>
+<div class="level3">
+
+<p>
+To define condition, you can use <em>if</em>. Its usage looks like this
+</p>
+<pre class="code">if condition then
+  statements_if_condition_is_true
+endif</pre>
+
+<p>
+or
+</p>
+<pre class="code">if condition then
+  statements_if_condition_is_true
+else
+  statements_if_condition_not_true
+endif</pre>
+
+<p>
+Indentation is not mandatory but recommended as it makes the code easier to read. If condition is true, the statement block in <em><strong>then</strong></em> is executed. Otherwise, (condition is false or null) the optional <em><strong>else</strong></em> block is execute.
+</p>
+
+<p>
+Example
+</p>
+<pre class="code">if form.isValid() then
+  system.console(&quot;Data is valid&quot;)
+else
+  system.console(&quot;Form contains validation errors&quot;)
+endif</pre>
+
+<p>
+To make work with null easier and more readable, you may use functions isTrue(), isFalse(), isTrueOrDefault() or isFalseOrDefault().
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;If&quot;,&quot;hid&quot;:&quot;if&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;2258-3048&quot;} -->
+<h3 class="sectionedit7" id="ternary_operator">Ternary operator</h3>
+<div class="level3">
+
+<p>
+The other option to make condition is to use ternary operator expression, ie:
+</p>
+<pre class="code">system.console(form.isValid() ? &quot;Data is valid&quot; : &quot;Form contains validation errors&quot;)</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Ternary operator&quot;,&quot;hid&quot;:&quot;ternary_operator&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:7,&quot;range&quot;:&quot;3049-3256&quot;} -->
+<h2 class="sectionedit8" id="assignment">Assignment</h2>
+<div class="level2">
+
+<p>
+Syntax for assignment is
+</p>
+<pre class="code">target = expression</pre>
+
+<p>
+Target on left side may be data attribute (ie. <em>form.name, globals.userName, form.data.header.MRN</em>) or local variable created in action with keyword <em>var</em>. It is not possible to assign value to computed attributes and neither to the results of lambda methods that return enumerable. Expression, that is assigned must be of the same type or compatible type as a target type, otherwise it is has to be explicity converted.
+</p>
+
+<p>
+Example of assignments
+</p>
+<pre class="code">form.name = &quot;Fantomas&quot;
+globals.userName = &quot;medved009&quot;</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Assignment&quot;,&quot;hid&quot;:&quot;assignment&quot;,&quot;codeblockOffset&quot;:4,&quot;secid&quot;:8,&quot;range&quot;:&quot;3257-3860&quot;} -->
+<h2 class="sectionedit9" id="variable_declaration">Variable declaration</h2>
+<div class="level2">
+
+<p>
+Syntax for variable declaration is
+</p>
+<pre class="code">var variableName = expression</pre>
+
+<p>
+Declaration will create new variable (name has to be unique in given action) of the same type as is the expression and assign its value.
+</p>
+
+<p>
+It is possible to assign not only basic types but as well complex and collection attributes. In such case these are not copied but instead the variable holds a reference to them and it may be used to shorten and simplify the script. For example
+</p>
+<pre class="code">var h = form.data.header
+h.MRN = &quot;CZ18123412341234&quot;
+h.ID = 42
+h.Title = &quot;some title&quot;</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Variable declaration&quot;,&quot;hid&quot;:&quot;variable_declaration&quot;,&quot;codeblockOffset&quot;:6,&quot;secid&quot;:9,&quot;range&quot;:&quot;3861-4459&quot;} -->
+<h2 class="sectionedit10" id="method_call">Method call</h2>
+<div class="level2">
+
+<p>
+Syntax for method call is
+</p>
+<pre class="code">methodName(parameter1, parameter2, ...)</pre>
+
+<p>
+or
+</p>
+<pre class="code">someObject.methodName(parameter1, parameter2, ...)</pre>
+
+<p>
+This will call a method for given context. These contexts may be for example data elements and <abbr title="Application Programming Interface">API</abbr> objects.
+</p>
+<pre class="code">form.collection1.addItem()
+form.apiObjects.configValue.set(&quot;new value&quot;)</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Method call&quot;,&quot;hid&quot;:&quot;method_call&quot;,&quot;codeblockOffset&quot;:8,&quot;secid&quot;:10,&quot;range&quot;:&quot;4460-4835&quot;} -->
+<h2 class="sectionedit11" id="calling_of_other_actions">Calling of other actions</h2>
+<div class="level2">
+
+<p>
+Calling other actions looks similar to calling methods. Local actions are available on the context <em>form.actions</em> while global actions are on context <em>actions</em>.
+</p>
+<pre class="code">form.actions.saveAllData()
+
+actions.refresh(true)</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Calling of other actions&quot;,&quot;hid&quot;:&quot;calling_of_other_actions&quot;,&quot;codeblockOffset&quot;:11,&quot;secid&quot;:11,&quot;range&quot;:&quot;4836-5105&quot;} -->
+<h2 class="sectionedit12" id="calling_methods_with_parameters_and_or_return_value">Calling methods with parameters and/or return value</h2>
+<div class="level2">
+
+<p>
+It is possible to define data elements (attributes, complexes etc.) in an action in Variables window. If it is an attribute of basic type, you may mark it with “Is input” and such attribute will become an input parameter. If you mark it with “Is input required” as well, it will be mandatory otherwise it is optional. In similar way, you may mark some attribute with “Is result” to make it “result variable” and that way to be able to return value from the action. You may assign it directly by name or by using keyword result. These attributes may be accessed directly by name or with context <em>this</em>.
+</p>
+
+<p>
+For javascript actions it is possible to use a trick, if name ends with underscore and number, SF requires to fill that many parameters and does not check its types, ie. action_with_one_parameter_1.
+</p>
+
+<p>
+Calling actions is similar to calling other methods. Use context <em>form.actions</em> or <em>actions</em> and add parameters if there are any. Parameters that are not required are possitioned after those that are and you may skip them. Result of calling (if there is any) may be assigned to something, ie.
+</p>
+<pre class="code">var isValid = form.actions.validateSubjects(1, &quot;test&quot;)</pre>
+
+<p>
+Calling other action is always asynchronous, so it is not possible to chain it with other calls.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Calling methods with parameters and\/or return value&quot;,&quot;hid&quot;:&quot;calling_methods_with_parameters_and_or_return_value&quot;,&quot;codeblockOffset&quot;:12,&quot;secid&quot;:12,&quot;range&quot;:&quot;5106-6442&quot;} -->
+<h2 class="sectionedit13" id="synchronous_and_asynchronous_methods">Synchronous and asynchronous methods</h2>
+<div class="level2">
+
+<p>
+Method calls may be even part of expressions (if they return something), even if it is <abbr title="Application Programming Interface">API</abbr> object method (which is not possible in expressions outside actions). But some methods are marked as asynchronous and their name ends with Async. Such methods may be called only as separate statement or expression that contains only this call. Calling other action is always asynchronous as well. Statements that follow this call will be executed only after this asynchronous action ends. For example:
+</p>
+<pre class="code">// this is OK, it is synchronous method
+var result2 = form.apiObjects.config1.get() + &quot;/&quot; + form.apiObjects.config2.get()
+
+// toto je OK, it is asynchronous method but it is simple expression, not combined with any other operations
+var result1 = form.apiObjects.myRest.requestAsync(&quot;GET&quot;, &quot;/api/country/list&quot;)
+
+// this is NOT OK, it is asynchronous method so it may not be part of complex expression
+var result3 = &quot;/&quot; + form.apiObjects.myapi.doAsync()</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Synchronous and asynchronous methods&quot;,&quot;hid&quot;:&quot;synchronous_and_asynchronous_methods&quot;,&quot;codeblockOffset&quot;:13,&quot;secid&quot;:13,&quot;range&quot;:&quot;6443-7455&quot;} -->
+<h2 class="sectionedit14" id="iterations">Iterations</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Iterations&quot;,&quot;hid&quot;:&quot;iterations&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:14,&quot;range&quot;:&quot;7456-7479&quot;} -->
+<h3 class="sectionedit15" id="foreach">Foreach</h3>
+<div class="level3">
+
+<p>
+Syntex is
+</p>
+<pre class="code">foreach controlVariable in iteratedExpression do
+    statementBlock
+endfor</pre>
+
+<p>
+This will repeate the <em>statementBlock</em> for each item in <em>iteratedExpression</em>. Every item will be available in <em>controlVariable</em> for given pass. Iterated expression is an expression that returns multiple objects, so either collection or <em>lambda methods</em> on collection. <em>controlVariable</em> cannot be changed inside the <em>statementBlock</em> but its properties can be. For example:
+</p>
+<pre class="code">foreach f in form.collection1 do
+    f.attribute1 = &quot;a&quot;
+endfor</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Foreach&quot;,&quot;hid&quot;:&quot;foreach&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:15,&quot;range&quot;:&quot;7480-8065&quot;} -->
+<h3 class="sectionedit16" id="while">While</h3>
+<div class="level3">
+<pre class="code">while condition do
+    statementBlock
+endwhile</pre>
+
+<p>
+This will execute statement block over and over again as long as condition is true. If the condition is not true before the first pass the statementBlock is not executed at all. Be mindful that if the condition is always true, the cycle will never end (and your application may appear “stuck” or it may crash if it runs out of resources).
+</p>
+
+<p>
+NOTE: While is not implemented in generator yet.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;While&quot;,&quot;hid&quot;:&quot;while&quot;,&quot;codeblockOffset&quot;:16,&quot;secid&quot;:16,&quot;range&quot;:&quot;8066-&quot;} -->

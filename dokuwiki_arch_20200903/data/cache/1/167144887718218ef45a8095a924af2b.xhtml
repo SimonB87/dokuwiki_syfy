@@ -1,0 +1,140 @@
+
+<h1 class="sectionedit1" id="hlavni_okno_a_zalozky">Hlavní okno a záložky</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Hlavn\u00ed okno a z\u00e1lo\u017eky&quot;,&quot;hid&quot;:&quot;hlavni_okno_a_zalozky&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-40&quot;} -->
+<h2 class="sectionedit2" id="form_designer">Form designer</h2>
+<div class="level2">
+
+<p>
+Vzhled formulář se skládá z komponent. Komponenty mohou mít v sobě další komponenty. Strukturu formuláře si tedy lze představit jako strom. Na komponenty lze nahlížet ve dvou různých zobrazeních. Jedním z nich je právě tento logický strom komponent. Druhým zobrazením je vizuální náhled na formulář (designer). Mezi těmito zobrazeními lze přepínat.
+</p>
+
+<p>
+Designer je WYSIWYG editorem formuláře. Formulář je editován ve své podobě tak, jak bude prezentován uživateli ve výsledné aplikaci, jen s několika málo rozdíly – kolem komponent lze zapnout umělý okraj pro lepší orientaci, lze zapnout zviditelnění komponent (IsVisible=false), komponenty dostávají jako vstup testovací data (viz <a href="#test_data_designer" title="cs:main-window ↵" class="wikilink1">Test data designer</a>). Měřítko zobrazení lze měnit pomocí nástrojů v horní příkazové liště.
+</p>
+
+<p>
+Komponenty lze přetahovat myší (zobrazí se indikátor, kde bude komponenta umístěna), nové komponenty se vytváří přetáhnutím myší z toolboxu. Další příkazy jsou dostupné z kontextového menu (pravé tlačítko myši).
+</p>
+
+<p>
+Dostupné příkazy (ne vždy jsou dostupné všechny)
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>Copy, Paste, Delete</em> – kopírování, mazání</div>
+</li>
+<li class="level1"><div class="li"> <em>Go to parent</em> – výběr přejde na nejbližšího „rodiče“</div>
+</li>
+<li class="level1"><div class="li"> <em>Clear all bindings</em> – v komponentě a všech podkomponentách se smaže veškerý binding (slouží hlavně při kopírování)</div>
+</li>
+<li class="level1"><div class="li"> <em>Localize UI component</em> – provede lokalizaci komponenty – textové property jsou nahrazeny bindingem na lokalizační řetězce</div>
+</li>
+<li class="level1"><div class="li"> <em>Add to children</em> <em>/ Set content</em> – do vybrané komponenty přidá novou komponentu vybranou z podmenu</div>
+</li>
+<li class="level1"><div class="li"> <em>Replace parent</em> – nejbližšího rodiče nahradí vybranou komponentou</div>
+</li>
+<li class="level1"><div class="li"> <em>Group into</em> – na místo vybraných komponent je vložen vybraný kontejner a původní komponenty jsou vloženy jako jeho podkomponenty</div>
+</li>
+<li class="level1"><div class="li"> <em>Transform to</em> – komponenta je nahrazena jinou a všechny vlastnosti, které se stejně jmenují jsou zkopírovány.</div>
+</li>
+</ul>
+
+<p>
+Některé komponenty mohou obsahovat pouze jednu další – pak je možné sem umístit jiný kontejner (např. Panel) a do něj již lze vkládat další komponenty. V defaults.ini (viz <a href="/dokuwiki/doku.php?id=cs:resources" class="wikilink1" title="cs:resources">Resources</a>) lze nastavit výchozí vlastnosti komponent při jejich vytváření.
+</p>
+
+<p>
+Zobrazení designéru lze přepnout do stromového zobrazení hierarchie komponent, zde lze poté v kontextovém menu vytvářet i nové komponenty.
+</p>
+
+<p>
+Při vývoji formuláře jsou typicky používána i okna Variables, Properties, Actions and <abbr title="Application Programming Interface">API</abbr> objects (viz <a href="/dokuwiki/doku.php?id=cs:tool-windows" class="wikilink1" title="cs:tool-windows">Pomocná okna</a>).
+</p>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=cs%3Amain-window&amp;media=cs:image13.jpg" class="media wikilink2" title="cs:image13.jpg"><img src="/dokuwiki/lib/exe/fetch.php?media=cs:image13.jpg" class="media" title="image13.jpg" alt="image13.jpg" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Form designer&quot;,&quot;hid&quot;:&quot;form_designer&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;41-2688&quot;} -->
+<h3 class="sectionedit3" id="data-to-form">Data-to-form</h3>
+<div class="level3">
+
+<p>
+Při přetažení datové struktury z podokna Variables na formulář je vyvoláno generování formuláře z dat (Data-to-Form). Po přetažení vyskočí dialog, ve kterém lze nastavit, jaké komponenty se z jakých datových typů vytvoří, případně další vlastnosti. Toto nastavení je možné změnit pouze pro tento okamžik, nebo uložit do projektového nastavení.
+</p>
+
+<p>
+Zobrazování dialogu lze potlačit stiskem tlačítka SHIFT při tažení myší, nebo odškrtnout volbu „<em>Do not show this dialog next time</em>“. Pokud je naopak potřeba dialog zobrazit, stačí podržet tlačítko ALT.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data-to-form&quot;,&quot;hid&quot;:&quot;data-to-form&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;2689-3324&quot;} -->
+<h2 class="sectionedit4" id="data_designer_navrh_datovych_struktur">Data designer – návrh datových struktur</h2>
+<div class="level2">
+
+<p>
+Stromový návrh znovu použitelných datových struktur (viz <a href="/dokuwiki/doku.php?id=cs:data#data_entity" class="wikilink1" title="cs:data">Data entity</a>). Do entity lze vkládat další struktury pomocí kontextového menu nebo z toolboxu, data lze přeskládat tažením myši ve stromu.
+</p>
+
+<p>
+U jednotlivých položek struktur (atributy, kolekce apod.) lze nastavovat události – událost se poté spouští ve všech případech použití těchto struktur. Např. OnCreate lze s výhodou použít na prvotní naplnění daty, OnChanged na vypočítávání hodnot při změně apod.
+</p>
+
+<p>
+Pokud schránka obsahuje text, nebo formátovaný text s odsazenými názvy hodnot, lze do stromu vložit takovou strukturu (CTRL+V) a ta bude převedena na atributy a komplexní typy.
+</p>
+
+<p>
+Pokud vložíte text
+</p>
+<pre class="code">Subjekt
+  IČ
+  Název
+  Adresa
+    Ulice
+    PSČ
+    Město</pre>
+
+<p>
+designer vygeneruje
+</p>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=cs%3Amain-window&amp;media=cs:image14.png" class="media" title="cs:image14.png"><img src="/dokuwiki/lib/exe/fetch.php?w=387&amp;h=182&amp;tok=3d8384&amp;media=cs:image14.png" class="media" alt="" width="387" height="182" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data designer \u2013 n\u00e1vrh datov\u00fdch struktur&quot;,&quot;hid&quot;:&quot;data_designer_navrh_datovych_struktur&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;3325-4239&quot;} -->
+<h3 class="sectionedit5" id="action_designer_zadavani_provadecich_prikazu">Action designer – zadávání prováděcích příkazů</h3>
+<div class="level3">
+
+<p>
+Poznámka: tato funkcionalita byla dříve vizuální, nyní pouze textová.
+</p>
+
+<p>
+Vytváření a úprava akcí pomocí textového jazyka ActionLang nebo javascript. V záložce tests lze definovat „unit testy“ pro danou akci. Více viz <a href="/dokuwiki/doku.php?id=cs:actions" class="wikilink1" title="cs:actions">Akce</a>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Action designer \u2013 zad\u00e1v\u00e1n\u00ed prov\u00e1d\u011bc\u00edch p\u0159\u00edkaz\u016f&quot;,&quot;hid&quot;:&quot;action_designer_zadavani_provadecich_prikazu&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;4240-4564&quot;} -->
+<h2 class="sectionedit6" id="test_data_designer">Test data designer</h2>
+<div class="level2">
+
+<p>
+Pro <a href="#form_designer" title="cs:main-window ↵" class="wikilink1">form designer</a> je důležité, aby existovala testovací data. Jednak si díky nim si vývojář lépe představí, jak bude formulář vypadat, ale hlavně, bez nich by komponenty, které jsou navázány na kolekce záznamů jako jsou Repeater či DataTable, vypadaly prázdné a bylo by obtížné vytvářet jejich obsah.
+</p>
+
+<p>
+Testovací data se sama vytváří na základě definice Variables na každém formuláři. Data jsou generována pseudonáhodně tak, aby vyhověla definici dat. Pokud je potřeba testovací data přizpůsobit, provede na podokně Variables (ikona <a href="/dokuwiki/lib/exe/detail.php?id=cs%3Amain-window&amp;media=cs:image15.png" class="media" title="cs:image15.png"><img src="/dokuwiki/lib/exe/fetch.php?h=10&amp;tok=aa7c9c&amp;media=cs:image15.png" class="media" alt="" height="10" /></a>). Data jsou editovatelná v textové podobě ve formátu JSON. Umístěním kurzoru do příslušného místa se zobrazuje definice datových struktur. Pokud jsou data smazána, nebo nejsou validním JSON dokumentem, jsou vygenerována data nová.
+</p>
+
+<p>
+Pravým tlačítkem <em>Regenerate test data</em> lze data přegenerovat. Pro generované texty se uplatňuje omezení maximální délky nastavitelné ve <a href="/dokuwiki/doku.php?id=cs:project-structure#project_options" class="wikilink1" title="cs:project-structure">vlastnostech projektu</a>, defaultní hodnota je 60 znaků.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Test data designer&quot;,&quot;hid&quot;:&quot;test_data_designer&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;4565-&quot;} -->

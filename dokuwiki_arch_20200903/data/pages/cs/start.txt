@@ -1,0 +1,28 @@
+====== Dokumentace ScreenFactory ======
+
+  * [[principles|Principy]]
+  * [[IDE|IDE]]
+    * [[main-window|Hlavní okno a záložky]]
+    * [[tool-windows|Pomocná okna]]
+  * Artefakty
+    * [[project-structure|Projekt a package]]
+    * [[resources|Resources]]
+    * [[globals|Globální akce, proměnné a API objekty]]
+    * [[forms|Formuláře]]
+    * [[data|Data]]
+    * [[expressions|Expressions]]
+    * [[api-object|API objekty]]
+    * [[actions|Akce]]
+  * Další principy a funkce
+    * [[localization|Lokalizace]]
+    * [[action-tests|Testování akcí]]
+    * [[accessibility|Přístupnost (accessibility)]]
+    * [[unused-objects|Hledání nepoužitých objektů]]
+  * [[application-model|Aplikační model]]
+  * [[faq|FAQ]]
+  * [[standard-components|Seznam standardních komponent]]
+  * [[standard-functions|Seznam standardních funkcí]]
+
+//Pozn.: Některé funkce a komponenty jsou vyvíjeny jako samostatná část pod názvem [[sffw|sffw]].//
+
+[[wikitodo|wikitodo]]

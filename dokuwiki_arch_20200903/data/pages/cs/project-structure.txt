@@ -1,0 +1,58 @@
+====== Projekt a balíčky ======
+
+Projekt se skládá z balíčků (Packages). Každý projekt obsahuje alespoň jeden balíček. Balíčky umožňují sdílení kódu mezi více projekty, balíčky mohou používat jiné balíčky bez omezení (včetně kruhových závislostí). Balíčky jsou také způsob, jakým rozšířit projekt o nové komponenty (viz Vlastní komponenty, Vlastní api objekty). Samotný projekt kromě balíčků obsahuje pouze globální nastavení (Project options), případně uživatelské nastavení (User options). Celý projekt (resp. některý jeho Package) musí obsahovat alespoň jeden formulář.
+
+Projekt a jeho balíčky se ukládají do XML souborů, a to buď jednotlivě (projekt zvlášť, package zvlášť, každý artefakt zvlášť) nebo komprimovaně (jeden soubor obsahující stejnou strukturu, ale v ZIP). Jsou možné i kombinace (zipovaný package použitý z normálního projektu, apod.). Projektový soubor má příponu //sfproj//, zipovaný pak //sfprojx//. Package se většinou ukládají do vlastních podadresářů a mají příponu //package// nebo //packagex//.
+
+Soubory je možné sdílet, případně uchovávat ve verzovacím systému (pak je doporučen nekomprimovaný formát).
+
+Pozn.: Přímá podpora verzovacího systému v IDE není.
+
+S projektem se také ukládá nastavení rozmístění oken a otevřených záložek (soubor s příponou //sfprojlayout//) a uživatelské nastavení (.sfuser). Tyto soubory není vhodné sdílet mezi vývojáři, nedávejte je do verzovacího systému. V případě GITu doporučujeme přidat tyto přípony do .gitignore.
+
+===== Projekt – build a deployment =====
+
+Pro testování a deployment celého projektu je potřeba provést sestavení (menu //Project – Build and run// nebo //Project// //– Build//). V nastavení //User options// je možné specifikovat výstupní adresář, kam se výsledný projekt nakopíruje a odkud se případně otevírá z prohlížeče.
+
+==== sfcmd.exe – ovládání z příkazové řádky ====
+
+Součástí SF IDE je i utilita sfcmd.exe pro spouštění některých operací z příkazové řádky. Umožnuje provést build a spustit testy. Nápovědu vyvoláte spuštěním bez parametrů nebo s parametrem /?.
+
+==== PostBuildCommand ====
+
+Při složitějších scénářích deployementu (např. kopírování na více míst, dodatečná manipulace s výsledkem apod.) je možné do projektu přidat resources typu cmd batch (přípona cmd) a nastavit Action na //PostBuildCommand//. Takový resource se spustí po každém buildu. Dávka je spuštěna s následujícími parametry:
+
+//{dávka} {Target folder} {Project name} {ProjectFile} {Build_output_file}//
+
+Zároveň se nastaví některé systémové proměnné (SF_xxx), které jsou pro další použití čitelnější. Pro kompletní výpis proměnných si vytvořte nový projekt, přidejte výchozí postBuildCommand. Výsledek si zobrazíte v okně Output/Build
+
+|SF_BUILDMODE      |DEBUG nebo RELEASE                                                                                             |
+|SF_NODE           |Cesta k node.exe. Ve spojení s SF_TEMPPATH lze použít pro spuštění složitějšího prográmku v javascriptu        |
+|SF_OUTPUT         |Výsledný soubor aplikace (index.html)                                                                          |
+|SF_OUTPUTPATH     |Cesta k výsledku buildu                                                                                        |
+|SF_PACKAGE_xxx_VER|Verze package xxx, každý package vytvoří novou proměnnou, např. SF_PACKAGE_main_VER                            |
+|SF_PROJECTFILE    |Soubor s projektem (sfproj nebo sfprojx)                                                                       |
+|SF_PROJECTNAME    |Jméno projektu                                                                                                 |
+|SF_TEMPPATH       |Dočasná cesta, kam se kopírují mezivýsledky sloužící pro build. Zde lze nalézt všechny resources a dále použít.|
+
+Jako šablonu lze použít pravý klik na //Package –// //Add -// //New Item// //– Other – Post build command//.
+
+==== Project options ====
+
+Některé možnosti se nastavují kliknutím do kořene projektového stromu (SF Project), některé v menu volbou //Project-Project options//.
+
+Ve vlastnostech projektu se nastavuje jeho jméno, popis, velikost okna aplikace, výchozí formulář (//Startup form//), lokalizace (viz Lokalizace).
+
+V nastavení projektu (volba //Project-Project options//) je několik záložek, kterými lze řídit detailní nastavení projektu.
+
+^> //Project options// – nastavení sdílené v rámci projektu, povolení lokalizace, některé experimentální nastavení, parametry generování testovacích dat                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^{{image16.png?208x197}}^
+|//Visual settings// – barvy, fonty, rozměry a další nastavení použité pro komponenty. Z některých parametrů se generuje projektový styl v CSS (cascading style sheets).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |{{image17.png?223x246}}|
+|//Default Data-to-form settings// – výchozí nastavení pro převvod dat na komponenty (viz Data-to-form).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                               |
+|//User options// – nastavení, které je platné pouze pro aktuálního vývojáře. Ukládá se do samostatného souboru s příponou sfuser a není určeno pro sdílení v projektu/verzovacím systému. Lze zde nastavit\\ \\ * //Deployment path// – cesta, kam se projekt zkopíruje po zbuildění. Může být prázdná, pak se používá TEMP. V //Deployment path cleanup// lze zaškrtnout, že obsah adresáře se vždy smaže (pozor, může obsahovat např. konfigurační soubory pro webový server apod.).\\ * //Project start url// – url, které se otevře v browseru po zbuildění pomocí build&run. Pokud není zadáno, otevírá se výsledek buildu jako soubor.\\ * Další vlastnosti jsou určeny pro zvýšení rychlosti práce v IDE na úkor nějakých funkcí apod.|{{image18.png?242x218}}|
+
+===== Packages =====
+
+Do packages lze přidávat jednotlivé artefakty (//Form//, //Data entity//, …) a libovolně je strukturovat do adresářů (//Folder//). Lze použít doporučenou strukturu (//Add New Item – Standard folders//). Package obsahuje svůj název a interní identifikátor, kterým je jednoznačně určen. Ve vlastnosti package lze změnit alias, což je jméno, pod kterým bude tento package vystupovat pro tento projekt.
+
+Packages obsahují verzi. Každý projekt se ukládá s číslem verze a při načítání projektu se zobrazuje varování, pokud package na disku neodpovídá verzi, se kterou byl projekt uložen.
+

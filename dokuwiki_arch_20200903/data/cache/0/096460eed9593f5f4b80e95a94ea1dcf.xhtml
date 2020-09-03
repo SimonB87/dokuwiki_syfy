@@ -1,0 +1,817 @@
+
+<h1 class="sectionedit1" id="seznam_standardnich_funkci">Seznam standardních funkcí</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Seznam standardn\u00edch funkc\u00ed&quot;,&quot;hid&quot;:&quot;seznam_standardnich_funkci&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-44&quot;} -->
+<h2 class="sectionedit2" id="common_functions">Common functions</h2>
+<div class="level2">
+
+<p>
+method <strong>defaultFromValue</strong>( from : T ) returns T
+</p>
+
+<p>
+returns NULL value for argument type
+</p>
+
+<p>
+method <strong>hasValue</strong>( Value : T ) returns Bool
+</p>
+
+<p>
+Returns false if given parameter is null, true otherwise.
+</p>
+
+<p>
+method <strong>stopDebugger</strong>( )
+</p>
+
+<p>
+In DEBUG mode, stops browser in debugger.
+</p>
+
+<p>
+method <strong>toString</strong>( Value : T ) returns String
+</p>
+
+<p>
+Returns string representation of given Value parameter.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Common functions&quot;,&quot;hid&quot;:&quot;common_functions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;45-456&quot;} -->
+<h2 class="sectionedit3" id="bool_functions">Bool functions</h2>
+<div class="level2">
+
+<p>
+method <strong>defaultBool</strong>( ) returns Bool
+</p>
+
+<p>
+returns NULL value for Boolean type
+</p>
+
+<p>
+method <strong>defaultFromValue</strong>( from : T ) returns T
+</p>
+
+<p>
+returns NULL value for argument type
+</p>
+
+<p>
+method <strong>hasValue</strong>( Value : T ) returns Bool
+</p>
+
+<p>
+Returns false if given parameter is null, true otherwise.
+</p>
+
+<p>
+method <strong>isFalse</strong>( Value : Bool ) returns Bool
+</p>
+
+<p>
+Returns true if given argument is false, false otherwise (i.e. argument is true or null).
+</p>
+
+<p>
+method <strong>isFalseOrDefault</strong>( Value : Bool ) returns Bool
+</p>
+
+<p>
+Returns true if given argument is false or null, false otherwise (i.e. argument is true).
+</p>
+
+<p>
+method <strong>isTrue</strong>( Value : Bool ) returns Bool
+</p>
+
+<p>
+Returns true if given argument is true, false otherwise (i.e. argument is false or null).
+</p>
+
+<p>
+method <strong>isTrueOrDefault</strong>( Value : Bool ) returns Bool
+</p>
+
+<p>
+Returns true if given argument is true or null, false otherwise (i.e. argument is false).
+</p>
+
+<p>
+method <strong>toRawString</strong>( Value : Bool ) returns String
+</p>
+
+<p>
+Returns locales-invariant string representation of given Value parameter as „true“ or „false“.
+</p>
+
+<p>
+method <strong>toString</strong>( Value : T ) returns String
+</p>
+
+<p>
+Returns string representation of given Value parameter.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Bool functions&quot;,&quot;hid&quot;:&quot;bool_functions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;457-1614&quot;} -->
+<h2 class="sectionedit4" id="date_functions">Date functions</h2>
+<div class="level2">
+
+<p>
+method <strong>addDays</strong>( Value : Date , Days : Integer ) returns Date
+</p>
+
+<p>
+returns given date Value after adding given Days.
+</p>
+
+<p>
+method <strong>addMonths</strong>( Value : Date , Months : Integer ) returns Date
+</p>
+
+<p>
+returns given date Value after adding given Months.
+</p>
+
+<p>
+method <strong>addYears</strong>( Value : Date , Years : Integer ) returns Date
+</p>
+
+<p>
+returns given date Value after adding given Years.
+</p>
+
+<p>
+method <strong>day</strong>( Value : Date ) returns Integer
+</p>
+
+<p>
+returns day part of given date Value.
+</p>
+
+<p>
+method <strong>dayOfWeek</strong>( Value : Date ) returns Integer
+</p>
+
+<p>
+returns day of week of given date Value. Zero means first day of week in current culture
+</p>
+
+<p>
+method <strong>daysBetween</strong>( FirstValue : Date , SecondValue : Date ) returns Integer
+</p>
+
+<p>
+returns number of days beween two given dates.
+</p>
+
+<p>
+method <strong>defaultDate</strong>( ) returns Date
+</p>
+
+<p>
+returns NULL value for Date type
+</p>
+
+<p>
+method <strong>defaultFromValue</strong>( from : T ) returns T
+</p>
+
+<p>
+returns NULL value for argument type
+</p>
+
+<p>
+method <strong>getDate</strong>( ) returns Date
+</p>
+
+<p>
+returns current date. Usable only from actions.
+</p>
+
+<p>
+method <strong>hasValue</strong>( Value : T ) returns Bool
+</p>
+
+<p>
+Returns false if given parameter is null, true otherwise.
+</p>
+
+<p>
+method <strong>month</strong>( Value : Date ) returns Integer
+</p>
+
+<p>
+returns month part of given date Value.
+</p>
+
+<p>
+method <strong>toDateTime</strong>( Value : Date ) returns DateTime
+</p>
+
+<p>
+Returns given date Value parameter converted to datetime.
+</p>
+
+<p>
+method <strong>toRawString</strong>( Value : Date ) returns String
+</p>
+
+<p>
+Returns locales-invariant string representation of given Value parameter in the form „yyyy-MM-dd“.
+</p>
+
+<p>
+method <strong>toString</strong>( Value : T ) returns String
+</p>
+
+<p>
+Returns string representation of given Value parameter.
+</p>
+
+<p>
+method <strong>year</strong>( Value : Date ) returns Integer
+</p>
+
+<p>
+returns year part of given date Value.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Date functions&quot;,&quot;hid&quot;:&quot;date_functions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;1615-3322&quot;} -->
+<h2 class="sectionedit5" id="datetime_functions">DateTime functions</h2>
+<div class="level2">
+
+<p>
+method <strong>addDays</strong>( Value : DateTime , Days : Integer ) returns DateTime
+</p>
+
+<p>
+returns given datetime Value after adding given Days.
+</p>
+
+<p>
+method <strong>addHours</strong>( Value : DateTime , Hours : Integer ) returns DateTime
+</p>
+
+<p>
+returns given datetime Value after adding given Hours.
+</p>
+
+<p>
+method <strong>addMinutes</strong>( Value : DateTime , Minutes : Integer ) returns DateTime
+</p>
+
+<p>
+returns given datetime Value after adding given Minutes.
+</p>
+
+<p>
+method <strong>addMonths</strong>( Value : DateTime , Months : Integer ) returns DateTime
+</p>
+
+<p>
+returns given datetime Value after adding given Months.
+</p>
+
+<p>
+method <strong>addSeconds</strong>( Value : DateTime , Seconds : Integer ) returns DateTime
+</p>
+
+<p>
+returns given datetime Value after adding given Seconds.
+</p>
+
+<p>
+method <strong>addYears</strong>( Value : DateTime , Years : Integer ) returns DateTime
+</p>
+
+<p>
+returns given datetime Value after adding given Years.
+</p>
+
+<p>
+method <strong>day</strong>( Value : DateTime ) returns Integer
+</p>
+
+<p>
+returns day part of given datetime Value.
+</p>
+
+<p>
+method <strong>dayOfWeek</strong>( Value : DateTime ) returns Integer
+</p>
+
+<p>
+returns day of week of given datetime Value. Zero means first day of week in current culture
+</p>
+
+<p>
+method <strong>daysBetween</strong>( FirstValue : DateTime , SecondValue : DateTime ) returns Integer
+</p>
+
+<p>
+returns number of days beween two given datetimes.
+</p>
+
+<p>
+method <strong>defaultDateTime</strong>( ) returns DateTime
+</p>
+
+<p>
+returns NULL value for DateTime type
+</p>
+
+<p>
+method <strong>defaultFromValue</strong>( from : T ) returns T
+</p>
+
+<p>
+returns NULL value for argument type
+</p>
+
+<p>
+method <strong>getDateTime</strong>( ) returns DateTime
+</p>
+
+<p>
+returns current date and time. Usable only from actions.
+</p>
+
+<p>
+method <strong>hasValue</strong>( Value : T ) returns Bool
+</p>
+
+<p>
+Returns false if given parameter is null, true otherwise.
+</p>
+
+<p>
+method <strong>hour</strong>( Value : DateTime ) returns Integer
+</p>
+
+<p>
+returns hour part of given datetime Value.
+</p>
+
+<p>
+method <strong>hoursBetween</strong>( FirstValue : DateTime , SecondValue : DateTime ) returns Integer
+</p>
+
+<p>
+returns number of hours beween two given datetimes.
+</p>
+
+<p>
+method <strong>minute</strong>( Value : DateTime ) returns Integer
+</p>
+
+<p>
+returns minute part of given datetime Value.
+</p>
+
+<p>
+method <strong>minutesBetween</strong>( FirstValue : DateTime , SecondValue : DateTime ) returns Integer
+</p>
+
+<p>
+returns number of minutes beween two given datetimes.
+</p>
+
+<p>
+method <strong>month</strong>( Value : DateTime ) returns Integer
+</p>
+
+<p>
+returns month part of given datetime Value.
+</p>
+
+<p>
+method <strong>second</strong>( Value : DateTime ) returns Integer
+</p>
+
+<p>
+returns seconds part of given datetime Value.
+</p>
+
+<p>
+method <strong>secondsBetween</strong>( FirstValue : DateTime , SecondValue : DateTime ) returns Integer
+</p>
+
+<p>
+returns number of seconds beween two given datetimes.
+</p>
+
+<p>
+method <strong>toDate</strong>( Value : DateTime ) returns Date
+</p>
+
+<p>
+Returns day part of given datetime Value.
+</p>
+
+<p>
+method <strong>toRawString</strong>( Value : DateTime ) returns String
+</p>
+
+<p>
+Returns locales-invariant string representation of given Value parameter in the form „yyyy-MM-dd HH:mm:ss“.
+</p>
+
+<p>
+method <strong>toString</strong>( Value : T ) returns String
+</p>
+
+<p>
+Returns string representation of given Value parameter.
+</p>
+
+<p>
+method <strong>year</strong>( Value : DateTime ) returns Integer
+</p>
+
+<p>
+returns year part of given datetime Value.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;DateTime functions&quot;,&quot;hid&quot;:&quot;datetime_functions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;3323-6323&quot;} -->
+<h2 class="sectionedit6" id="decimal_functions">Decimal functions</h2>
+<div class="level2">
+
+<p>
+method <strong>defaultDecimal</strong>( ) returns Decimal
+</p>
+
+<p>
+returns NULL value for Decimal type
+</p>
+
+<p>
+method <strong>defaultFromValue</strong>( from : T ) returns T
+</p>
+
+<p>
+returns NULL value for argument type
+</p>
+
+<p>
+method <strong>divide</strong>( A : Decimal , B : Decimal , Fallback : Decimal ) returns Decimal
+</p>
+
+<p>
+returns float division A/B. If B is zero, Fallback is returned.
+</p>
+
+<p>
+method <strong>divInt</strong>( A : Decimal , B : Decimal , Fallback : Integer ) returns Integer
+</p>
+
+<p>
+returns integer part of division A/B. A must be &gt;=0, B must be &gt;0, otherwise Fallback is returned.
+</p>
+
+<p>
+method <strong>hasValue</strong>( Value : T ) returns Bool
+</p>
+
+<p>
+Returns false if given parameter is null, true otherwise.
+</p>
+
+<p>
+method <strong>logarithm</strong>( Value : Decimal ) returns Decimal
+</p>
+
+<p>
+returns 10-based logarithm of given Value. Value must be greather than zero, otherwise null is returned.
+</p>
+
+<p>
+method <strong>logarithm</strong>( Value : Decimal , Base : Decimal ) returns Decimal
+</p>
+
+<p>
+returns logarithm of given Value based on given Base. Value must be greather than zero, otherwise null is returned.
+</p>
+
+<p>
+method <strong>power</strong>( Value : Decimal , Power : Decimal ) returns Decimal
+</p>
+
+<p>
+returns given decimal Value powered to specified second parameter.
+</p>
+
+<p>
+method <strong>round</strong>( Value : Decimal ) returns Integer
+</p>
+
+<p>
+returns integer value of rounded Value parameter.
+</p>
+
+<p>
+method <strong>round</strong>( Value : Decimal , Precision : Integer ) returns Decimal
+</p>
+
+<p>
+returns integer value of rounded Value parameter with specified precision.
+</p>
+
+<p>
+method <strong>toInt</strong>( Value : Decimal ) returns Integer
+</p>
+
+<p>
+Returns integer part of given Value decimal parameter.
+</p>
+
+<p>
+method <strong>toRawString</strong>( Value : Decimal ) returns String
+</p>
+
+<p>
+Returns locales-invariant string representation of given Value parameter in the form „decimals.fractions“.
+</p>
+
+<p>
+method <strong>toString</strong>( Value : T ) returns String
+</p>
+
+<p>
+Returns string representation of given Value parameter.
+</p>
+
+<p>
+method <strong>trunc</strong>( Value : Decimal ) returns Integer
+</p>
+
+<p>
+returns integer part of given Value parameter.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Decimal functions&quot;,&quot;hid&quot;:&quot;decimal_functions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;6324-8251&quot;} -->
+<h2 class="sectionedit7" id="integer_functions">Integer functions</h2>
+<div class="level2">
+
+<p>
+method <strong>defaultFromValue</strong>( from : T ) returns T
+</p>
+
+<p>
+returns NULL value for argument type
+</p>
+
+<p>
+method <strong>defaultInt</strong>( ) returns Integer
+</p>
+
+<p>
+returns NULL value for Integer type
+</p>
+
+<p>
+method <strong>hasValue</strong>( Value : T ) returns Bool
+</p>
+
+<p>
+Returns false if given parameter is null, true otherwise.
+</p>
+
+<p>
+method <strong>mod</strong>( A : Integer , B : Integer , Fallback : Integer ) returns Integer
+</p>
+
+<p>
+returns modulus of division A/B. A must be &gt;=0, B must be &gt;0, otherwise Fallback is returned.
+</p>
+
+<p>
+method <strong>toRawString</strong>( Value : Integer ) returns String
+</p>
+
+<p>
+Returns locales-invariant string representation of given Value parameter in the form „digits“.
+</p>
+
+<p>
+method <strong>toString</strong>( Value : T ) returns String
+</p>
+
+<p>
+Returns string representation of given Value parameter.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Integer functions&quot;,&quot;hid&quot;:&quot;integer_functions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;8252-9013&quot;} -->
+<h2 class="sectionedit8" id="string_functions">String functions</h2>
+<div class="level2">
+
+<p>
+method <strong>defaultFromValue</strong>( from : T ) returns T
+</p>
+
+<p>
+returns NULL value for argument type
+</p>
+
+<p>
+method <strong>defaultString</strong>( ) returns String
+</p>
+
+<p>
+returns NULL value for String type
+</p>
+
+<p>
+method <strong>hasValue</strong>( Value : T ) returns Bool
+</p>
+
+<p>
+Returns false if given parameter is null, true otherwise.
+</p>
+
+<p>
+method <strong>indexOf</strong>( Value : String , Substring : String ) returns Integer
+</p>
+
+<p>
+Returns index (from 1) of first occurence (from left) of Substring in given Value string. If Value doesn&#039;t contains SubString, returns 0. If Value or Substring is null, function returns null.
+</p>
+
+<p>
+method <strong>indexOf</strong>( Value : String , Substring : String , FromIndex : Integer ) returns Integer
+</p>
+
+<p>
+Returns index (from 1) of first occurence (from left) starting at FromIndex of Substring in given Value string. If Value doesn&#039;t contains SubString, returns 0. If Value or Substring is null, function returns null.
+</p>
+
+<p>
+method <strong>lastIndexOf</strong>( Value : String , Substring : String ) returns Integer
+</p>
+
+<p>
+Returns index (from 1) of last occurence (or first from left) of Substring in given Value string. If Value doesn&#039;t contains SubString, returns 0. If Value or Substring is null, function returns null.
+</p>
+
+<p>
+method <strong>length</strong>( Value : String ) returns Integer
+</p>
+
+<p>
+Returns length of given Value string. If it is empty, this function returns 0.
+</p>
+
+<p>
+method <strong>newGuid</strong>( ) returns String
+</p>
+
+<p>
+Returns new generated GUID (Unique identifier). It is using random numbers generator and produces valid UUID by RFC4122.
+</p>
+
+<p>
+method <strong>regularExpressionReplaceString</strong>( Value : String , Regex : String , ReplaceWith : String ) returns String
+</p>
+
+<p>
+Returns string with all matches of given Regex regular expression (javascript notation) replaced to given ReplaceWith. If Value is null, returns null. If regex is null or invalid, returns null. If ReplaceWith is null/empty, matches are removed from source string.
+</p>
+
+<p>
+method <strong>replaceString</strong>( Value : String , ToReplace : String , ReplaceWith : String ) returns String
+</p>
+
+<p>
+Returns string with all matches of given ToReplace string replaced to given ReplaceWith. If Value or ToReplace is null, returns null. If ReplaceWith is null/empty, matches are removed from source string.
+</p>
+
+<p>
+method <strong>stringFormat</strong>( Format : String , Params… : String ) returns String
+</p>
+
+<p>
+Returns string with format parameter replaced placeholders like {0} with corresponding parameter.
+</p>
+
+<p>
+method <strong>substring</strong>( Value : String , Index : Integer , Length : Integer ) returns String
+</p>
+
+<p>
+Returns corresponding part of given Value string. It starts at Index (from 1), and has maximum of Length characters. If any of parameters is null, function returns null.
+</p>
+
+<p>
+method <strong>substring</strong>( Value : String , Index : Integer ) returns String
+</p>
+
+<p>
+Returns corresponding part of given Value string from Index (starts at 1) to the end. If any of parameters is null, function returns null.
+</p>
+
+<p>
+method <strong>toBoolean</strong>( Value : String , Fallback : Bool ) returns Bool
+</p>
+
+<p>
+Returns boolean value of given Value parameter. When input parameter is not convertible to boolean (i.e. is not „false“ or „true“ in any letter-case), returns Fallback value.
+</p>
+
+<p>
+method <strong>toDate</strong>( Value : String , Fallback : Date ) returns Date
+</p>
+
+<p>
+Returns date value of given Value parameter. When input parameter is not convertible to date, returns Fallback value.
+</p>
+
+<p>
+method <strong>toDateTime</strong>( Value : String , Fallback : DateTime ) returns DateTime
+</p>
+
+<p>
+Returns datetime value of given Value parameter. When input parameter is not convertible to datetime, returns Fallback value.
+</p>
+
+<p>
+method <strong>toDecimal</strong>( Value : String , Fallback : Decimal ) returns Decimal
+</p>
+
+<p>
+Returns decimal value of given Value parameter. When input parameter is not convertible to decimal, returns Fallback value.
+</p>
+
+<p>
+method <strong>toInt</strong>( Value : String , Fallback : Integer ) returns Integer
+</p>
+
+<p>
+Returns integer value of given Value parameter. When input parameter is not convertible to integer, returns Fallback value.
+</p>
+
+<p>
+method <strong>toLower</strong>( Value : String ) returns String
+</p>
+
+<p>
+Returns string with all characters in lower case.
+</p>
+
+<p>
+method <strong>toString</strong>( Value : T ) returns String
+</p>
+
+<p>
+Returns string representation of given Value parameter.
+</p>
+
+<p>
+method <strong>toUpper</strong>( Value : String ) returns String
+</p>
+
+<p>
+Returns string with all characters in upper case.
+</p>
+
+<p>
+method <strong>trim</strong>( Value : String ) returns String
+</p>
+
+<p>
+Returns given Value string trimmed from both sides of white characters (spaces, tabs, and special non-visible characters).
+</p>
+
+<p>
+method <strong>trimLeft</strong>( Value : String ) returns String
+</p>
+
+<p>
+Returns given Value string trimmed from left side of white characters (spaces, tabs, and special non-visible characters).
+</p>
+
+<p>
+method <strong>trimRight</strong>( Value : String ) returns String
+</p>
+
+<p>
+Returns given Value string trimmed from right side of white characters (spaces, tabs, and special non-visible characters).
+</p>
+
+<p>
+method <strong>validateAgainstRegularExpression</strong>( Value : String , Regex : String ) returns Bool
+</p>
+
+<p>
+Returns true, if given Value string matches given Regex regular expression (javascript notation). If any parameter is null, or regex is not valid, function returns null.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;String functions&quot;,&quot;hid&quot;:&quot;string_functions&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;9014-&quot;} -->

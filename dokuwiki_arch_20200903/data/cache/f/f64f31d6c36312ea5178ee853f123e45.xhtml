@@ -1,0 +1,384 @@
+
+<h1 class="sectionedit1" id="expressions_pocitane_vyrazy">Expressions (počítané výrazy)</h1>
+<div class="level1">
+
+<p>
+Expression je způsob, jak zapsat nějaký výpočet, používá se na počítaných atributech, validátorech a v akcích. Zapisují se v jazyce zvaným ActionLang, který je podobný basicu nebo pascalu (s objektovým přístupem k datům), např. <em>trim(adresa.ulice) + „ “ + adresa.cisloPopisne</em>.
+</p>
+
+<p>
+Expressions obsahují aritmetiku práce s NULL hodnotami. Jazyk je typový, nekompatibilní typy je nutné konvertovat voláním <em>ToString(), ToBool(), apod.</em> Textový editor obsahuje našeptávač (lze vyvolat <em>CTRL+mezera</em>), je tedy snadné zjistit, jaké objekty je možné v aktuálním kontextu použít.
+</p>
+
+<p>
+Aby se zamezilo nutnosti zpracovávat chybové stavy, nepoužívá jazyk výjimky, ani chybové stavy. Všechny operace mají definovaný výsledek za všech podmínek, metody se chovají stejně, nebo obsahují parametr s hodnotou, jakou mají vrátit, pokud nelze funkci provést (např. dělení nulou).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Expressions (po\u010d\u00edtan\u00e9 v\u00fdrazy)&quot;,&quot;hid&quot;:&quot;expressions_pocitane_vyrazy&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-981&quot;} -->
+<h2 class="sectionedit2" id="konstantni_hodnoty">Konstantní hodnoty</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> řetězec (String) – zapisuje se mezi znaky <em>„</em> a <em>“</em>, speciální znaky lze escapovat lomítkem <em>\n</em>, <em>\t</em>, <em>\r</em>, <em>\\</em>, <em>\„</em></div>
+</li>
+<li class="level1"><div class="li"> celé číslo (Integer) – číslice, případné mínus před</div>
+</li>
+<li class="level1"><div class="li"> desetinné číslo (Decimal) – číslice, případně desetinná tečka a exponent s postfixem d (1.0e10d)</div>
+</li>
+<li class="level1 node"><div class="li"> datum, datum a čas (Date, DateTime)</div>
+<ul>
+<li class="level2"><div class="li"> je-li třeba zapsat konstantu do kódu, zapisuje se ve formátu <em>&#039;DyyyyMMdd&#039;</em> a <em>&#039;DyyyyMMdd HHmmss&#039;</em></div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> boolean – konstanty <em>true</em> a <em>false</em></div>
+</li>
+<li class="level1"><div class="li"> null hodnota zapsat nejde, místo ní se používá test <em>HasValue</em> nebo <em>Defaultxxx</em></div>
+</li>
+</ul>
+
+<p>
+Jazyk podporuje závorkování a prioritu operátorů. Komentáře lze zapsat mezi znaky <em>/*</em> a <em>*</em>/, nebo uvést znaky <em>//</em> (pak platí do konce řádky).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Konstantn\u00ed hodnoty&quot;,&quot;hid&quot;:&quot;konstantni_hodnoty&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;982-1803&quot;} -->
+<h2 class="sectionedit3" id="relacni_operace_in">Relační operace = &lt;&gt; &lt; &gt; &gt;= &lt;= in</h2>
+<div class="level2">
+
+<p>
+Operace porovnávají hodnoty, porovnání je i včetně null hodnoty, tedy platí null=null je true a null&lt;&gt;null je false. V ostatních případech vrací null v případě že jedna strana je null.
+</p>
+
+<p>
+Pozn.: Protože tento „ANSI“ přístup k null hodnotám znepřehledňuje kód, jsou k dispozici funkce <em>isTrue, isFalse, isTrueOrDefault, isFalseOrDefault</em>, které vždy vrací true/false.
+</p>
+
+<p>
+<strong>in</strong> je test na „je hodnota obsažena v množině“, např. <em>value in [„1“,“2„]</em>
+</p>
+
+<p>
+Pokud je hodnota null a ve vyjmenovaných hodnotách je obsaženo i null, vrací true, jinak false.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Rela\u010dn\u00ed operace = &lt;&gt; &lt; &gt; &gt;= &lt;= in&quot;,&quot;hid&quot;:&quot;relacni_operace_in&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;1804-2444&quot;} -->
+<h2 class="sectionedit4" id="ternarni_operator_condition_iftrueiffalse">Ternární operátor condition ? ifTrue : ifFalse</h2>
+<div class="level2">
+
+<p>
+Testuje podmínku (condition), je-li její hodnota true, vrací první část (ifTrue). Je-li výsledek vyhodnocení podmínky false nebo null, vrací druhou část (ifFalse).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Tern\u00e1rn\u00ed oper\u00e1tor condition ? ifTrue : ifFalse&quot;,&quot;hid&quot;:&quot;ternarni_operator_condition_iftrueiffalse&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;2445-2684&quot;} -->
+<h2 class="sectionedit5" id="logicke_operace_or_and_not">Logické operace or, and, not</h2>
+<div class="level2">
+
+<p>
+Logické operace lze použít pouze na bool výrazy. Viz tabulka
+</p>
+<div class="table sectionedit6"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0">X and Y</th><th class="col1">Vrací null, pokud je X nebo Y null. Jinak vrací false, pokud je X nebo Y false</th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">X or Y </td><td class="col1 leftalign">Vrací null, pokud je X nebo Y null. Jinak vrací true, pokud je X nebo Y true  </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">not X  </td><td class="col1 leftalign">Vrací null, pokud X je null, jinak true, pokud je X false                     </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:6,&quot;range&quot;:&quot;2794-3065&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Logick\u00e9 operace or, and, not&quot;,&quot;hid&quot;:&quot;logicke_operace_or_and_not&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;2685-3066&quot;} -->
+<h2 class="sectionedit7" id="aritmeticke_operace">Aritmetické operace + - *</h2>
+<div class="level2">
+
+<p>
+Klasické operace proveditelné nad Integer nebo Decimal. Vrátí součet, rozdíl, součin dvou operandů. Je-li kterýkoliv z nich null, vrací null. Dělení se provádí pomocí metod <em>divide</em>, <em>divInt</em>, <em>mod</em>. Celočíselní dělení (a zbytek) nemá jednoznačně definovány výsledky pro záporná čísla, proto vrací fallback (viz wiki).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Aritmetick\u00e9 operace + - *&quot;,&quot;hid&quot;:&quot;aritmeticke_operace&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;3067-3463&quot;} -->
+<h2 class="sectionedit8" id="pristup_k_datum">Přístup k datům</h2>
+<div class="level2">
+
+<p>
+Data jsou dána kontextem vyhodnocení expression, k dalším datům se přistupuje jménem (jmény) nadřízených struktur oddělených tečkou, např. <em>name</em>, <em>this.name</em>, <em>zastupce.adresa.ulice</em>, více viz Struktura objektů. Typicky je v kontextech nějaký aktuální kontext, který se používá přímo (např. atributy entity). Další kontexty jsou dostupné přes „klíčová slova“ <em>form</em>, <em>globals</em>, <em>packages</em>.
+</p>
+
+<p>
+Aby mohl být generovaný kód co nejpodobnější tomu, co uživatel vytváří při návrhu, je v IDE zakázáno používat některá klíčová slova, která by byla v konfliktu s použitými technologiemi. Takovým identifikátorům je automaticky přidáno podtržítko na začátek a týká se to většiny artefaktů, které mají property Name. Jde o klíčová slova z jazyka javascript<sup><a href="#fn__1" id="fnt__1" class="fn_top">1)</a></sup>, actionLang<sup><a href="#fn__2" id="fnt__2" class="fn_top">2)</a></sup> a navíc <em>attr</em>, <em>collection</em>, <em>enums</em>, <em>functions</em>, <em>globals</em>, <em>metadata</em>, <em>this</em>, <em>packages</em>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;P\u0159\u00edstup k\u00a0dat\u016fm&quot;,&quot;hid&quot;:&quot;pristup_k_datum&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;3464-4599&quot;} -->
+<h2 class="sectionedit9" id="metody">Metody</h2>
+<div class="level2">
+
+<p>
+Z jazyka lze volat definované metody (někdy také zvané funkce). Metody jsou globální, pak se volají přímo, např. <em>length(s)</em>, nebo na objektech, např. <em>adresy.count()</em>. V závorkách se uvádí hodnoty parametrů.
+</p>
+
+<p>
+Metody lze rozšířit o vlastní přidáním <em>Custom function</em> do projektu. Funkce se píše v javascriptu, deklarují se typy a názvy vstupních parametrů a výsledný typ. Definovaná funkce se poté použije v expression jako <em>functions.myFn(..parametry),</em> případně <em>myPackage.functions.myFn(…)</em>, pokud je z jiné package. Více viz Struktura objektů.
+</p>
+
+<p>
+Mělo by se jednat o <a href="/dokuwiki/doku.php?id=cs:pure_function" class="wikilink2" title="cs:pure_function" rel="nofollow">https://en.wikipedia.org/wiki/Pure_function</a>, čili měla by být <strong>statická</strong>, <strong>deterministická</strong> a <strong>neměnit</strong> žádný stav.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Metody&quot;,&quot;hid&quot;:&quot;metody&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:9,&quot;range&quot;:&quot;4600-5396&quot;} -->
+<h2 class="sectionedit10" id="datove_kontexty">Datové kontexty</h2>
+<div class="level2">
+
+<p>
+Data, které je možná ve výrazech použít se liší kontextem, kde je daný výraz definován. Jiná data jsou přístupná při psaní validátoru, jiná při psaní pravé strany přiřazení v akci. V následující tabulce je uveden jejich přehled a význam.
+</p>
+<div class="table sectionedit11"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">název                                                          </th><th class="col1 leftalign">typ              </th><th class="col2 leftalign">popis                                                                                                                 </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign"><strong>this</strong>                                                       </td><td class="col1 leftalign">                 </td><td class="col2">Odkaz na aktuální kontext, liší se dle použití výrazu. Kontextové metody je možné volat pouze přes <em>this.&lt;metoda&gt;()</em></td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign"><strong>attr</strong>                                                       </td><td class="col1">dle typu atributu</td><td class="col2 leftalign">Odkaz na aktuální atribut. Přístupné pouze ve validátorech.                                                           </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign"><strong>packages</strong>.&lt;balíček&gt;                                         </td><td class="col1 leftalign">                 </td><td class="col2 leftalign">Práce s metadaty package                                                                                              </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 leftalign">&gt; .<strong>functions</strong>.&lt;funkce&gt;                                      </td><td class="col1 leftalign">dle funkce       </td><td class="col2 leftalign">Volání funkce definované v javascriptu.                                                                               </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">&gt; .<strong>metadata</strong>.&lt;entita&gt;                                       </td><td class="col1 leftalign">                 </td><td class="col2 leftalign">                                                                                                                      </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 leftalign">&gt; .&lt;jméno&gt;                                                     </td><td class="col1 leftalign">podstruktura     </td><td class="col2 leftalign">Pomocí tečkové notace se lze dostat na metadata konkrétní struktury (kolekce, atributu)                               </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0 leftalign">&gt; .caption()                                                   </td><td class="col1 leftalign">string           </td><td class="col2 leftalign">Hodnota popisku (<em>Caption</em>) uvedená v definici                                                                      </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0 leftalign">&gt; .isRequired()                                                </td><td class="col1 leftalign">bool             </td><td class="col2 leftalign">Hodnota povinnosti (<em>IsRequired</em>)                                                                                   </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0 leftalign">&gt; .<strong>enums</strong>.&lt;jméno&gt;                                           </td><td class="col1 leftalign">                 </td><td class="col2 leftalign">                                                                                                                      </td>
+	</tr>
+	<tr class="row10">
+		<td class="col0 leftalign">&gt; .&lt;jméno hodnoty&gt;                                             </td><td class="col1 leftalign">                 </td><td class="col2 leftalign">Metadata položky výčtu                                                                                                </td>
+	</tr>
+	<tr class="row11">
+		<td class="col0 leftalign">&gt; .enumCaption()                                               </td><td class="col1 leftalign">string           </td><td class="col2 leftalign">Popisek                                                                                                               </td>
+	</tr>
+	<tr class="row12">
+		<td class="col0 leftalign">&gt; .enumValue()                                                 </td><td class="col1 leftalign">string           </td><td class="col2 leftalign">Hodnota, která bude uložena v datech                                                                                  </td>
+	</tr>
+	<tr class="row13">
+		<td class="col0 leftalign">&gt; .<strong>globals</strong>.&lt;jméno&gt;                                         </td><td class="col1 leftalign">Jako struktura   </td><td class="col2 leftalign">Hodnota globálních proměnných                                                                                         </td>
+	</tr>
+	<tr class="row14">
+		<td class="col0 leftalign">&lt;jméno&gt;                                                        </td><td class="col1 leftalign">                 </td><td class="col2 leftalign">                                                                                                                      </td>
+	</tr>
+	<tr class="row15">
+		<td class="col0">Další vlastnosti a metody se mohou lišit dle aktuální struktury</td><td class="col1 leftalign">                 </td><td class="col2 leftalign">                                                                                                                      </td>
+	</tr>
+	<tr class="row16">
+		<td class="col0 leftalign">&gt; .&lt;jméno&gt;                                                     </td><td class="col1 leftalign">                 </td><td class="col2 leftalign">Pomocí teček se lze navigovat na další položky struktury. U atributu také vrací jeho hodnotu.                         </td>
+	</tr>
+	<tr class="row17">
+		<td class="col0 leftalign">&gt; .owner()                                                     </td><td class="col1 leftalign">                 </td><td class="col2 leftalign">Nadřízená struktura                                                                                                   </td>
+	</tr>
+	<tr class="row18">
+		<td class="col0 leftalign">&gt; .hasValue()                                                  </td><td class="col1 leftalign">bool             </td><td class="col2 leftalign">True, pokud atribut není NULL, nebo pokud jakýkoliv podřízený atribut není NULL                                       </td>
+	</tr>
+	<tr class="row19">
+		<td class="col0 leftalign">&gt; .isValid()                                                   </td><td class="col1 leftalign">bool             </td><td class="col2 leftalign">True, pokud jsou všechny položky validní a všechny validátory vrací IsValid=true.                                     </td>
+	</tr>
+	<tr class="row20">
+		<td class="col0 leftalign">&gt; .validationErrorsCount()                                     </td><td class="col1 leftalign">integer          </td><td class="col2 leftalign">Počet validačních chyb na kontejneru a podřízených datových objektech                                                 </td>
+	</tr>
+	<tr class="row21">
+		<td class="col0 leftalign">&gt; .enumCaption()                                               </td><td class="col1 leftalign">string           </td><td class="col2 leftalign">Popisek aktuální hodnoty typu výčet (platí pouze pro enum atributy)                                                   </td>
+	</tr>
+	<tr class="row22">
+		<td class="col0 leftalign">&gt; .enumValue()                                                 </td><td class="col1 leftalign">string           </td><td class="col2 leftalign">Datová hodnota typu výčet (platí pouze pro enum atributy)                                                             </td>
+	</tr>
+	<tr class="row23">
+		<td class="col0 leftalign">&gt; .count()                                                     </td><td class="col1 leftalign">integer          </td><td class="col2 leftalign">Počet položek v kolekci                                                                                               </td>
+	</tr>
+	<tr class="row24">
+		<td class="col0 leftalign">&gt; .collection()                                                </td><td class="col1 leftalign">kolekce          </td><td class="col2 leftalign">Kolekce vlastnící prvek kolekce                                                                                       </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:11,&quot;range&quot;:&quot;5697-10868&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Datov\u00e9 kontexty&quot;,&quot;hid&quot;:&quot;datove_kontexty&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:10,&quot;range&quot;:&quot;5397-10869&quot;} -->
+<h2 class="sectionedit12" id="lambda_metody">Lambda metody</h2>
+<div class="level2">
+
+<p>
+Na kolekcích a mezivýsledcích typu kolekce jsou k dispozici metody, kterým říkáme lambda metody. Jako parametr používají tzv. lambda výrazy, které používají „current“ jako řídící proměnnou, jejíž typ je položka kolekce. Řídící proměnou lze přejmenovat použitím konstrukce var x ⇒ výraz. Zajímavé je, stále platí, že tyto metody nemění stav, jsou ted použitelné v bindingu a notifikaci změn. Pokud tedy nadefinujete počítaný atribut, který vrací např. počet položek, které uživatel právě přidal (tj. mají atribut IsNew nastaven na true), pak v místě, kde položky přidáváte stačí pouze nastavit IsNew=true a počítaný atribut se sám přepočítá a správně zobrazí počet přidaných položek.
+</p>
+<div class="table sectionedit13"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">.count()                                                                              </th><th class="col1 leftalign">integer                                 </th><th class="col2 leftalign">Vrací počet prvků                                                                                                      </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign">.count(lambdaPodmínka)                                                                </td><td class="col1 leftalign">integer                                 </td><td class="col2 leftalign">Vrací počet prvků splňující danou podmínku                                                                             </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">.any()                                                                                </td><td class="col1 leftalign">bool                                    </td><td class="col2 leftalign">True, pokud existuje alespoň jeden prvek v kolekci nebo mezivýsledku                                                   </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">.exists(lambdaPodmínka)                                                               </td><td class="col1 leftalign">bool                                    </td><td class="col2 leftalign">True, pokud existuje alespoň jeden prvek splňující danou podmínku                                                      </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 leftalign">.selectFirst()                                                                        </td><td class="col1 leftalign">položka                                 </td><td class="col2 leftalign">Vrací první položku. Výsledek je dobré si předem otestovat pomocí exists().                                            </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">.selectFirst(lambdaPodmínka)                                                          </td><td class="col1 leftalign">položka                                 </td><td class="col2">Vrací první položku kolekce splňující danou podmínku, nebo null. Výsledek je dobré si předem otestovat pomocí exists().</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 leftalign">.where(lambdaPodmínka)                                                                </td><td class="col1 leftalign">mezivýsledek                            </td><td class="col2 leftalign">Vrací mezivýsledek obsahující položky, které vyhovují dané podmínce                                                    </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0 leftalign">.orderBy(lambdaSelector, asc)                                                         </td><td class="col1 leftalign">mezivýsledek                            </td><td class="col2 leftalign">Vrací mezivýsledek s položkami seřazenými dle zadaného výrazu (asc = true řadí vzestupně)                              </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0 leftalign">.clear(lambdaPodmínka)                                                                </td><td class="col1 leftalign">integer                                 </td><td class="col2 leftalign"><em>Volatelné pouze z akcí.<br/>
+</em>Odstraní z kolekce položky vyhovující podmínce a vrátí jejich počet.                     </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">Agregační metody - Vrací agregaci z hodnot vybraných z každé položky pomocí selectoru </td><td class="col1 leftalign">                                        </td><td class="col2 leftalign">                                                                                                                       </td>
+	</tr>
+	<tr class="row10">
+		<td class="col0 leftalign">.max(lambdaSelector)                                                                  </td><td class="col1">decimal, integer, string, date, dateTime</td><td class="col2 leftalign">Maximum                                                                                                                </td>
+	</tr>
+	<tr class="row11">
+		<td class="col0 leftalign">.min(lambdaSelector)                                                                  </td><td class="col1">decimal, integer, string, date, dateTime</td><td class="col2 leftalign">Minimum                                                                                                                </td>
+	</tr>
+	<tr class="row12">
+		<td class="col0 leftalign">.sum(lambdaSelector)                                                                  </td><td class="col1 leftalign">decimal, integer                        </td><td class="col2 leftalign">Součet                                                                                                                 </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table2&quot;,&quot;secid&quot;:13,&quot;range&quot;:&quot;11667-15004&quot;} -->
+<p>
+Lambda podmínky vrací boolean.<br/>
+
+Lambda selektory vrací nějakou hodnotu.
+</p>
+
+<p>
+Metody, které vrací „mezivýsledek“ lze řetězit, např.
+</p>
+
+<p>
+form.collection<br/>
+
+.where(current.index() &gt; 2)
+</p>
+
+<p>
+.where(current.Mass &gt; 1000)
+</p>
+
+<p>
+.sum(var x ⇒ x.Netto)
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Lambda metody&quot;,&quot;hid&quot;:&quot;lambda_metody&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:12,&quot;range&quot;:&quot;10870-15248&quot;} -->
+<h2 class="sectionedit14" id="standardni_metody">Standardní metody</h2>
+<div class="level2">
+
+<p>
+Viz nápověda v aplikaci nebo Příloha 2 - seznam metod.
+</p>
+
+<p>
+Za zmínku stojí zmínit tyto metody:
+</p>
+<ul>
+<li class="level1"><div class="li"> hasValue – vrací, zda je hodnota nenulová</div>
+</li>
+<li class="level1"><div class="li"> isTrue, isFalse, isTrueOrDefault, isFalseOrDefault – testuje hodnotu na true, false, true nebo NULL , false nebo NULL, v opačném případě vrací false (tedy nikoliv NULL jako při klasickém porovnání)</div>
+</li>
+<li class="level1"><div class="li"> toString – převádí hodnoty na řetězec/z řetězce</div>
+</li>
+<li class="level1"><div class="li"> toDate, toDateTime, toBoolean, toDecimal, toInt, … – převádí řetězec na danou hodnotu, jako druhý parametr se zadává hodnota, pokud nelze převod provést</div>
+</li>
+<li class="level1"><div class="li"> getDate, getDateTime – vrací aktuální datum, resp. datum a čas</div>
+</li>
+<li class="level1"><div class="li"> defaultBool, defaultInt, … defaultFromValue – vrací NULL hodnotu daného typu</div>
+</li>
+<li class="level1"><div class="li"> stopDebugger – zastaví prohlížeč s otevřenými tools v debuggeru</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Standardn\u00ed metody&quot;,&quot;hid&quot;:&quot;standardni_metody&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:14,&quot;range&quot;:&quot;15249-16116&quot;} -->
+<h2 class="sectionedit15" id="akcni_metody">Akční metody</h2>
+<div class="level2">
+
+<p>
+Tyto metody jsou přístupné pouze z akcí, v <em>Expressions</em> je nelze použít.
+</p>
+<div class="table sectionedit16"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">.clear()                   </th><th class="col1 leftalign">-     </th><th class="col2 leftalign">Vymaže atribut / strukturu / kolekci.                                                                                                                        </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign">.isTouched()               </td><td class="col1 leftalign">bool  </td><td class="col2 leftalign">Vrací interní stav (zda byl editor daného atributu „navštíven“ uživatelem).                                                                                  </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">.setTouched(isTouched:bool)</td><td class="col1 leftalign">-     </td><td class="col2">Nastaví atributu (případně rekurzivně celou strukturu/kolekci) interní stav na „touched“, tedy jako by uživatel navštívil/nenavštívil editor daného atributu.</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">Kolekce a struktury        </td><td class="col1 leftalign">      </td><td class="col2 leftalign">                                                                                                                                                             </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 leftalign">.fromJson(json:string)     </td><td class="col1 leftalign">bool  </td><td class="col2 leftalign">Načte obsah struktury nebo kolekce z JSON řetězce. Vrací false, pokud se nepodařilo zparsovat.                                                               </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">.toJson()                  </td><td class="col1">string</td><td class="col2 leftalign">                                                                                                                                                             </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">.toJson(ignoreUnderscored) </td><td class="col1">string</td><td class="col2 leftalign">Vrací obsah struktury jako JSON řetězec, případně ignoruje atributy a struktury začínající podtržítkem                                                       </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0 leftalign">Kolekce                    </td><td class="col1 leftalign">      </td><td class="col2 leftalign">                                                                                                                                                             </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0 leftalign">.addItem()                 </td><td class="col1">Prvek </td><td class="col2 leftalign">Přidá prvek do kolekce a vrátí ho.                                                                                                                           </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">.removeItem(index:integer) </td><td class="col1 leftalign">      </td><td class="col2 leftalign">Odstraní prvek na pozici index                                                                                                                               </td>
+	</tr>
+	<tr class="row10">
+		<td class="col0 leftalign">Prvek kolekce              </td><td class="col1 leftalign">      </td><td class="col2 leftalign">                                                                                                                                                             </td>
+	</tr>
+	<tr class="row11">
+		<td class="col0 leftalign">.removeMe()                </td><td class="col1 leftalign">      </td><td class="col2 leftalign">Odstraní prvek z kolekce                                                                                                                                     </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table3&quot;,&quot;secid&quot;:16,&quot;range&quot;:&quot;16231-18621&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Ak\u010dn\u00ed metody&quot;,&quot;hid&quot;:&quot;akcni_metody&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:15,&quot;range&quot;:&quot;16117-&quot;} --><div class="footnotes">
+<div class="fn"><sup><a href="#fnt__1" id="fn__1" class="fn_bot">1)</a></sup> 
+<div class="content">Viz např. http://mathiasbynens.be/notes/reserved-keywords</div></div>
+<div class="fn"><sup><a href="#fnt__2" id="fn__2" class="fn_bot">2)</a></sup> 
+<div class="content">Klíčová slova actionLang: var, and, or, not, in, true, false</div></div>
+</div>

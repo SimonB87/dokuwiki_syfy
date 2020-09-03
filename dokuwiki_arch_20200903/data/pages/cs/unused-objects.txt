@@ -1,0 +1,3 @@
+==== Nalezení nepoužívaných objektů ====
+
+V menu //Tools / More// lze nalézt příkaz //Find unused objects//, který vypíše objekty, které se nepoužívají a lze je smazat.

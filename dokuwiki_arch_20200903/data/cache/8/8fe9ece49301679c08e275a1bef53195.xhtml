@@ -1,0 +1,139 @@
+
+<h1 class="sectionedit1" id="project_and_packages">Project and packages</h1>
+<div class="level1">
+
+<p>
+Project is composed of packages. Every project contains at least one package. The purpose of packages is to enable sharing parts of the project between multiple projects. Packages may use other packages without limitation (including circular references). Packages are as well a way to add new components to the project (see custom components, custom api objects). Project contains only packages, project options and possibly user options. Project must contain at least one package with at least one form.
+</p>
+
+<p>
+Project and its packages are saved in XML files. Either individually (project separate, packages separate, every artefact separate) or zipped (one file containing the same structure but in ZIP format). It is possible to use zipped package in not-zipped project. Project file has the extension <em>sfproj</em>, zipped one <em>sfprojx</em>. Package are usually saved into its own folders and has extension <em>package</em> or <em>packagex</em>.
+</p>
+
+<p>
+Files may be shared or put into versioning system. In case of versioning system we recommend not to use zipped format.
+</p>
+
+<p>
+Note: ScreenFactory does not have built-in support for any versioning system.
+</p>
+
+<p>
+Next the the project, there is as well file with extension <em>sfprojlayout</em> that contains informations about layout of windows in IDE and opened tabs and file with extension <em>sfuser</em> that contains user settings. We recommend not to share these files between multiple developers or put them into versioning system. In case of GIT you may want to consider adding these two estensions to .gitignore.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Project and packages&quot;,&quot;hid&quot;:&quot;project_and_packages&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-1564&quot;} -->
+<h2 class="sectionedit2" id="project_build_a_deployment">Project – build a deployment</h2>
+<div class="level2">
+
+<p>
+For testing and deployment of the project it is needed to run build (menu <em>Project - Build and run</em> or <em>Project</em> <em>– Build</em>). In <em>User options</em> it is possible to specify output folder where the built application is copied and it is as well possible to change the address that is used in the browser to open the application.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Project \u2013 build a deployment&quot;,&quot;hid&quot;:&quot;project_build_a_deployment&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;1565-1941&quot;} -->
+<h3 class="sectionedit3" id="sfcmdexe_using_screenfactory_from_command_line">sfcmd.exe – using ScreenFactory from command line</h3>
+<div class="level3">
+
+<p>
+Part of SF IDE is as well sfcmd.exe utility for running some operations from command line. It allows to run build and tests. For more information run the utility without parameters or with parameter /?.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;sfcmd.exe \u2013 using ScreenFactory from command line&quot;,&quot;hid&quot;:&quot;sfcmdexe_using_screenfactory_from_command_line&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;1942-2207&quot;} -->
+<h3 class="sectionedit4" id="postbuildcommand">PostBuildCommand</h3>
+<div class="level3">
+
+<p>
+In more complicated scenarios (ie. deploying to multiple locations in cluster, additional manipulation with deployed files etc.) it is possible to add to project resource cmd batch (extension cmd) and set its Action to <em>PostBuildCommand</em>. Such script will run after each build with following parameters:
+</p>
+
+<p>
+<em>{command} {Target folder} {Project name} {ProjectFile} {Build_output_file}</em>
+</p>
+
+<p>
+In the same time, some system variables will be set (SF_xxx) which are more readable for further use. To get complete list of variables you can create new project, add default postBuildCommand and see the result in Output/Build window
+</p>
+<div class="table sectionedit5"><table class="inline">
+	<tr class="row0">
+		<td class="col0 leftalign">SF_BUILDMODE      </td><td class="col1 leftalign">DEBUG or RELEASE                                                                                             </td>
+	</tr>
+	<tr class="row1">
+		<td class="col0 leftalign">SF_NODE           </td><td class="col1">Path to node.exe. It is possible to use it for running more complex javascript program in connection with SF_TEMPPATH </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">SF_OUTPUT         </td><td class="col1 leftalign">Result application file (index.html)                                                                          </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">SF_OUTPUTPATH     </td><td class="col1 leftalign">Path to build output                                                                                        </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">SF_PACKAGE_xxx_VER</td><td class="col1 leftalign">Version of package xxx. Each package will create its own variable ie. SF_PACKAGE_main_VER                            </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">SF_PROJECTFILE    </td><td class="col1 leftalign">Project file (sfproj or sfprojx)                                                                       </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 leftalign">SF_PROJECTNAME    </td><td class="col1 leftalign">Project name                                                                                                 </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0 leftalign">SF_TEMPPATH       </td><td class="col1">Temporary path that is used by the build process before the files are copied to final location. It is possible to find all resources here and use them further.</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:5,&quot;range&quot;:&quot;2859-3969&quot;} -->
+<p>
+As a template it is possible to use right mouse click on <em>Package –</em> <em>Add -</em> <em>New Item</em> <em>– Other – Post build command</em>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;PostBuildCommand&quot;,&quot;hid&quot;:&quot;postbuildcommand&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;2208-4105&quot;} -->
+<h3 class="sectionedit6" id="project_options">Project options</h3>
+<div class="level3">
+
+<p>
+Some options are set when you select the root of project tree (SF Project), some under menu item <em>Project-Project options</em>.
+</p>
+
+<p>
+In project properties you can set its name, description, window size, startup form and localizations.
+</p>
+
+<p>
+In project options there are several tabs.
+</p>
+<div class="table sectionedit7"><table class="inline">
+	<tr class="row0">
+		<td class="col0">&gt; <em>Project</em> – settings shared throughout the project, localizations, some experimental features, parameters for generating test data. </td><td class="col1"><a href="/dokuwiki/lib/exe/detail.php?id=en%3Aproject-structure&amp;media=en:image16.png" class="media" title="en:image16.png"><img src="/dokuwiki/lib/exe/fetch.php?w=208&amp;h=197&amp;tok=fc3f7f&amp;media=en:image16.png" class="media" alt="" width="208" height="197" /></a></td>
+	</tr>
+	<tr class="row1">
+		<td class="col0"><em>Visual settings</em> – colours, fonts, sizes and other settings used for components. Some parameters are used for generating project <abbr title="Cascading Style Sheets">CSS</abbr> stylesheet. </td><td class="col1"><a href="/dokuwiki/lib/exe/detail.php?id=en%3Aproject-structure&amp;media=en:image17.png" class="media" title="en:image17.png"><img src="/dokuwiki/lib/exe/fetch.php?w=223&amp;h=246&amp;tok=6d3ca7&amp;media=en:image17.png" class="media" alt="" width="223" height="246" /></a></td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign"><em>Default Data-to-form settings</em> – default setting for generating the components based on data structures.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </td><td class="col1 leftalign">                               </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"><em>User options</em> – settings that are used only for individual developer. They are saved into separate file with extension sfuser and it is not meant to be added into version control system. It is possible to set <br/>
+<br/>
+ * <em>Deployment path</em> – path where the generated application is going to be deployed. It may be empty in which case TEMP is used. In <em>Deployment path cleanup</em> it is possible to check that all content should be always deleted (careful with this settings as by setting the path to wrong location may mean that you delete stuff you don&#039;t want deleted) <br/>
+ * <em>Project start url</em> – url that will be opened in the browser after building the application with build&amp;run. If it is not set it will open build location as a file <br/>
+ * Additional settings for improving work productivity in IDE (usually by turning off some functions) etc. </td><td class="col1"><a href="/dokuwiki/lib/exe/detail.php?id=en%3Aproject-structure&amp;media=en:image18.png" class="media" title="en:image18.png"><img src="/dokuwiki/lib/exe/fetch.php?w=242&amp;h=218&amp;tok=2b79cd&amp;media=en:image18.png" class="media" alt="" width="242" height="218" /></a></td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:7,&quot;range&quot;:&quot;4407-6391&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Project options&quot;,&quot;hid&quot;:&quot;project_options&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;4106-6393&quot;} -->
+<h2 class="sectionedit8" id="packages">Packages</h2>
+<div class="level2">
+
+<p>
+It is possible to add artefacts (<em>Form</em>, <em>Data entity</em>, …) into them and structure the artefacts into folders. It is possible to use predefined structure (<em>Add New Item → Standard folders</em>). Package has its name and internal identifier. In package properties it is possible to change alias, that is name that will be used for it in current project.
+</p>
+
+<p>
+Packages have their own version. Each project consists of version number and when loading it shows warning if package on the disk version does not match the one the project was saved with.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Packages&quot;,&quot;hid&quot;:&quot;packages&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;6394-&quot;} -->

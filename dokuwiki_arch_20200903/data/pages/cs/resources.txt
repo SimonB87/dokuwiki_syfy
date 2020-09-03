@@ -1,0 +1,31 @@
+====== Resources ======
+
+Do projektu lze přidávat další soubory (//Resource//), které mohou sloužit k různým účelům. Resources mají tři důležité vlastnosti:
+
+  * Zdroj
+    * přímo v projektu (pak se ukládá jako soubor, ale **pozor**, IDE jej má načtený do paměti a při uložení jej vždy přepíše). Při vytáření lze do projektu zkopírovat již existující soubor.
+  * Způsob výstupu (Action)
+    * Zda a kam se má resource nakopírovat v cílové aplikaci
+      * //None// – většinou pomocné soubory, která nemají být ve výsledné aplikaci (např. generátory komponent, konfigurační soubory pro IDE, apod.)
+      * //CopyToResources// – soubor se zkopíruje do výstupu
+      * 
+      * //PostBuildCommand// – soubor je typu command batch a spustí se po každém buildu
+    * //Output name// specifikuje, jak se bude soubor jmenovat (bude ve výstupu uložen v adresáři resources)
+  * Způsob vazby v aplikaci (Linker Action)
+    * Dle přípony se automaticky vybere, lze toto lze změnit
+    * **None** – nic, soubor není z aplikace nijak odkazován
+    * **Css style** – odkaz na soubor se přidá do výstupu jako další CSS stylesheet (pomocí //<link href=…>//)
+    * **Javascript** – odkaz na soubor se přidá do výstupu jako javascript (jako //<script src=…>//)
+    * **Favicon** – ikona, která se bude zobrazovat v browseru
+    * //Pozn.: ostatní možnosti nejsou implementovány//
+
+Resources lze také použít pro uložení textových (txt, md, json, xml, atd…) souborů v projektu, jejichž zpracování není potřeba (jde o dokumentaci), nebo je jinak obsaženo v aplikaci.
+
+IDE umí upravovat některé typy textových souborů (txt, md, js, json, xml) a zobrazovat obrázky s běžnými příponami (png, jpg), resources však mohou být jakéhokoliv typu.
+
+Do projektu lze přidat resources se speciálním významem:
+
+  * Textový soubor defaults.ini – v tomto souboru lze definovat výchozí hodnoty vlastností každé komponenty, které se použijí při jejím vytváření. Lze vyvolat přes kontextové menu na //Package - add more… Default property values//.
+  * postbuildcommand – příkazy pro windows shell, které se provedou po každém buildu
+
+Většina resources není načítána do paměti IDE s projektem, ale až při potřebě jejich použití. To umožňuje měnit resources přímo na disku bez potřeby přenačtení projektu v IDE. Pokud dojde ke konfliktu (změna v IDE i na disku), zobrazí se při ukládání dialog, kde lze problémy ručně vyřešit.

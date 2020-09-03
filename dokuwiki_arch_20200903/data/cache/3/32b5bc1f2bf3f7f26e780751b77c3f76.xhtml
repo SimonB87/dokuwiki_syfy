@@ -1,0 +1,140 @@
+
+<h1 class="sectionedit1" id="main_window_and_tabs">Main window and tabs</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Main window and tabs&quot;,&quot;hid&quot;:&quot;main_window_and_tabs&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-36&quot;} -->
+<h2 class="sectionedit2" id="form_designer">Form designer</h2>
+<div class="level2">
+
+<p>
+Form layout is composed out of components. Components may encapsulate other components. It is possible to imagine the structure of the form as a tree. It is possible to see this structure in IDE in two different views. One is this logical tree of components. The other is visual view of the form (designer). It is possible to switch between these views.
+</p>
+
+<p>
+Designer is <abbr title="What You See Is What You Get">WYSIWYG</abbr> editor of the form. Form is edited in view that is very close to what the result will look like to the end user but with few differences. It is possible to turn on extra margin around the components for easier orientation and drag&amp;drop operations. It is possible to show even components that would be hidden at the moment (IsVisible=false). Components are as well shown based on test data (see <a href="#test_data_designer" title="en:main-window ↵" class="wikilink1">Test data designer</a>). It is possible to change the visual scale in the top toolbar.
+</p>
+
+<p>
+It is possible to add or move the components with the mouse (drag&amp;drop). Indicator where the component will end up will be shown. New components are added by dragging them from toolbox window. Other commands are available from context menu (mouse right button click).
+</p>
+
+<p>
+Available commands (not all are available at every time)
+</p>
+<ul>
+<li class="level1"><div class="li"> <em>Copy, Paste, Delete</em></div>
+</li>
+<li class="level1"><div class="li"> <em>Go to parent</em></div>
+</li>
+<li class="level1"><div class="li"> <em>Clear all bindings</em> – removes binding in component and all components inside recursively; this may be useful especially after copy-paste operation</div>
+</li>
+<li class="level1"><div class="li"> <em>Localize UI component</em> – adds text literals to the localization table and replaces them with bindings to this table</div>
+</li>
+<li class="level1"><div class="li"> <em>Add to children</em> <em>/ Set content</em> – adds chosen component as a child of focused component</div>
+</li>
+<li class="level1"><div class="li"> <em>Replace parent</em> – replaces nearest parent with chosen component</div>
+</li>
+<li class="level1"><div class="li"> <em>Group into</em> – encapsulates chosen component into a container</div>
+</li>
+<li class="level1"><div class="li"> <em>Transform to</em> – replaces component with different type and attempts to copy all relevant properties</div>
+</li>
+</ul>
+
+<p>
+From the component composition point of view, there are three types of components. Those that may not contain any futher child compoments, those that may contain up to one and then those that may contain more than one. This last type, ie. Panel or Table we call containers. Even if component may contain only one child, it is almost always possible to use Panel as this child and in it you may stack multiple other components.
+</p>
+
+<p>
+It is possible to set default properties of the components in defaults.ini (see <a href="/dokuwiki/doku.php?id=en:resources" class="wikilink1" title="en:resources">Resources</a>).
+</p>
+
+<p>
+Most of the time the development of the form involves work with windows Variables, Properties, Actions and <abbr title="Application Programming Interface">API</abbr> objects (see <a href="/dokuwiki/doku.php?id=en:tool-windows" class="wikilink1" title="en:tool-windows">Tool windows</a>).
+</p>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=en%3Amain-window&amp;media=en:image13.jpg" class="media" title="en:image13.jpg"><img src="/dokuwiki/lib/exe/fetch.php?media=en:image13.jpg" class="media" title="image13.jpg" alt="image13.jpg" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Form designer&quot;,&quot;hid&quot;:&quot;form_designer&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;37-2649&quot;} -->
+<h3 class="sectionedit3" id="data-to-form">Data-to-form</h3>
+<div class="level3">
+
+<p>
+If you drag data attribute (including complex, collection or reference) on the form it will try to generate appropriate components for it. We call this process Data-to-Form. After the drag&amp;drop a dialog is shown where it is possible to choose which component will be used for which data type. This setting may be changed only for this event or it may be saved as default to project settings.
+</p>
+
+<p>
+It is possible to disable showing this dialog by holding SHIFT key during drag&amp;drop or by checking “<em>Do not show this dialog next time</em>“. On the opposite, it is possible to display this dialog by holding ALT key.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data-to-form&quot;,&quot;hid&quot;:&quot;data-to-form&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;2650-3283&quot;} -->
+<h2 class="sectionedit4" id="data_designer">Data designer</h2>
+<div class="level2">
+
+<p>
+<a href="/dokuwiki/doku.php?id=en:data#data_entity" class="wikilink1" title="en:data">Data entities</a> can be created and edited in data designer. It is possible to add data attributes, complexes, collections and references through context menu or by dragging them from toolbox. It is possible to rearrange them by using mouse and drag&amp;drop.
+</p>
+
+<p>
+Data elements have events that may be used to call a handler with your script when the event happen. While under normal circumstances you do not need to use these handlers here (it is more common to handle these events on the form where the data entity is used), there are cases where you may want to do something when the entity is created (OnCreate event) or some data is changed (OnChanged).
+</p>
+
+<p>
+If clipboard contains text or formatted text with indented attribute names, it is possible to insert it  into the data tree by pressing CTRL+V. IDE will try to transform it into attributes (including complex attributes).
+</p>
+
+<p>
+If you paste text
+</p>
+<pre class="code">Subjekt
+  IČ
+  Název
+  Adresa
+    Ulice
+    PSČ
+    Město</pre>
+
+<p>
+the data designer will create
+</p>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=en%3Amain-window&amp;media=en:image14.png" class="media" title="en:image14.png"><img src="/dokuwiki/lib/exe/fetch.php?w=387&amp;h=182&amp;tok=b211d2&amp;media=en:image14.png" class="media" alt="" width="387" height="182" /></a>|
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data designer&quot;,&quot;hid&quot;:&quot;data_designer&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;3284-4355&quot;} -->
+<h3 class="sectionedit5" id="action_designer">Action designer</h3>
+<div class="level3">
+
+<p>
+This editor allows you to write <a href="/dokuwiki/doku.php?id=en:actions" class="wikilink1" title="en:actions">handlers and actions</a>. It allows to write tests for them as well in similar fashion as unit tests work in other technologies.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Action designer&quot;,&quot;hid&quot;:&quot;action_designer&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;4356-4552&quot;} -->
+<h2 class="sectionedit6" id="test_data_designer">Test data designer</h2>
+<div class="level2">
+
+<p>
+It is important for the <a href="#form_designer" title="en:main-window ↵" class="wikilink1">Form designer</a> to have the components bound to some test data. Not only it allows the developer to better imagine how the form is going to look, but when it comes to components bound to data collections (like Repeater or DataTable), without some test data these components would look empty and it would be very hard to design their content.
+</p>
+
+<p>
+Test data are generated automatically based on data definition in Variables window on every form. They are pseudorandom and they are trying to fit the data definition. If it is needed to change them, it is possible to do so by using icon <a href="/dokuwiki/lib/exe/detail.php?id=en%3Amain-window&amp;media=en:image15.png" class="media" title="en:image15.png"><img src="/dokuwiki/lib/exe/fetch.php?h=10&amp;tok=8a3122&amp;media=en:image15.png" class="media" alt="" height="10" /></a> in Variables window.
+</p>
+
+<p>
+Data are updated in JSON format. IDE is showing relevant data structure based on the cursor. If the data are deleted or if they are not valid JSON, new data will be automatically generated instead.
+</p>
+
+<p>
+It is as well possible to regenerate the data by using right click option <em>Regenerate test data</em>. String values respect not only maximum length of the attribute but there is as well a limit in <a href="/dokuwiki/doku.php?id=en:project-structure#project_options" class="wikilink1" title="en:project-structure">Project options</a> for their length. Default is 60 characters.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Test data designer&quot;,&quot;hid&quot;:&quot;test_data_designer&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;4553-&quot;} -->

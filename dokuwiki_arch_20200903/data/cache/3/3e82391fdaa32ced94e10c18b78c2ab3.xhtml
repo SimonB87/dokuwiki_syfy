@@ -1,0 +1,271 @@
+
+<h1 class="sectionedit1" id="data">Data</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data&quot;,&quot;hid&quot;:&quot;data&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-20&quot;} -->
+<h2 class="sectionedit2" id="data_entity">Data Entity</h2>
+<div class="level2">
+
+<p>
+Slouží pro definici datové třídy (entity), která je použitelná na více místech. Lze ji také použít pro rozdělení projektu na data a UI. Entita se skládá z atributů, kolekcí a dalších struktur. Entita sama o sobě je pouze předpisem (UML class), instance (UML object) se vytváří až jako proměnné – Variable (v akci <em>Local variables</em>, ve formuláři <em>Form variables</em>, v package <em>Global variables</em>).
+</p>
+
+<p>
+Pozn.: import z MetaSystému: SF obsahuje možnost opakovaně importovat struktury zpráv z MetaSystému. Tento import lze provádět opakovaně, a probíhá tedy přírustkově. V SF lze některé naimportované věci změnit (např. doplnit atributy, validátory) a import je nepřepíše. Při importu se zadává, z jaké domény budou zprávy importovány a cílový package. Doporučume importovat POUZE ty zprávy, které skutečně používáte a v MTS je modelovat právě tak, jak je v IDE budete potřebovat. SF na rozdíl od MTS neobsahuje nějaký systém na manipulace s příchozí či odchozí strukturou.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data Entity&quot;,&quot;hid&quot;:&quot;data_entity&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;21-1109&quot;} -->
+<h2 class="sectionedit3" id="data_attribute_atribut_s_hodnotou">Data Attribute – atribut s hodnotou</h2>
+<div class="level2">
+
+<p>
+Pomocí atributů se definují nosiče hodnot (properties, attributes, fields v konvencích objektového modelování). Atributy mají definovaný typ, povinnost a případně metadata (Caption).
+</p>
+
+<p>
+Podporované datové typy:
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>String</strong> – řetězec. Lze zadat maximální a minimální délku</div>
+</li>
+<li class="level1"><div class="li"> <strong>Bool</strong> – logická hodnota ano/ne.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Date</strong> – datum (bez času). Lze zadat, zda datum může být z budoucnosti či minulosti.</div>
+</li>
+<li class="level1"><div class="li"> <strong>DateTime</strong> – datum a čas. Lze zadat, zda datum může být z budoucnosti či minulosti a přesnost – na minuty, vteřiny, milisekundy.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Integer</strong> – celé číslo v rozsahu -9007199254740992 až 9007199254740992 (dle EcmaScript standard, kap. <em>8.5 The Number Type). Lze zadat minimální a maximální hodnotu.</em></div>
+</li>
+<li class="level1"><div class="li"> <strong>Decimal</strong> – desetinné číslo (64 bitové). Nejmenší možná absolutní hodnota je 5×10<sup>-324</sup>, největší 1.7976931348623157×10<sup>+308</sup> . Lze zadat minimální, maximální hodnotu a přesnost – tedy počet desetinných míst za desetinou tečkou/čárkou.</div>
+</li>
+<li class="level1"><div class="li"> <strong>metatyp</strong> – umožňuje sdílet základní nastavení mezi více atributy, navíc také výčty (viz dále)</div>
+</li>
+</ul>
+
+<p>
+Pozor u datových typů Date a DateTime se jedná se o lokální čas, nijak se nepracuje s časovou zónou. Server a klient tedy musí ít „dohodu“ co daný den a čas znamená. Nejde tedy o datový typ vhodný pro uložení „jedinečného historického okamžiku v časoprostoru“.
+</p>
+
+<p>
+Povinnosti atributů, zabudovaná omezení a validace (viz dále) jsou implementována pouze na úrovni propisování hodnot z UI do atributů.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Data Attribute \u2013 atribut s\u00a0hodnotou&quot;,&quot;hid&quot;:&quot;data_attribute_atribut_s_hodnotou&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;1110-2779&quot;} -->
+<h2 class="sectionedit4" id="meta_typ">Meta typ</h2>
+<div class="level2">
+
+<p>
+Definuje vlastnosti atributu, které jsou společné více datovým prvkům, např. IČ. Lze zde také definovat výčtový typ – <em>Enum</em>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Meta typ&quot;,&quot;hid&quot;:&quot;meta_typ&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;2780-2944&quot;} -->
+<h3 class="sectionedit5" id="enum_vycet">Enum – výčet</h3>
+<div class="level3">
+
+<p>
+Výčtový typ se definuje pomocí MetaTypu, v jehož „Base type“ se vybere „Enum“. Poté se přidají jednotlivé položky výčtu (<em>Enum values</em>), u kterých se zadává
+</p>
+<ul>
+<li class="level1"><div class="li"> název (<em>Name</em>), který se bude používat z výrazů (viz Expresion),</div>
+</li>
+<li class="level1"><div class="li"> popis (<em>Caption</em>), text, který se bude zobrazovat uživateli,</div>
+</li>
+<li class="level1"><div class="li"> hodnota (<em>Value</em>), která bude interně uložena v atributu</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Enum \u2013 v\u00fd\u010det&quot;,&quot;hid&quot;:&quot;enum_vycet&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;2945-3371&quot;} -->
+<h2 class="sectionedit6" id="computed_attribute_pocitany_atribut">Computed Attribute – počítaný atribut</h2>
+<div class="level2">
+
+<p>
+Atribut, jehož hodnota (a typ) je definována výrazem (viz Expression). Používá se v spojení s Bindingem na další vlastnosti komponent a tak lze dosáhnout změny vzhledu formuláře na základě dat.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Computed Attribute \u2013 po\u010d\u00edtan\u00fd atribut&quot;,&quot;hid&quot;:&quot;computed_attribute_pocitany_atribut&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;3372-3639&quot;} -->
+<h2 class="sectionedit7" id="complex_attribute_komplexni_atribut">Complex Attribute – komplexní atribut</h2>
+<div class="level2">
+
+<p>
+Kontejner pro další atributy a struktury. Jeho vlastností je strukturování dat (např. vnořená adresa) a také jejich případné vyplnění a povinnost. Komplexní atribut je za běhu aplikace vždy přítomen (neumí mít hodnotu NULL), ale jeho metoda <em>hasValue()</em> vrací <em>true</em>, pouze pokud je vyplněn jakýkoliv podřízený atribut.
+</p>
+
+<p>
+<strong>Pozor:</strong> Je-li komplexní atribut nepovinný, volají se validace jeho podřízených atributů pouze v případě, je-li splněna předchozí podmínka (tedy <em>hasValue()</em> vrací <em>true</em>).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Complex Attribute \u2013 komplexn\u00ed atribut&quot;,&quot;hid&quot;:&quot;complex_attribute_komplexni_atribut&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;3640-4241&quot;} -->
+<h2 class="sectionedit8" id="reference_odkaz_na_jina_data">Reference – odkaz na jiná data</h2>
+<div class="level2">
+
+<p>
+Struktura podobná komplexnímu atributu, jejímž účelem je ale referencovat nějaká jiná data. Referencovaná data nejsou určena svým typem (toho lze docílit např. vhodnou jmennou konvencí), ale pouze svým předpisem (nelze tedy referencovat „Adresu“, ale lze referencovat „něco co má atributy ulice, město, psč“). Reference nijak neřeší svou integritu, tato úloha připadá serveru, nebo jiné části aplikace. V případě serverového řešení je doporučeno, aby klient dostával reference i se svým obsahem (tedy např. konkrétní položoku číselníku či jiné tabulky).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Reference \u2013 odkaz na jin\u00e1 data&quot;,&quot;hid&quot;:&quot;reference_odkaz_na_jina_data&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;4242-4901&quot;} -->
+<h2 class="sectionedit9" id="collection_kolekce_dat">Collection – kolekce dat</h2>
+<div class="level2">
+
+<p>
+Kolekce umožňuje opakování nějaké struktury. Jde o seznam nebo pole atributů a struktur, které mohou být definovány přímo pod kolekcí. Do kolekce lze přidávat a odebírat položky. Kolekce slouží pro bindování na <em>Repeater</em>, <em>DataTable</em> a podobné komponenty.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Collection \u2013 kolekce dat&quot;,&quot;hid&quot;:&quot;collection_kolekce_dat&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:9,&quot;range&quot;:&quot;4902-5225&quot;} -->
+<h2 class="sectionedit10" id="include_vlozeni_obsahu_entity">Include – vložení obsahu entity</h2>
+<div class="level2">
+
+<p>
+Ve všech místech, kde se definuje struktura, dat je možné vložit entity pomocí Include. Tento mechanismus je použit namísto klasického dědění a umožňuje mnohem rozmanitější scénáře. V místě, kde je Include použito se přímo vkládá obsah zvolené entity, pokud je tedy potřeba provést i zanoření struktury, je vhodné použít např. Complex Attribute a teprve do něj vložit Include. Jednoduché a běžné použití include je pro vytváření vazeb mezi entitami. Kombinací definic entit a používáním Include lze velmi snadno dosáhnout znovupoužitelnosti (reuse) již hotových struktur. Spolu s dalšími mechanismy (viz modifikátory) lze struktury přizpůsobit konkrétním potřebám konkrétních formulářů.
+</p>
+
+<p>
+Příklad – objekt Transporter (dopravce)
+</p>
+<div class="table sectionedit11"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">Data entity s include          </th><th class="col1">Výsledná struktura (Variables – Final)</th><th class="col2 leftalign">Poznámky                                                                                                                                                                                                                                                     </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"><a href="/dokuwiki/lib/exe/detail.php?id=cs%3Adata&amp;media=cs:image20.png" class="media" title="cs:image20.png"><img src="/dokuwiki/lib/exe/fetch.php?w=254&amp;h=370&amp;tok=4b5c9e&amp;media=cs:image20.png" class="media" alt="" width="254" height="370" /></a></td><td class="col1 leftalign"><a href="/dokuwiki/lib/exe/detail.php?id=cs%3Adata&amp;media=cs:image21.png" class="media" title="cs:image21.png"><img src="/dokuwiki/lib/exe/fetch.php?w=180&amp;h=375&amp;tok=df5aa5&amp;media=cs:image21.png" class="media" alt="" width="180" height="375" /></a>       </td><td class="col2">Entita Transporter se standardními atributy subjektu<br/>
+<br/>
+Přímý Include entity Adress<br/>
+<br/>
+Address obsahuje Referenci s include Country<br/>
+<br/>
+Reuse entity ContactInfo<br/>
+<br/>
+Kolekce contacts obsahouje pouze include ContactPerson, ta zas include ContactInfo</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:11,&quot;range&quot;:&quot;6080-6728&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Include \u2013 vlo\u017een\u00ed obsahu entity&quot;,&quot;hid&quot;:&quot;include_vlozeni_obsahu_entity&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:10,&quot;range&quot;:&quot;5226-6729&quot;} -->
+<h2 class="sectionedit12" id="validator_validatory">Validator – validátory</h2>
+<div class="level2">
+
+<p>
+Jednotlivé prvky datových struktur (atributy, kolekce, …) obsahují možnost přidat si vlastní validátory (<em>Validators</em>). Jde o seznam podmínek (<em>IsValid</em>) zapsaných pomocí výrazů (viz Expression) a příslušných chybových hlášek (<em>Error message</em>). Podmínka se zapisuje pozitivně (např. „Je první písmeno velké?“), musí tedy vrátit <em>true</em> (nikoliv <em>null</em>, nebo <em>false</em>), aby byla považována za splněnou, v opačném případě se vyhodnotí výraz s chybovou hláškou a tato hláška je přidána mezi validační chyby komponenty, která je na prvek navázána. V podmínce na atributu lze použít výraz „<em>attr</em>“, který je zkratkou na aktuální atribut. Validátory lze pro přehlednost pojmenovat.
+</p>
+
+<p>
+Příklad:
+</p>
+
+<p>
+<em>IsValid</em>: <strong>SubString</strong>(<strong>attr</strong>,1,1)=<strong>ToUpper</strong>(<strong>SubString</strong>(<strong>attr</strong>,1,1))
+</p>
+
+<p>
+<em>ErrorMessage</em>: „První písmeno („ + <strong>SubString</strong>(<strong>attr</strong>,1,1) + “) musí být velké“
+</p>
+
+<p>
+Validátory lze také používat na celé struktuře, kolekci, nebo prvku kolekce. Pokud struktura není prázdná (její hasValue vrací true), validace se provede rekurzivně směrem dolů.
+</p>
+
+<p>
+Validace se spouští teprve při první změně atributu (nebo struktury), taková data jsou interně nastavena do stavu „touched“, tento stav lze programově ovládat (TODO-akce).
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Validator \u2013 valid\u00e1tory&quot;,&quot;hid&quot;:&quot;validator_validatory&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:12,&quot;range&quot;:&quot;6730-8099&quot;} -->
+<h2 class="sectionedit13" id="variables_action_form_global_promenne">Variables (Action, Form, Global) – proměnné</h2>
+<div class="level2">
+
+<p>
+Samotné entity jsou pouze předpisem struktur (viz výše), teprve v okně <em>Variables</em> se vytváří jejich instance. Proměnné lze definovat na formuláři (<em>Form variables</em>), globálně pro package (<em>Global variables</em>) a v akci (<em>Action variables</em>), chovají se stejně, pouze jejich životnost se liší.
+</p>
+
+<p>
+<strong>Proměnné akce</strong> se vytvoří při jejím spuštění. Vytváří se vždy s každým novým zavoláním akce, zanikají při provedení posledního příkazu.
+</p>
+
+<p>
+<strong>Proměnné formuláře</strong> jsou vytvořeny při navigaci na tento formulář. Pokud dojde k navigaci pryč (typ „<em>Go</em>“), proměnné zanikají. Speciálním případem je navigace dočasná (typ „<em>Go&amp;back</em>“), kdy zaniká pouze formulář, ale jeho data zůstávají v paměti prohlížeče a při zpětné navigaci („<em>Close navigation</em>“) se obnoví. Proměnné v první úrovni (tj. přímo pod uzlem <em>Form variables</em>) lze označit jako vstupní (<em>IsInput</em> nastavit na <em>true</em>). Hodnoty těchto proměnných lze nastavovat při navigaci na tento formulář. Pro proměnné formuláře se automaticky vytváří testovací data. Tato data jsou použita při vizuálním návrhu formulářů a lze je měnit (viz Test data designer).
+</p>
+
+<p>
+<strong>Globální proměnné</strong> se vytváří se spuštěním aplikace a zůstávají v paměti do jejího ukončení.
+</p>
+
+<p>
+<em>Variables</em> mají událost <em>OnCreate</em>, kterou lze použít pro naplnění výchozími údaji.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Variables (Action, Form, Global) \u2013 prom\u011bnn\u00e9&quot;,&quot;hid&quot;:&quot;variables_action_form_global_promenne&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:13,&quot;range&quot;:&quot;8100-9618&quot;} -->
+<h2 class="sectionedit14" id="variable_modifiers_modifikatory_promennych">Variable modifiers – modifikátory proměnných</h2>
+<div class="level2">
+
+<p>
+Proměnné lze vytvářet pomocí nových struktur, podobně jako entity, nebo s výhodou použít <em>Include</em> na již hotové entity. Protože však potřeby každého formuláře jsou jiné a typicky si potřebuje přidat své počítané atributy, které by zaneřádily společně používané entity, je možné (a doporučené) k inkludovaným strukturám přidávat další (především počítané atributy, či atributy s významem „vybraná položka“, apod.). Toho lze dosáhnout pomocí kontextového menu <em>Local change – Add</em>. Stejným způsobem (<em>Add events and validators</em>) lze přidat událost která se na dané struktuře bude spouštět pouze na daném formuláři, nebo validátor, který se má kontrolovat pouze na daném formuláři. Tato událost či validátor jsou spouštěny stejně, jako by byly v původní struktuře, navíc mají k dispozici kontext celého formuláře, nikoliv jen původní entity.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Variable modifiers \u2013 modifik\u00e1tory prom\u011bnn\u00fdch&quot;,&quot;hid&quot;:&quot;variable_modifiers_modifikatory_promennych&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:14,&quot;range&quot;:&quot;9619-10629&quot;} -->
+<h2 class="sectionedit15" id="udalosti_na_datech">Události na datech</h2>
+<div class="level2">
+
+<p>
+Datové objekty obsahují události, které umožňují definovat chování na úrovni entit. Obdobné události jsou přístupné také na proměnných (tedy instancích entit).
+</p>
+<div class="table sectionedit16"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign">Event                 </th><th class="col1 leftalign">Where                                               </th><th class="col2 leftalign">Parameters                                                                                                </th><th class="col3 leftalign">Comment                                                                                                                                                                                                   </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">OnCollectionItemChange</td><td class="col1 leftalign">DataCollection                                      </td><td class="col2 leftalign"><strong>data</strong> : collection item<br/>
+<strong>triggeredByUser</strong> : bool                                                   </td><td class="col3">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired). Parameter triggeredByUser contains true, if this event is fired from ui interaction</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign">OnCreate              </td><td class="col1">Action context,<br/>
+Form variables,<br/>
+Global variables</td><td class="col2 leftalign">                                                                                                          </td><td class="col3 leftalign">Occurs when this structure is created. Can be used for initializing default values.                                                                                                                       </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign">OnChange              </td><td class="col1 leftalign">DataAttribute                                       </td><td class="col2"><strong>data</strong> : owner structure (complex, reference, collection item, data entity)<br/>
+<strong>triggeredByUser</strong> : bool</td><td class="col3 leftalign">Occurs when value of this attribute is changed. Parameter triggeredByUser contains true, if this event is fired from ui interaction                                                                       </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 leftalign">                      </td><td class="col1 leftalign">DataEntity                                          </td><td class="col2 leftalign"><strong>data</strong> : DataEntity itself<br/>
+<strong>triggeredByUser</strong> : bool                                                 </td><td class="col3 leftalign">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired).                                                                                    </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign">                      </td><td class="col1 leftalign">DataComplexAttribute                                </td><td class="col2 leftalign"><strong>data</strong> : complex structure<br/>
+<strong>triggeredByUser</strong> : bool                                                 </td><td class="col3 leftalign">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired).                                                                                    </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 leftalign">                      </td><td class="col1 leftalign">DataReferenceAttribute                              </td><td class="col2 leftalign"><strong>data</strong> : owner structure<br/>
+<strong>triggeredByUser</strong> : bool                                                   </td><td class="col3 leftalign">Occurs when value of this reference attribute changed, but doesn&#039;t fire when any data of referenced values changed.                                                                                       </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0 leftalign">                      </td><td class="col1">Action context,<br/>
+Form variables,<br/>
+Global variables</td><td class="col2 leftalign">                                                                                                          </td><td class="col3 leftalign">Occurs when any of attributes, or attribute in deep structure (complex, etc.) is changed (and it&#039;s OnChange is fired).                                                                                    </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0 leftalign">OnUserChange          </td><td class="col1 leftalign">Same as OnChange                                    </td><td class="col2 leftalign">data same as OnChange                                                                                     </td><td class="col3 leftalign">Occurs when data are changed by user                                                                                                                                                                      </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0 leftalign">OnItemAdded           </td><td class="col1 leftalign">DataCollection                                      </td><td class="col2 leftalign">data : added item                                                                                         </td><td class="col3 leftalign">Occurs when item is added to this collection.                                                                                                                                                             </td>
+	</tr>
+	<tr class="row10">
+		<td class="col0 leftalign">OnItemRemoved         </td><td class="col1 leftalign">DataCollection                                      </td><td class="col2 leftalign">data : collection                                                                                         </td><td class="col3 leftalign">Occurs when item is removed from this collection.                                                                                                                                                         </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:16,&quot;range&quot;:&quot;10843-15110&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Ud\u00e1losti na datech&quot;,&quot;hid&quot;:&quot;udalosti_na_datech&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:15,&quot;range&quot;:&quot;10630-&quot;} -->
