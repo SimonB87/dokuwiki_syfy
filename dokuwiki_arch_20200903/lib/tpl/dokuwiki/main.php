@@ -9,7 +9,6 @@
  */
 
 if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
-header('X-UA-Compatible: IE=edge,chrome=1');
 
 $hasSidebar = page_findnearest($conf['sidebar']);
 $showSidebar = $hasSidebar && ($ACT=='show');
@@ -79,11 +78,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
             </div>
         </div><!-- /wrapper -->
 
-        <!--?php include('tpl_footer.php') ?-->
-        <?php
-    $translation = plugin_load('helper','translation');
-    if ($translation) echo $translation->showTranslations();
-?>        
+        <?php include('tpl_footer.php') ?>
     </div></div><!-- /site -->
 
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>

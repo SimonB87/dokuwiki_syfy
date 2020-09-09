@@ -36,7 +36,7 @@ Supported data types:
 </li>
 <li class="level1"><div class="li"> <strong>DateTime</strong> – date with time part. It has same built-in validators plus setting for its precision (minutes, seconds, miliseconds)</div>
 </li>
-<li class="level1"><div class="li"> <strong>Integer</strong> – integer number in range -9007199254740992 až 9007199254740992 (see javascript <a href="/dokuwiki/doku.php?id=en:number.max_safe_integer" class="wikilink2" title="en:number.max_safe_integer" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER</a>); built-in validators for minimum and maximum</div>
+<li class="level1"><div class="li"> <strong>Integer</strong> – integer number in range -9007199254740992 až 9007199254740992 (see javascript <a href="/dokuwiki/doku.php?id=en:number.max_safe_integer" class="wikilink2" title="en:number.max_safe_integer" rel="nofollow" data-wiki-id="en:number.max_safe_integer">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER</a>); built-in validators for minimum and maximum</div>
 </li>
 <li class="level1"><div class="li"> <strong>Decimal</strong> – decimal number with arbitrary precision. Built-in validators for minimum, maximum and for precision</div>
 </li>
@@ -132,7 +132,7 @@ Include is mechanics how to use Data entity. It works as a type of composition w
 </p>
 
 <p>
-Included content may contain validators, events and other metadata, but it may as well be slightly extended with more validators and events (see <span class="curid"><a href="/dokuwiki/doku.php?id=en:data#variable_modifiers" class="wikilink1" title="en:data">variable modifiers</a></span>).
+Included content may contain validators, events and other metadata, but it may as well be slightly extended with more validators and events (see <a href="/dokuwiki/doku.php?id=en:data#variable_modifiers" class="wikilink1" title="en:data" data-wiki-id="en:data">variable modifiers</a>).
 </p>
 
 <p>
@@ -163,7 +163,7 @@ Collection contacts contains only included ContactPerson, and that one includes 
 <div class="level2">
 
 <p>
-Individual data elements (attributes, collections etc.) have the ability to have validators. It is a list of conditions defined by <a href="/dokuwiki/doku.php?id=en:expressions" class="wikilink1" title="en:expressions">expressions</a> in property <em>IsValid</em> and error messages in property <em>Error message</em>. The expression should return true if the data is valid. If it returns something elese (<em>false</em> or <em>null</em>), data element is considered invalid, validation error is potentially shown in UI, and if queried from the action or in another expression with IsValid() it returns false. It is possible to use context <em>attr</em> when defining the expression and it will represent given data element. It is good practice to give validators meaningful name.
+Individual data elements (attributes, collections etc.) have the ability to have validators. It is a list of conditions defined by <a href="/dokuwiki/doku.php?id=en:expressions" class="wikilink1" title="en:expressions" data-wiki-id="en:expressions">expressions</a> in property <em>IsValid</em> and error messages in property <em>Error message</em>. The expression should return true if the data is valid. If it returns something elese (<em>false</em> or <em>null</em>), data element is considered invalid, validation error is potentially shown in UI, and if queried from the action or in another expression with IsValid() it returns false. It is possible to use context <em>attr</em> when defining the expression and it will represent given data element. It is good practice to give validators meaningful name.
 </p>
 
 <p>

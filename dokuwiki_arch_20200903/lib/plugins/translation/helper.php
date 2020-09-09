@@ -228,15 +228,13 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         $out = '<div class="plugin_translation">';
 
-
-        /* KND
         //show title and about
         if(isset($this->opts['title'])) {
             $out .= '<span>' . $this->getLang('translations');
             if($this->getConf('about')) $out .= $this->showAbout();
             $out .= ':</span> ';
             if(isset($this->opts['twolines'])) $out .= '<br />';
-        } */
+        }
 
         // open wrapper
         if($this->getConf('dropdown')) {
