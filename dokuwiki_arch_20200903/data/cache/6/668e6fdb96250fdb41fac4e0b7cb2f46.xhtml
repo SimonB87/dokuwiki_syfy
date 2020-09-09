@@ -1,0 +1,81 @@
+
+<h1 class="sectionedit1" id="faq_ckd_casto_kladene_otazky">FAQ – ČKD (často kladené otázky)</h1>
+<div class="level1">
+
+<p>
+<strong>Q: Jak na tisky?<br/>
+
+</strong>A: v současnosti není tisk nijak podporován, je nutné provádět na serveru, typicky vytvořením PDF souboru. Zvažujeme možnost vytisknout formulář, vývojář by si tak vytvořil formulář pro účely tisku a voláním nějaké funkce by jej uživatel mohl vytisknout.
+</p>
+
+<p>
+<strong>Q: Proč mi aplikace nechce komunikovat s mým serverem?<br/>
+
+</strong>A: zkontrolujte si, zda máte na serveru implementované tzv. CORS – jde o ochranu serveru proti používání z aplikací, které nepochází ze stejné domény.
+</p>
+
+<p>
+<strong>Q: Lze aplikaci vystavit přes https?<br/>
+
+</strong>A: Ano a je to i doporučovaný postup. Pokud ale aplikace přistupuje ke zdrojům, které nejsou https, mohou některé prohlížeče takové zdroje blokovat.
+</p>
+
+<p>
+<strong>Q: jak obarvím komponentu XXX?<br/>
+
+</strong>A: Jak psát samotný css soubor je mimo rámec této dokumentace, zkuste pomocí vývojových nástrojů prohlížeče nastavit barvy a poté z toho odvodit, jak by měla css třída vypadat.
+</p>
+
+<p>
+<strong>Q: Lze aplikaci krokovat?<br/>
+
+</strong>A: Snažili jsme se, aby generovaný kód byl čitelný, krokovat tedy lze pomocí nástrojů prohlížeče. Zkuste jeho dokumentaci. V případě Chrome lze použít plugin pro ladění knihovny knockoutjs. Nicméně vzhledem k deklarativnímu přístupu nemá aplikace žadný „začátek“ a „konec“.
+</p>
+
+<p>
+<strong>Q: Jak lze obarvit řádek dat podle stavu záznamu?<br/>
+
+</strong>A: Použijte Css class, do kterých přidáte tolik možností, kolik máte stavů. Podmínku každé css class nabindujte na počítanou property, která porovnává aktuální stav s hodnotou (nebo hodnotami), pro kterou je css určeno.
+</p>
+
+<p>
+<strong>Q: Jak nasadím aplikaci na IIS s NTLM ověřováním uživatelů?<br/>
+
+</strong>A: Aplikaci lze nasadit jako statické soubory na jakýkoliv webový server. Je nutné zvážit kešovací strategii, pokud si browser zapamatuje, že daný soubor lze kešovat, již se serveru nezeptá a neexistuje způsob, jak o tom browser přesvědčit. Výsledná aplikace je vysoce optimalizovaná a obsahuje minimum souborů, lze tedy použít kešování na souboru, resp. přístup GET (If modified since)-302(Not modified). Ověřování NTLM uživatelů se děje na serveru, klient tedy musí udělat nějaký dotaz na server (ideálně ve stejné doméně jako klient), tento dotaz se ověří a vrátí např. formou REST služby vlastnosti uživatele. Pozor, Internet Explorer NTLM posílá pouze do „Intranet zóny“, do které je nutné server ručně přidat, nebo název nesmí obsahovat tečky (tedy mujtest je vpořádku, ale mujtest.internal nebo 10.20.30.40 už ne).
+</p>
+
+<p>
+<strong>Q: Co je vlastně obsahem výstupního adresáře?<br/>
+
+</strong>A: index.html, sf.js, atd.
+</p>
+
+<p>
+<strong>Q: Jak řešit uživatelská práva?<br/>
+
+</strong>A: práva nejsou zatím implementována, nicméně lze je obejít pomocí globálního objektu uživatel, který bude obsahovat atributy (lze i počítané), zda je uživatel v té které roli (např. IsReader, IsAdmin, IsWriter). Na základě těchto atributů lze zakazovat (bindingem na IsVisible, popř. IsEnabled) jednotlivé funkce (resp. UI prvky).
+</p>
+
+<p>
+<strong>Pozor!</strong> Z principu věci je naprosto nutné práva vždy řešit na serveru (to že něco nelze udělat pomocí klienta neznamená, že útočník data nepodstrčí jinou cestou, většinou na to stačí nástroje prohlížeče – F12), kontroly a omezení na klientovi mohou být stejná, ale často postačí „menší“, než na serveru.
+</p>
+
+<p>
+<strong>Q: Jaký je vztah mezi mými daty a JSON formátem?<br/>
+
+</strong>A: TODO….popsat Jak se (de)serializuje JSONEntity, datové typy (hlavně enumy, datetime), mapování.
+</p>
+
+<p>
+<strong>Q: Kde jsou komponenty Menu, Tab,</strong> <strong>DataGrid, ScrollBar, ListBox, ProgressBar</strong> <strong>a další?</strong><br/>
+
+A: V současnosti nejsou. Některé nejsou na webu až zas tak časté, jiné by se stejně lišily při každém použití. Nové komponenty budou postupně vznikat dle potřeb a budou postupně integrovány do nových verzí aplikace. Některé komponenty naleznete v balíku sffw (není součástí distribuce SF).
+</p>
+
+<p>
+<strong>Q: Já se zkusím zeptat</strong><br/>
+
+A: A tady si zkusím odpovědět. Test č.2. Zkouška GitBacked. Zkouška Test GitBacked 26.
+</p>
+
+</div>

@@ -34,3 +34,6 @@
 
 **Q: Kde jsou komponenty Menu, Tab,** **DataGrid, ScrollBar, ListBox, ProgressBar** **a další?**\\
 A: V současnosti nejsou. Některé nejsou na webu až zas tak časté, jiné by se stejně lišily při každém použití. Nové komponenty budou postupně vznikat dle potřeb a budou postupně integrovány do nových verzí aplikace. Některé komponenty naleznete v balíku sffw (není součástí distribuce SF).
+
+**Q: Já se zkusím zeptat**\\
+A: A tady si zkusím odpovědět. Test č.2

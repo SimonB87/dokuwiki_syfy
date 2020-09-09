@@ -24,3 +24,6 @@ https://www.dokuwiki.org/install
 Vzdálená plocha:
 - zadat: vm-syfy
 - běžný log-in můj
+
+GIT Solitea:
+http://vm-tfs-d1:8080/tfs/D1SourceCode/DokuWikiPosts/_git/DokuWikiPosts
